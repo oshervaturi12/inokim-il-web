@@ -1,0 +1,67 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+<main id="top-app" class="p-3">
+    <section class="user-page">
+
+        <header class="header">
+            <div class="container">
+                <h1>שלום, <%= user.name  %> </h1>
+            </div>
+        </header>
+    
+        <div class="container py-3 py-md-4">
+    
+            <div class="row">
+    
+    <aside class="col-12 col-md-3">
+        <%- include("./partials/userMenu.ejs") %>
+    
+    </aside>
+
+
+        <main class="col-12 col-md-9">
+          <div class="devices-wrapper">
+            <% if(orders && orders.length > 0) { %>
+
+            <% orders.forEach(order => { %>
+              
+              <div class="devices-grid">
+               
+                <% order.items.forEach(item => { %>
+                  <div class="device-card">
+                    <%- optimizeImage(`${item.img}`, 'תמונת מוצר', 'device-image') %>
+            
+                    <h3 class="device-name"><%= item.prdName %></h3>
+                    <p class="device-description">
+                      צבע: <span><%= item.color.name %></span><br>
+                      <%= item.serialNumber ? `מספר סידורי: ${item.serialNumber}` : 'בקרוב ישוייך מספר סידורי' %>
+                    </p>
+            
+                    <button 
+                      type="button" 
+                      class="btn-support btn btn-primary" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#supportModal-<%= item.variantId %>">
+                      פתח קריאה
+                    </button>
+        
+                  </div>
+                  <%- include("./partials/modals/modelSupport.ejs", { item }) %>
+
+                <% }) %>
+              </div>
+            <% }) %>
+            <% }  %>
+          </div>
+        </main>
+        
+    
+            </div>
+    
+        </div>
+    
+    </section>
+</main>
+
+<%- include("./partials/footer.ejs") %>

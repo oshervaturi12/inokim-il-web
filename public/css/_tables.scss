@@ -1,0 +1,68 @@
+.table-container {
+    padding: 0 !important;
+    position: relative;
+}
+
+.table-info {
+    box-shadow: 0 1px 4px rgba(0,0,0,.16);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    max-height: 85vh;
+}
+
+.table-info svg {
+    width: 2em;
+    height: 2em;
+    fill: #fff;
+    padding: .4em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.table tr{
+    position: sticky !important;
+    top: 0 !important;
+    // z-index: 9999;
+}
+
+.table thead{
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10;
+}
+
+.table td{
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 300px !important;
+}
+
+.table td a{
+    font-weight: 500;
+}
+
+#tBody span, #paymentsBody span{
+    padding: .2em 1em;
+    border-radius: .5em;
+}
+
+#tBody span.paid, #paymentsBody span.paid{
+    background-color: #dbf5e6 !important;
+} 
+#tBody span.pending, #paymentsBody span.pending{
+    background-color: #dee0e4 !important;
+}
+
+#tBody span.failed, #paymentsBody span.failed{
+    background-color: #f7d9dc !important;
+}

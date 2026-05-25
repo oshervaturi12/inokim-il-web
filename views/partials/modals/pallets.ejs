@@ -1,0 +1,26 @@
+<div class="modal fade" id="palletGridModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="palletGridModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">בחירת פלטה</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="palletGrid">
+        <% if (product.variants && product.variants[0] && product.variants[0].colors) { %>
+            <div class="con">
+          <% product.variants[0].colors.forEach((color, index) => { %>
+          
+              <button type="button" class="color-btn-list pick-color" data-design="<%= color.name  %>" data-variant="<%=  color.image %>">
+							     <img src="<%=`${s3path}${color.image}` %>" alt="Product Image" class="t-w-full t-h-auto t-rounded">
+							      	 <%= color.name %> 
+                  </button>
+      
+          
+          <% }) %>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</div>

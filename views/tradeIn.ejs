@@ -1,0 +1,83 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+<main id="contact-page">
+
+    <aside>
+        <!-- <%- optimizeImage('/img/6-2.png', 'קולקציית אינוקים', 'img-fluid') %> -->
+         <img src="/optimized/trade-in.png" alt="">
+
+    </aside>
+
+    <main>
+
+        <h1 class="nice-title">טרייד אין</h1>
+
+        <p class="mb-4">
+            קבלו הצעת טרייד אין משתלמת בתוך דקות!
+        </p>
+
+        <form action="#" method="post" id="contactForm" class="dynamic-form">
+
+
+            <div class="mb-3">
+                <label for="model" class="form-label must">דגם</label>
+                <input type="text" name="model" class="form-control" required="">
+            </div>
+
+            <div class="mb-3">
+                <label for="serialNUm" class="form-label must">מספר סידורי</label>
+                <input type="text" name="serialNUm" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label must">דגם מועדף</label>
+                <select name="modelGet" class="form-control">
+                    <option value="בחר">בחר</option>
+                    <option value="ox-carbon">אינוקים אוקס קרבון</option>
+                    <option value="ox">אינוקים אוקס</option>
+                    <option value="ox-white">אינוקים אוקס לבן</option>
+                    <option value="quick-4">קוויק 4</option>
+                    <option value="light-2">לייט 2</option>
+                </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="fullName" class="form-label must">שם מלא</label>
+                    <input type="text" name="fullName" class="form-control" required="">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label must">אימייל</label>
+                    <input type="text" name="email" class="form-control" required="">
+                </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label must">טלפון\נייד</label>
+                <input type="text" name="phone" class="form-control" required="">
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label must">תוכן ההודעה</label>
+                <textarea class="form-control" name="message" rows="4"></textarea>
+            </div>
+
+            <input type="hidden" name="type" value="tradeId">
+
+            <div class="text-start">
+                <div>
+                    <div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
+                        <div class="grecaptcha-logo">
+                            <iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-pxpxlc9hmhaa" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lcib28oAAAAAOERinQn-ujN1wcYEvaRnL4g4Ud8&amp;co=aHR0cHM6Ly93d3cucGV0d2F5LmNvLmlsOjQ0Mw..&amp;hl=en&amp;v=rW64dpMGAGrjU7JJQr9xxPl8&amp;size=invisible&amp;sa=submit&amp;cb=h4x0ieo5nb3r"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+                            <button class="btn btn-primary w-100 g-recaptcha" id="contactSubmit" data-sitekey="6Lcib28oAAAAAOERinQn-ujN1wcYEvaRnL4g4Ud8" data-callback="onSubmit" data-action="submit">
+                                קבל הצעה
+
+                            </button>
+            </div>
+
+        </form>
+
+    </main>
+
+</main>
+
+<%- include("./partials/footer.ejs") %>

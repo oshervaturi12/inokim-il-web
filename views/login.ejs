@@ -1,0 +1,112 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+<section id="loginPage">
+
+    <main id="loginContent">
+
+        <% if(typeof user !== "undefined" && user.role === "salesManager") { %>
+
+            <h1> היי,  <%= user.name  %></h1>
+            <p>החיבור למערכת הושלם בהצלחה, את יכולה להתחיל לבנות הזמנות!</p>
+            <a href="/" class="btn btn-light w-100">למעבר לעמוד הראשי</a>
+
+       <% } else { %>
+        <h1 class="d-flex font-big justify-content-center justify-content-lg-start mb-3">התחבר למערכת</h1>
+
+        <p class="text-center text-lg-end">
+            התחברו עכשיו ונצלו את כל ההטבות שלכם עכשיו.        </p>
+
+        <form action="#" method="post" id="loginForm" class="show">
+
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">אימייל</label>
+                <input type="email" name="email" id="loginEmail" class="form-control" placeholder="email@inokim.co.il" required="">
+            </div>
+
+            <div class="mb-3">
+                <label for="loginPassword" class="d-flex align-items-center form-label">
+                    סיסמא                    <button type="button" class="me-auto btn btn-light" id="forgotBtn">שכחת סיסמא?</button>
+                </label>
+                <input type="password" name="password" id="loginPassword" class="form-control" placeholder="********" required="">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block w-100">התחבר</button>
+        </form>
+
+        <!-- <form action="#" method="post" id="forgotForm"> -->
+
+            <!-- <h3 class="text-muted d-flex align-items-center">
+                שכחת סיסמא?                <button type="button" class="btn btn-light me-auto" id="forgotBtnBack">חזור</button>
+            </h3> -->
+
+            <!-- <p class="info">שלחנו אימייל לבקשת שינוי סיסמא. אם אתם לא מצליחים למצוא את האימייל תבדקו גם בספאם ואם זה לא עובד נסו עוד פעם בעוד 15 דקות.</p> -->
+
+            <!-- <div id="forgotInputs">
+
+                <div class="mb-3">
+                    <label for="femail" class="form-label">אימייל</label>
+                    <input type="email" name="email" id="femail" class="form-control" placeholder="הזן אימייל של החשבון" required="">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block w-100">בקש סיסמא חדשה</button>
+
+            </div> -->
+
+        <!-- </form> -->
+
+        <div class="title-line mt-4 mb-3">או</div>
+
+        <div class="options">
+
+            <div class="half">
+
+                <a href="/api/v1/auth/google" class="btn btn-login google" id="googleLogin">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.60000038 20">
+                        <path d="M19.60000038 10.22730064c0-.70910072-.06360054-1.39090157-.18180084-2.0454998H10v3.86819839h5.3817997c-.23180008 1.25-.93630028 2.3091011-1.99539948 3.01819992v2.50909996h3.23180008c1.89089966-1.74090004 2.98180008-4.30459976 2.98180008-7.34999847Z" style="fill:#4285f4"></path>
+                        <path d="M10 20c2.70000076 0 4.96360016-.89550018 6.61809921-2.42270088l-3.23180008-2.50909996c-.89539909.60000038-2.04089928.9545002-3.38629913.9545002-2.60460091 0-4.80910015-1.75909996-5.59549999-4.12269974H1.06359959v2.59090042C2.70909977 17.75909996 6.09090042 20 10 20Z" style="fill:#34a853"></path>
+                        <path d="M4.40450001 11.89999962C4.2045002 11.29999924 4.09090042 10.65909958 4.09090042 10s.11359978-1.29999924.31359959-1.89999962V5.50909996H1.06359959C.38640023 6.85910034 0 8.38640022 0 10s.38640022 3.14089966 1.06359959 4.49090004l3.34090042-2.59090042Z" style="fill:#fbbc04"></path>
+                        <path d="M10 3.97729969c1.46809959 0 2.78630066.50450039 3.8227005 1.49540043l2.8682003-2.8682003C14.95910072.99090004 12.69540024 0 10 0 6.09090042 0 2.70909977 2.24090004 1.06359959 5.50909996l3.34090042 2.59090042C5.19089985 5.73639965 7.3953991 3.97729969 10 3.97729969Z" style="fill:#e94235"></path>
+                        </svg>
+                        <span>
+                            התחבר עם גוגל                        </span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="half">
+                <button type="button" class="btn btn-login facebook" id="facebookLogin">
+                    <span>
+                        <svg viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 00-1.96 1.961v15.803a1.96 1.96 0 001.96 1.96H36.57v39.876a1.96 1.96 0 001.96 1.96h16.352a1.96 1.96 0 001.96-1.96V54.287h14.654a1.96 1.96 0 001.96-1.96l.006-15.803a1.963 1.963 0 00-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 001.959-1.96V1.98A1.96 1.96 0 0072.089.02z"></path></svg>
+                        <span>
+                             פייסבוק                        </span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="w-100">
+                <a href="" class="btn btn-login email" id="registerBtn">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M172.31-180Q142-180 121-201q-21-21-21-51.31v-455.38Q100-738 121-759q21-21 51.31-21h615.38Q818-780 839-759q21 21 21 51.31v455.38Q860-222 839-201q-21 21-51.31 21H172.31ZM480-457.69 160-662.31v410q0 5.39 3.46 8.85t8.85 3.46h615.38q5.39 0 8.85-3.46t3.46-8.85v-410L480-457.69Zm0-62.31 313.85-200h-627.7L480-520ZM160-662.31V-720v467.69q0 5.39 3.46 8.85t8.85 3.46H160v-422.31Z"></path></svg>
+                        <span>
+                            הרשמה עם אימייל                        </span>
+                    </span>
+                </a>
+            </div>
+
+        </div>
+      <% } %>
+
+
+
+    </main>
+    <aside 
+    id="loginAside" 
+    class="loaded" 
+    data-background="<%= s3path %>/optimized/quiz_3_4.webp" 
+    style="background-image: url('<%= s3path %>/optimized/quiz_3_4.webp');">
+  </aside>
+
+</section>
+<%- include("./partials/footer.ejs") %>

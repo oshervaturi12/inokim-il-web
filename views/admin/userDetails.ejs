@@ -1,0 +1,106 @@
+<%- include("./partials/header-admin.ejs") %>
+
+
+<main class="container-fluid py-4 px-3">
+  <div class="row">
+    <!-- SIDEBAR -->
+    <div class="col-md-3 mb-3">
+      <div class="box border p-3">
+        <h5>פרטי משתמש</h5>
+        <p><strong>שם:</strong> <%= user.name %></p>
+        <p><strong>אימייל:</strong> <%= user.email %></p>
+        <p><strong>טלפון:</strong> <%= user.phone %></p>
+        <p><strong>תפקיד:</strong> <%= user.role %></p>
+        <% if (user.googleId) { %>
+          <p class="text-success">🟢 מחובר עם Google</p>
+        <% } %>
+        <hr>
+        <p><strong>מס' הזמנות:</strong> <%= user.orders?.length || 0 %></p>
+        <p><strong>מס' אחריות:</strong> <%= user.warranties?.length || 0 %></p>
+        <p><strong>מוצרים שנצפו:</strong> <%= user.recentlyViewedProducts?.length || 0 %></p>
+      </div>
+    </div>
+
+    <!-- MAIN AREA with TABS -->
+    <div class="col-md-9">
+      <ul class="nav nav-tabs mb-3" id="userTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="warranties-tab" data-bs-toggle="tab" data-bs-target="#warranties" type="button" role="tab"> תעודות אחריות</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab"> הזמנות</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" type="button" role="tab"> קריאות שירות</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="userTabsContent">
+        <!-- Warranties Tab -->
+        <div class="tab-pane fade show active" id="warranties" role="tabpanel">
+          <% if (user.warranties.length === 0) { %>
+            <p>אין אחריות רשומות למשתמש זה.</p>
+          <% } else { %>
+            <ul class="list-group">
+              <% user.warranties.forEach(w => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong><%= w.model %></strong>
+                  <span><%= w.warranty %></span>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="tab-pane fade" id="orders" role="tabpanel">
+          <% if (orders.length === 0) { %>
+            <p>אין הזמנות.</p>
+          <% } else { %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>מספר הזמנה</th>
+                  <th>סטטוס</th>
+                  <th>סכום</th>
+                  <th>תאריך</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% orders.forEach((order, i) => { %>
+                  <tr onclick="window.location.href='/admin/orders/<%= order._id %>'" style="cursor:pointer;">
+                    <td><%= i + 1 %></td>
+                    <td><%= order._id %></td>
+                    <td><%= order.paymentStatus %></td>
+                    <td><%= order.totalPrice %> ₪</td>
+                    <td><%= new Date(order.createdAt).toLocaleDateString('he-IL') %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          <% } %>
+        </div>
+
+        <!-- Support Tickets Tab -->
+        <div class="tab-pane fade" id="support" role="tabpanel">
+          <% if (tickets.length === 0) { %>
+            <p>אין קריאות שירות.</p>
+          <% } else { %>
+            <ul class="list-group">
+              <% tickets.forEach(ticket => { %>
+                <li class="list-group-item">
+                  <strong>נושא:</strong> <%= ticket.subject %><br />
+                  <strong>סטטוס:</strong> <%= ticket.status %><br />
+                  <small><%= new Date(ticket.createdAt).toLocaleString('he-IL') %></small>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>

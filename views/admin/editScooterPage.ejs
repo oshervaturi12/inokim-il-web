@@ -1,0 +1,191 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main class="container py-4">
+    <h2 class="mb-4">ניהול קורקינט - <%= scooter.name %></h2>
+
+    <form id="editScooterForm">
+        <input type="hidden" name="id" value="<%= scooter._id %>">
+
+        <div class="box border p-3">
+            <!-- General Details -->
+            <div class="mb-3">
+                <label class="form-label">שם הקורקינט</label>
+                <input type="text" name="name" class="form-control" value="<%= scooter.name %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">תיאור</label>
+                <textarea name="description" class="form-control"><%= scooter.description %></textarea>
+            </div>
+        </div>
+   
+
+        <!-- Variants Section -->
+        <h4 class="mt-4">וריאציות</h4>
+
+        <div id="variants" class="mb-3">
+            <% scooter.variants.forEach((variant, i) => { %>
+                <div class="variant-card box border p-3 mb-5 position-relative" data-index="<%= i %>">
+                    <button class="remove remove-variant position-absolute" data-variantid="<%= variant._id  %>" type="button">×</button>
+                    
+                    <input type="hidden" name="variants[<%= i %>]._id" value="<%= variant._id %>">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label">תת דגם</label>
+                            <input type="text" name="variants[<%= i %>].subModel" class="form-control" value="<%= variant.subModel %>">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">טווח</label>
+                            <input type="text" name="variants[<%= i %>].range" class="form-control" value="<%= variant.range %>">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">סוללה</label>
+                            <input type="text" name="variants[<%= i %>].battary" class="form-control" value="<%= variant.battary %>">
+                        </div>
+                    </div>
+
+                    <!-- Gallery Management -->
+                    <h5 class="mt-3">גלריה</h5>
+                    <div class="mb-3 border rounded p-3 d-flex flex-wrap">
+                        <% variant.gallery.forEach((image, j) => { %>
+                            <div class="gallery-image">
+                                <%- optimizeImage(`${image}`, 'תמונת מוצר', 'me-2 img-thumbnail') %>
+
+                                <!-- <input type="text" name="variants[<%= i %>].gallery[<%= j %>]" value="<%= image %>" class="form-control"> -->
+                            </div>
+                        <% }) %>
+                    </div>
+
+                    <h5 class="mt-3">צבעים</h5>
+                    <!-- <button type="button" class="btn btn-primary btn-sm addColor"> הוסף צבע</button> -->
+                    
+                    <div class="row colors">
+                        <% variant.colors.forEach((color, j) => { %>
+                            <div class="col-md-4 color-card">
+                                <input type="hidden" name="variants[<%= i %>].colors[<%= j %>]._id" value="<%= color._id %>">
+                                <!-- <button type="button" class="btn btn-danger btn-sm remove-color">הסר</button> -->
+                                <button class="remove remove-color" type="button">×</button>
+
+                                <label class="form-label">שם הצבע</label>
+                                <input type="text" name="variants[<%= i %>].colors[<%= j %>].name" class="form-control" value="<%= color.name %>">
+                                
+                                <label class="form-label">HEX</label>
+                                <input type="text" name="variants[<%= i %>].colors[<%= j %>].hex" class="form-control" value="<%= color.hex %>">
+                                
+                                <label class="form-label">SKU</label>
+                                <input type="text" name="variants[<%= i %>].colors[<%= j %>].sku" class="form-control" value="<%= color.sku %>">
+                                
+                                <label class="form-label">מחיר</label>
+                                <input type="number" name="variants[<%= i %>].colors[<%= j %>].price" class="form-control" value="<%= color.price %>">
+
+                                <label class="form-label">מחיר לפני הנחה</label>
+                                <input type="number" name="variants[<%= i %>].colors[<%= j %>].price" class="form-control" value="<%= color.compareAtPrice %>">
+
+                                <label class="form-label">מחיר עלות</label>
+                                <input type="number" name="variants[<%= i %>].colors[<%= j %>].price" class="form-control" value="<%= color.costPrice %>">
+                                
+                                <!-- <label class="form-label">תמונה</label> -->
+                                <!-- <input type="text" name="variants[<%= i %>].colors[<%= j %>].image" class="form-control" value="<%= color.image %>"> -->
+                                 <div class="mt-3 text-center">
+                                    <%- optimizeImage(`${color.image}`, 'תמונת מוצר', 'img-thumbnail') %>
+
+                                 </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+            <button type="button" class="btn btn-light mb-3" id="addVariant">הוסף וריאציה+</button>
+        </div>
+
+
+
+
+        <h4 class="mt-4">פרטי מבט כללי</h4>
+        <div class="box border p-3 mb-3">
+            <div class="mb-3">
+                <label class="form-label">כותרת משנה</label>
+                <input type="text" name="overviewSubtitle" class="form-control" value="<%= scooter.overviewSubtitle %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">תמונה ראשית</label>
+                <input type="text" name="overviewImage" class="form-control" value="<%= scooter.overviewImage %>">
+                <%- optimizeImage(`${scooter.overviewImage}`, 'תמונת מוצר', 'img-thumbnail mt-2') %>
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">תמונה לתשלום</label>
+                <input type="text" name="paymentInfoImage" class="form-control" value="<%= scooter.paymentInfoImage %>">
+                <%- optimizeImage(`${scooter.paymentInfoImage}`, 'תמונת מוצר', 'img-thumbnail mt-2') %>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">וידאו</label>
+                <input type="text" name="overviewVideo" class="form-control" value="<%= scooter.overviewVideo %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">לוגו SVG</label>
+                <textarea name="logoSvg" class="form-control"><%= scooter.logoSvg %></textarea>
+            </div>
+        </div>
+
+      
+         <!-- Specs Section -->
+        <h4 class="mt-4">מפרט טכני</h4>
+        <div id="specs" class="mb-3">
+            <% scooter.specs.forEach((spec, i) => { %>
+                <div class="spec-category box border p-3 mb-3 position-relative" data-index="<%= i %>">
+                    <button class="remove remove-spec position-absolute" data-specid="<%= spec._id  %>" type="button">×</button>
+                    
+                    <input type="hidden" name="specs[<%= i %>]._id" value="<%= spec._id %>">
+
+                    <div class="mb-3">
+                        <label class="form-label">קטגוריה</label>
+                        <input type="text" name="specs[<%= i %>].category" class="form-control" value="<%= spec.category %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">תמונה</label>
+                        <input type="text" name="specs[<%= i %>].image" class="form-control" value="<%= spec.image %>">
+
+                        <%- optimizeImage(`${spec.image}`, 'תמונת מוצר', 'img-thumbnail mt-2') %>
+
+                    </div>
+
+                    <h5 class="mt-3">פריטים</h5>
+                    <div class="spec-items">
+                        <% spec.items.forEach((item, j) => { %>
+                            <div class="spec-item box border p-2 mb-2">
+                                <input type="hidden" name="specs[<%= i %>].items[<%= j %>]._id" value="<%= item._id %>">
+                                <button class="remove remove-spec-item" type="button">×</button>
+
+                                <label class="form-label">תווית</label>
+                                <input type="text" name="specs[<%= i %>].items[<%= j %>].label" class="form-control" value="<%= item.label %>">
+
+                                <label class="form-label">ערך</label>
+                                <input type="text" name="specs[<%= i %>].items[<%= j %>].value" class="form-control" value="<%= item.value %>">
+
+                                <label class="form-label">אייקון</label>
+                                <input type="text" name="specs[<%= i %>].items[<%= j %>].icon" class="form-control" value="<%= item.icon %>">
+                                <img src="<%= item.icon %>" width="50" class="img-thumbnail mt-2">
+                            </div>
+                        <% }) %>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm add-spec-item">הוסף פריט+</button>
+                </div>
+            <% }) %>
+            <button type="button" class="btn btn-light mb-3" id="addSpec">הוסף קטגוריית מפרט+</button>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">שמור שינויים</button>
+    </form>
+</main>
+
+
+
+<%- include("./partials/admin-footer.ejs") %>

@@ -1,0 +1,332 @@
+/* Special Product Template */
+
+#videoBox.box{
+  padding: 0 !important;
+}
+
+#videoBox.box video{
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+#special-template {
+    .overview {
+      background: #0a0a0a;
+      background-position: top center;
+      background-image: var(--background);
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 3rem 0;
+    }
+  
+    /* Content Wrapper */
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      align-items: center;
+  
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.2);
+  
+        span {
+          display: block;
+        }
+      }
+    }
+  
+    /* Logo */
+    .logo {
+      max-width: 480px;
+      margin-bottom: 1rem;
+    }
+  
+    /* Typography */
+    .subheading {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 0;
+    }
+  
+    .description {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+    }
+  
+    /* Price Box */
+    .price-box {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+  
+    .btn-danger {
+      border-radius: 4px !important;
+      background-color: #ed0c13 !important;
+      width: 13em;
+    }
+  
+    .installments {
+      font-size: 1rem;
+      display: block;
+      margin-top: 0.3rem;
+      opacity: 0.8;
+    }
+  
+    /* Product Image */
+    .product-image {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5));
+    }
+  
+    /* Apple CarPlay Section */
+    .lastEl {
+      font-size: 1.3rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+  
+      svg {
+        width: 1.5em;
+      }
+  
+      .apple-carplay-text {
+        margin-left: 0.5rem;
+      }
+    }
+  
+    /* Section Info */
+    .section-info-special {
+      background-color: #fff;
+      color: #000;
+  
+      .row {
+        max-width: 100%;
+      }
+  
+      .box {
+        background-color: #fff;
+        padding: 2em;
+        box-shadow: 0 0 12px 3px #00000026;
+        margin-top: -3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+  
+        img {
+          max-width: 40em;
+        }
+      }
+    }
+  
+    /* Special Specs */
+    .special-specs {
+      .spec-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 12em;
+        font-size: 1.1em;
+        font-weight: 400;
+        gap: 0.5em;
+        line-height: 1.3em;
+  
+        &:first-child {
+          font-size: 2.3em;
+          font-weight: 500;
+          width: 7em;
+        }
+      }
+  
+      svg {
+        width: 5.5em;
+        height: 2.5em;
+      }
+    }
+  
+    /* Tech Specs */
+    .tech-specs {
+      overflow: hidden;
+  
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+  
+      .tech-specs-img {
+        background: #0a0a0a;
+        background-position: top center;
+        background-image: var(--background);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        padding: 1rem 0;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        width: 100%;
+        overflow: hidden;
+  
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+  
+      .spec-text {
+        box-sizing: border-box;
+        padding: 2rem;
+        text-align: center;
+  
+        h3 {
+          font-size: 2em;
+          font-weight: 500;
+        }
+      }
+    }
+  
+  /* Extra Info */
+  .extra-info {
+    .links {
+      .item-link {
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.3em;
+          justify-content: start;
+          padding: 0.4em 1em;
+          border-radius: 4px;
+        }
+
+        svg {
+          width: 2em;
+          height: 1.3em;
+        }
+
+        &:first-child {
+          font-size: 2.2em;
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+
+#special-template .product-image{
+  max-width: 90%;
+  border-radius: 4px;
+  text-align: right;
+
+}
+
+.p-mobile{
+  padding-right: 1em !important;
+  padding-left: 0 !important;
+}
+
+#special-template .extra-info .links .item-link{
+  width: 100%;
+}
+
+#special-template .special-specs .spec-item:first-child {
+  flex-basis: 100%;
+}
+
+#special-template .special-specs .spec-item{
+  flex-basis: 40%;
+  flex-direction: column;
+  text-align: center;
+}
+
+#special-template .special-specs svg {
+  width: 3.5em;
+  // height: 2.5em;
+}
+
+#special-template .tech-specs .tech-specs-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+// #special-template .btn-danger{
+//   width: 100%;
+// }
+
+#special-template .content-wrapper{
+  padding: 0;
+}
+
+
+#special-template .content-wrapper a{
+  width: 60%;
+}
+
+#special-template .tech-specs .spec-text{
+  text-align: center;
+}
+
+#special-template .tech-specs .spec-text h3{
+      font-size: 2em;
+    font-weight: 500;
+}
+
+
+#special-template h1{
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+#special-template .logo{
+  max-width: 80%;
+}
+
+#special-template .section-info-special .box img {
+  max-width: 100%;
+}
+
+#special-template .section-info-special .row .text{
+  text-align: center;
+}
+
+#special-template .extra-info .links .item-link:first-child{
+  text-align: center;
+}
+
+#special-template .section-info-special .box{
+  margin-bottom: 1em;
+}
+
+#special-template .special-specs .spec-item:first-child{
+  font-size: 2em;
+}
+
+#special-template .content-wrapper h1{
+    font-size: 2.3rem;
+}
+  }
+
+
+    

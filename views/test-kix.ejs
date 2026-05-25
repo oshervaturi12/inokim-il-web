@@ -1,0 +1,440 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<main id="kix-page">
+  <!-- Hero Section -->
+
+<section class="hero-section d-flex align-items-center text-end text-dark kix-page" 
+  style="
+    height: 100vh;
+    position: relative;
+        margin-top: -4em;
+        background-image: url('../optimized/kix-hero.png');
+          background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  ">
+
+    <div class="hero-bg desktop-bg"></div>
+  <div class="hero-bg mobile-bg"></div>
+  
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-md-8">
+        <div class="hero-content p-3">
+          <h6 class="mb-2">הכירו את Inokim KIX החדש</h6>
+          <h1 class="mb-1">קלילות ועוצמה נפגשים</h1>
+          <p class="mb-4">
+            עיצוב פורץ דרך, מערכת שיכוך מתקדמת והכול במשקל חסר תקדים.
+          </p>
+
+          <div class="d-flex justify-content-start gap-3">
+            <a href="#order" class="btn btn-danger rounded-pill">הזמן עכשיו</a>
+            <a href="#learn" class="btn btn-outline-dark rounded-pill">גלה עוד</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.1);
+  "></div>
+</section>
+
+
+
+  <!-- Design Section -->
+  <section class="design-section py-5 text-light text-center">
+    <div class="container">
+      <div class="content-header">
+        <div>
+                        <h2 class="fw-bold mb-3">עיצוב שנע יחד איתך</h2>
+      <p class="mb-5">
+        שילוב מושלם בין אלגנטיות לפונקציונליות. כל פרט עוצב כדי לשפר את החוויה מהבוקר ועד השלטה. הקו העתידי שמדגיש את החזות של אינוקים — חדשנות בלי מאמץ.
+      </p>
+
+          
+        </div>
+
+      </div>
+
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix1.png" class="card-img" alt="טווח נסיעה">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-end p-3">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold text-white">טווח נסיעה</h5>
+                   <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal1">+</button>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix2.png" class="card-img" alt="תפעול קל">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-end p-3">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold text-white">תפעול קל</h5>
+                  <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal2">+</button>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix3.png" class="card-img" alt="נוח לנשיאה">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-end p-3">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold text-white">נוח לנשיאה</h5>
+                  <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal3">+</button>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix4.png" class="card-img" alt="בלמים איכותיים">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-end p-3">
+                <div class="d-flex justify-content-between">
+
+                <h5 class="fw-bold text-white">בלמים איכותיים</h5>
+                <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal4">+</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+                    <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix4.png" class="card-img" alt="בלמים איכותיים">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-end p-3">
+                                                <div class="d-flex justify-content-between">
+
+                                                  <h5 class="fw-bold text-white">בלמים איכותיים</h5>
+                                                  <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal4">+</button>
+                                                </div>
+
+              </div>
+            </div>
+          </div>
+
+                    <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix4.png" class="card-img" alt="בלמים איכותיים">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-start p-3">
+                                                <div class="d-flex justify-content-between">
+              <h5 class="fw-bold text-white">בלמים איכותיים</h5>
+                <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal4">+</button>
+                                                </div>
+
+  
+              </div>
+            </div>
+          </div>
+
+                    <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix4.png" class="card-img" alt="בלמים איכותיים">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-start p-3">
+                                <div class="d-flex justify-content-between">
+         <h5 class="fw-bold text-white">בלמים איכותיים</h5>
+                <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal4">+</button>
+                                </div>
+
+       
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card bg-dark border-0 rounded-4 overflow-hidden">
+              <img src="/optimized/kix4.png" class="card-img" alt="בלמים איכותיים">
+              <div class="card-img-overlay d-flex flex-column justify-content-end text-start p-3">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold text-white">בלמים איכותיים</h5>
+                  <button class="kix-btn" data-bs-toggle="modal" data-bs-target="#modal4">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination mt-3"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="kix-specs-section py-5 bg-white text-end">
+  <div class="container">
+    <div class="row align-items-center">
+
+            <!-- תמונה -->
+          <div class="col-lg-6 col-md-12 position-relative">
+            <div class="specs-image-wrapper position-relative d-flex justify-content-center justify-content-lg-end">
+              
+              <!-- רקע וידאו -->
+              <video autoplay muted loop playsinline class="specs-video-bg">
+                <source src="/videos/vid2.mp4" type="video/mp4">
+                הדפדפן שלך לא תומך בהצגת וידאו.
+              </video>
+
+              <!-- תמונת הקורקינט -->
+              <img 
+                src="/optimized/kix-model+vid.png"
+                alt="Inokim KIX"
+                class="img-fluid scooter-img position-relative"
+              >
+            </div>
+          </div>
+      
+      <!-- טקסט ומדדים -->
+      <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+        <div class="spec-header">
+          <h2>קל יותר. חכם יותר.</h2>
+          <p class="mb-4">
+            עוצמתי אך קל לנשיאה. הדגם החדש של Inokim KIX מציע שילוב מושלם של מהירות, יעילות וניידות.
+          </p>
+        </div>
+
+
+        <div class="spec-item mb-4">
+          <div class="d-flex align-items-center justify-content-start gap-3">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="71.662" height="76.385" viewBox="0 0 71.662 76.385">
+                    <g id="route" transform="translate(-1)">
+                      <path id="Path_8" data-name="Path 8" d="M4.269,9.645A1.681,1.681,0,0,1,5.95,7.964H38.963a11.765,11.765,0,0,1,2.272,23.312,1.674,1.674,0,0,1-.83.218H19.268a11.638,11.638,0,1,0-.044,23.275L54.7,54.9a1.681,1.681,0,0,1-.01,3.362l-35.477-.128a15,15,0,0,1,.054-30h19.7a8.4,8.4,0,0,0,0-16.807H5.95A1.681,1.681,0,0,1,4.269,9.645Z" transform="translate(6.475 17.626)" fill="red" stroke="#fff" stroke-width="1" fill-rule="evenodd"/>
+                      <path id="Path_9" data-name="Path 9" d="M12.425,3.861a7.563,7.563,0,0,0-7.563,7.563A9.867,9.867,0,0,0,6.125,15.3a42.817,42.817,0,0,0,3.059,5q1.547,2.217,3.241,4.326,1.689-2.111,3.24-4.326a42.815,42.815,0,0,0,3.059-5,9.851,9.851,0,0,0,1.264-3.876,7.563,7.563,0,0,0-7.563-7.563Zm0,23.409-1.277,1.1-.007-.01-.02-.024-.081-.1q-.7-.828-1.371-1.674-1.693-2.115-3.247-4.336a46.083,46.083,0,0,1-3.3-5.415A12.877,12.877,0,0,1,1.5,11.425a10.925,10.925,0,0,1,21.85,0,12.877,12.877,0,0,1-1.624,5.385,46.084,46.084,0,0,1-3.3,5.412q-2.173,3.111-4.619,6.017l-.081.094-.02.024-.01.01Zm0,0,1.277,1.1a1.681,1.681,0,0,1-2.555,0Zm48.812,23.5a7.563,7.563,0,0,0-7.563,7.563,9.8,9.8,0,0,0,1.267,3.876A42.813,42.813,0,0,0,58,67.219c1.129,1.624,2.259,3.093,3.113,4.162l.128.165.134-.165c.85-1.069,1.983-2.538,3.109-4.162a42.793,42.793,0,0,0,3.056-5.005A9.835,9.835,0,0,0,68.8,58.338a7.563,7.563,0,0,0-7.563-7.563Zm0,23.413-1.274,1.1-.007-.01-.024-.027-.081-.094q-.7-.828-1.371-1.674-1.691-2.117-3.244-4.34a46.1,46.1,0,0,1-3.3-5.412,12.891,12.891,0,0,1-1.624-5.385,10.925,10.925,0,0,1,21.85,0,12.842,12.842,0,0,1-1.62,5.382,46.1,46.1,0,0,1-3.3,5.412q-2.171,3.111-4.615,6.017l-.081.094-.024.027-.007.01-1.277-1.1Zm0,0,1.277,1.1a1.681,1.681,0,0,1-2.551,0l1.277-1.1Z" transform="translate(0 0)" fill="red" stroke="#fff" stroke-width="1" fill-rule="evenodd"/>
+                      <path id="Path_10" data-name="Path 10" d="M5.931,2.941A1.681,1.681,0,0,1,7.611,4.622V6.3a1.681,1.681,0,0,1-3.362,0V4.622A1.681,1.681,0,0,1,5.931,2.941Zm48.748,47.1a1.681,1.681,0,0,1,1.681,1.681v1.681a1.681,1.681,0,0,1-3.362,0V51.726A1.681,1.681,0,0,1,54.679,50.046Z" transform="translate(6.494 5.764)" fill="red" stroke="#fff" stroke-width="1" fill-rule="evenodd"/>
+                    </g>
+                </svg>
+            </div>
+            <div>
+               <p class="mb-0">טווח נסיעה של עד</p>
+              <h3 class="fw-semi-bold mb-0">40
+                     <small class="text-muted">ק"מ</small>
+              </h3>
+         
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="spec-item mb-4">
+          <div class="d-flex align-items-center justify-content-start gap-3">
+            <div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="68.501" height="81.272" viewBox="0 0 68.501 81.272">
+                <path id="feather" d="M38.879,61.967c3.048-2.727,33.85-49.25,37.219-54.544a1.738,1.738,0,0,0,0-1.765,1.525,1.525,0,0,0-1.6-.642c-.481,0-50.534,8.5-63.528,50.373,0,.321-.16.481,0,.8l.642,3.85h-.963a1.583,1.583,0,0,0-1.6,1.444c-.16,1.123-.642,9.786,3.369,14.117-1.925,4.331-3.048,7.059-3.208,7.54a1.669,1.669,0,0,0,.963,2.086h.321a1.4,1.4,0,0,0,1.444-.963,81.04,81.04,0,0,1,3.208-7.54,26.036,26.036,0,0,0,14.278-4.813,1.742,1.742,0,0,0,.642-1.444,1.387,1.387,0,0,0-.481-.963l5.615-2.246a1.4,1.4,0,0,0,.963-1.444,1.685,1.685,0,0,0-.8-1.444l-1.283-.8L38.4,62.287C38.558,62.287,38.718,62.127,38.879,61.967Zm-9.465-.481a1.361,1.361,0,0,0-1.123,1.283,1.629,1.629,0,0,0,.8,1.6L31.018,65.5l-5.936,2.567a1.542,1.542,0,0,0-.963,1.444,1.4,1.4,0,0,0,.963,1.444h0A21.6,21.6,0,0,1,16.9,73.357c7.219-14.92,21.818-41.39,40.427-52.3a1.776,1.776,0,0,0,.642-2.246,1.776,1.776,0,0,0-2.246-.642c-19.572,11.551-34.491,38.5-41.871,53.742-1.444-2.567-1.765-6.417-1.765-8.984h1.6a1.459,1.459,0,0,0,1.283-.642A1.332,1.332,0,0,0,15.3,61l-.963-5.294C24.922,22.823,59.894,11.754,71.445,9.026,58.29,28.919,40,56.191,37.114,59.4Z" transform="translate(-8.401 -4.456)" fill="red" stroke="#fff" stroke-width="1"/>
+              </svg>
+            </div>
+
+            <div>
+              <p class="mb-0">משקל של</p>
+              <h3 class="fw-semi-bold mb-0">15
+                  <small class="text-muted">ק"ג בלבד</small>
+
+              </h3>
+            </div>
+
+          </div>
+        
+        </div>
+
+        <div class="spec-item">
+          <div class="d-flex align-items-center justify-content-start gap-3">
+                <div>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="61.527" height="88.615" viewBox="0 0 61.527 88.615">
+                    <path id="charge" d="M20.022,89.615H63.056a8.768,8.768,0,0,0,8.762-8.762v-58.4A8.768,8.768,0,0,0,63.056,13.7h-5.52A8.813,8.813,0,0,0,49.213,2H33.895a8.8,8.8,0,0,0-8.323,11.7h-5.52a8.768,8.768,0,0,0-8.762,8.762v58.4a8.768,8.768,0,0,0,8.762,8.762ZM60.544,20.049V74.793a3.428,3.428,0,0,1-3.432,3.432H25.966a3.428,3.428,0,0,1-3.432-3.432V20.049a3.428,3.428,0,0,1,3.432-3.432H57.113A3.428,3.428,0,0,1,60.544,20.049ZM33.88,4.921H49.2A5.882,5.882,0,0,1,54.324,13.7H28.755A5.876,5.876,0,0,1,33.88,4.921Zm-19.7,17.538c0-3.037,2.234-5.841,6.454-5.841-1.46,2.263-1.022.073-1.022,58.176a6.357,6.357,0,0,0,6.352,6.352H57.113a6.357,6.357,0,0,0,6.352-6.352c0-58.1.438-55.913-1.022-58.176,4.235,0,6.454,2.818,6.454,5.841v58.4a5.839,5.839,0,0,1-5.841,5.841H20.022a5.839,5.839,0,0,1-5.841-5.841v-58.4ZM44.934,38.55l3.286-6.5c2.19-4.322-3.87-8.017-6.717-4.1C28.01,46.45,27.075,46.508,28.536,49.385c1.446,2.833,4.366,2.161,8.542,2.161L30.4,64.134c-2.307,4.352,3.826,8.09,6.688,4.176C55.667,42.858,55.974,43.69,54.513,40.8c-1.387-2.774-3.826-2.176-9.579-2.234ZM34.742,66.572A1.029,1.029,0,0,1,33,65.477L40.787,50.8a1.48,1.48,0,0,0-1.285-2.19c-7.9,0-7.944.2-8.338-.569-.423-.832-.453-.321,12.719-18.4a1.028,1.028,0,0,1,1.752,1.066c-6.235,12.325-7.1,10.674,5.374,10.806a.979.979,0,0,1,.905.569C52.352,42.96,52.367,42.405,34.742,66.572Z" transform="translate(-10.79 -1.5)" fill="red" stroke="#fff" stroke-width="1"/>
+                  </svg>
+
+            </div>
+            <div>
+              <p class="mb-0">טעינה מלאה ב־</p>
+              <h3 class="fw-semi-bold mb-0">3
+                  <small class="text-muted">שעות בלבד</small>
+              </h3>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<section class="kix-safety-section position-relative text-start text-light d-flex align-items-center" id="safety-section">
+  <img src="/optimized/kix-rednder.png" alt="Inokim KIX Safety" class="bg-img">
+
+  <!-- SVG חיצים -->
+  <svg class="safety-arrows" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+    <line id="arrow1" x1="580" y1="130" x2="680" y2="130" stroke="#d71920" stroke-width="2" marker-end="url(#arrowhead)" opacity="0"/>
+    <line id="arrow2" x1="520" y1="230" x2="680" y2="230" stroke="#d71920" stroke-width="2" marker-end="url(#arrowhead)" opacity="0"/>
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#d71920"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="container position-relative z-2">
+    <div class="row justify-content-start">
+      <div class="col-lg-5 col-md-10">
+        <div class="safety-content text-end">
+
+          <!-- כותרת כללית -->
+          <h2 class="mb-3 fade-up">בטחון בכל נסיעה.</h2>
+          <p>
+            בטיחות בכל צעד. מערכת מתלים כפולה מתקדמת, בלמים .מדויקים ושלדה מחוזקת — כדי שתישאר בשליטה, תמיד
+          </p>
+
+          <!-- בלוקים מתחלפים -->
+          <div class="safety-slides">
+            <div class="safety-slide active">
+              <h4 class="text-danger mt-4 mb-2">בלמים איכותיים</h4>
+              <p>מערכת בלימה כפולה עם דיוק מקסימלי ותגובה מידית.</p>
+            </div>
+
+
+            <div class="safety-slide">
+              <h4 class="text-danger mt-4 mb-2">שלדה מחוזקת</h4>
+              <p>מבנה אלומיניום תעשייתי קל וחזק ששומר על יציבות מלאה.</p>
+            </div>
+
+            <div class="safety-slide">
+              <h4 class="text-danger mt-4 mb-2">תאורה חכמה</h4>
+              <p>תאורת LED קדמית ואחורית שמסתנכרנת עם תנאי הדרך.</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="compare-section py-5 text-center text-dark">
+  <div class="container">
+    <h2 class="mb-2">עוצמה קומפקטית. חופש עירוני.</h2>
+    <p class="text-secondary mb-5">
+      אותו ה-DNA. תג מחיר קטן יותר. הכניסה המושלמת לעולם של Inokim.
+    </p>
+
+    <div class="row align-items-center justify-content-center g-4">
+
+
+            <!-- OX -->
+      <div class="col-md-4 text-center">
+        <img src="/optimized/compare-ox.png" alt="Inokim OX" class="img-fluid mb-3 compare-scooter">
+      </div>
+
+      <!-- Table -->
+      <div class="col-md-4">
+        <div class="d-flex gap-5 justify-content-center mb-4" style="height: 3em;">
+          <img src="/optimized/ox-logo.png" alt="">
+          <img src="/optimized/kix-logo.png" alt="">
+        </div>
+        <table class="table table-borderless text-center align-middle compare-table mx-auto">
+          <tbody>
+            <tr>
+              <td class="fw-semi-bold">29 ק"ג</td>
+              <td class="text-muted">משקל</td>
+              <td>15 ק"ג</td>
+            </tr>
+            <tr>
+              <td class="fw-semi-bold">עד 60 ק״מ</td>
+              <td class="text-muted">טווח נסיעה</td>
+              <td>עד 40 ק״מ</td>
+            </tr>
+            <tr>
+              <td class="fw-semi-bold">LCD Display</td>
+              <td class="text-muted">תצוגה</td>
+              <td>LCD Display</td>
+            </tr>
+            <tr>
+              <td class="fw-semi-bold">Enhanced Dual+</td>
+              <td class="text-muted">מתלים</td>
+              <td>Dual</td>
+            </tr>
+            <tr>
+              <td class="fw-semi-bold">החל מ- ₪6,499</td>
+              <td class="text-muted">מחיר</td>
+              <td>₪2,990</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="btn btn-danger rounded-pill px-4 py-2 mt-3">הזמן עכשיו</button>
+      </div>
+      <!-- KIX -->
+      <div class="col-md-4 text-center">
+        <img style="    width: 15em;" src="/optimized/compare-kix.png" alt="Inokim KIX" class="img-fluid mb-3 compare-scooter">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+
+
+
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1.8,
+    spaceBetween: 25,
+    centeredSlides: true,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      768: { slidesPerView: 2.5 },
+      992: { slidesPerView: 3.5 },
+    }
+  });
+</script>
+
+
+
+<%- include("./partials/footer.ejs") %>

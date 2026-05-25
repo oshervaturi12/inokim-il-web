@@ -1,0 +1,73 @@
+// Variables for styling
+$pagination-background: #ebebeb;
+$pagination-border-color: #d9d9d9;
+$pagination-active-background: #919191;
+$pagination-active-color: #ffffff;
+$pagination-disabled-background: #f5f5f5;
+$pagination-disabled-color: #999999;
+
+// #4a4a4a
+
+$pagination-padding: .3em;
+$pagination-margin: 0 .3em;
+$pagination-border-radius: 4px;
+$pagination-transition: background-color 0.3s, color 0.3s;
+
+// rgb(247 247 247)
+
+// Pagination wrapper
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  background-color: rgb(247 247 247);
+  padding: .5em;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+
+  .pagination-btn {
+    background-color: $pagination-background;
+    border: 1px solid $pagination-border-color;
+    color: $pagination-active-background;
+    //  padding: $pagination-padding;
+    margin: $pagination-margin;
+    text-align: center;
+    cursor: pointer;
+    border-radius: $pagination-border-radius;
+    transition: $pagination-transition;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $pagination-active-background;
+      color: $pagination-active-color;
+      svg {
+        fill: $pagination-active-color;
+      }
+    }
+
+    &:disabled {
+      background-color: $pagination-disabled-background;
+      color: $pagination-disabled-color;
+      cursor: not-allowed;
+      svg {
+        fill: $pagination-disabled-color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    // Ensures the buttons have a consistent size
+    min-width: 40px;
+
+    svg {
+      fill: rgb(74 74 74);
+      transition: $pagination-transition;
+    }
+  }
+}

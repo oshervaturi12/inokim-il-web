@@ -1,0 +1,13 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main id="table-sort-con" class="py-3 px-3">
+
+    <section class="actions">
+    <%- include("./tables/searchTable.ejs",{placeholder: "חפש בלידים"}) %> 
+    <%- include('./tables/productsTable') %>
+    <%- include("./tables/paginate.ejs") %> 
+
+    </section>
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>

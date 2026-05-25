@@ -1,0 +1,30 @@
+// Variables
+$footer-bg-color: rgb(245, 245, 247);
+$footer-text-color: #86868b;
+$footer-heading-color: #000;
+$hover-color: #000;
+$font-size-small: 0.8em;
+
+// Footer Styles
+.footer {
+  background-color: $footer-bg-color;
+  font-size: $font-size-small;
+
+  h6 {
+    color: $footer-heading-color;
+  }
+
+  a {
+    text-decoration: none;
+    color: $footer-text-color;
+
+    &:hover {
+      color: $hover-color;
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    color: $footer-text-color;
+  }
+}

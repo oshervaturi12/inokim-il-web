@@ -1,0 +1,157 @@
+// userPage.module.scss
+
+.user-page {
+    .card {
+      padding: 1em;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #e9ecef;
+      border-radius: 1em;
+  
+      svg {
+        width: 2.5em;
+        margin-bottom: 0.65em;
+      }
+    }
+  
+    .file-list {
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0.5em !important;
+      gap: 1em !important;
+    }
+  
+    .item-doc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1.35em 1em;
+      border-radius: 1em;
+      background: #fff;
+      transition: box-shadow 0.5s ease;
+      text-decoration: none;
+      color: #0a0a0a;
+      position: relative;
+  
+      svg {
+        width: 3em;
+        margin-bottom: 0.55em;
+        fill: #495057;
+      }
+  
+      &-title {
+        font-size: 1.15em;
+        font-weight: 500;
+        letter-spacing: -1px;
+        margin-bottom: 0.1em;
+      }
+    }
+  }
+  
+  // ✅ Devices Section
+  .devices-wrapper {
+    padding: 2em;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .devices-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+  }
+  
+  .device-card {
+    background: #fff;
+    border-radius: 1em;
+    padding: 1.5em;
+    width: 20em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .device-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 1em;
+      margin-top: -5em;
+    }
+  
+    .device-name {
+      font-size: 1.1em;
+      margin: 0.5em 0 0.2em;
+      font-weight: bold;
+    }
+  
+    .device-description {
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 1em;
+    }
+  
+    .btn-support {
+      padding: 0.3em 1.5em;
+      background-color: #fff;
+      color: #d9534f;
+      border: 1px solid #d9534f;
+      border-radius: 2em;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background-color: #d9534f;
+        color: #fff;
+      }
+    }
+  }
+  
+
+  .user-page aside ul {
+    list-style: none;
+    display: flex
+  ;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .user-page aside ul li a {
+    display: flex
+  ;
+    align-items: center;
+    padding: .35em .5em;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .user-page a{
+    color: rgb(86 86 86);
+  }
+  
+  .user-page aside ul li a svg {
+    width: 1.8em;
+    margin-left: .35em;
+    fill: #6c757d;
+  }
+
+
+  @media (max-width: 768px) {
+    .devices-wrapper{
+      margin-top: 2em;
+      margin-bottom: 4em;
+    }
+  }

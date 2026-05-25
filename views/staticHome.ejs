@@ -1,0 +1,319 @@
+<%- include("./partials/announcement.ejs", { 
+  text: "חיזוקים חינם לכל החיים!", 
+  buttonLink: "/pages/terms-of-use", 
+  buttonText: "תנאי שימוש" ,
+  isSale: false
+}) %>
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+
+<main id="homePage">
+  <!-- Hero Section -->
+  <section class="hero" style="--bg-image: url('/optimized/Hero_Desktop_02%20no%20text%20(1)%20(1).avif');  --bg-image-mobile: url('./../optimized/Hero_mobile no text.avif');">
+    <div class="hero-text">
+      <h1>תחיו את העיר </h1>
+      <p>בקצב שלכם</p>
+      <a href="/products/ox-carbon" aria-label="מעבר לרכישה">לרכישה</a>
+    </div>
+
+  </section>
+
+  <!-- Products Section -->
+  <section class="home-prd">
+    <div class="container">
+      <div class="our-team">
+        <div class="text">הנבחרת שלנו</div>
+        <%- optimizeImage('/img/our_team.png', 'קולקציית אינוקים', 'img-fluid') %>
+      </div>
+
+      <div class="items">
+        <!-- Product Item 1 -->
+        <div class="item">
+          
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 306 85.6"><defs><clipPath id="clippath"><path d="M2 2h304v83.6H2z" class="cls-1"></path></clipPath><clipPath id="clippath-1"><path d="M3 3h1L3 4V3z" class="cls-1"></path></clipPath><clipPath id="clippath-2"><path d="M1 1H0l1-1v1z" style="clip-path:url(#clippath-1)"></path></clipPath></defs><g id="Layer_1-2" data-name="Layer 1"><g style="clip-path:url(#clippath)"><path d="M273.14 28.01h-24.68V2.21h-8.73V28h-8.24v8.07h8.24V56.9c0 29.96 30 26.81 30 26.81l2.72-.1v-7.9l-.85.03c-1.62.12-3.25.12-4.87 0-5.58-.1-18.7-1.98-18.27-17.74V36.08h24.69v-8.07ZM71.78 17.08a6.8 6.8 0 1 0 0-13.6 6.8 6.8 0 1 0 0 13.6"></path></g><path d="M67.52 85.6h8.3V23.2h-8.3v62.4ZM2 3.42V85.6h49.66v-9H10.99V3.42H2ZM149.52 55.64V32.86c0-16.4-12.71-29.7-28.39-29.7s-28.38 13.3-28.38 29.7 12.71 29.7 28.38 29.7a27.62 27.62 0 0 0 19.66-8.32v2.5c0 20.74-20.74 20.74-20.74 20.74h-3.26v8.12h2.77s29.96 0 29.96-29.95m-7.94-22.8c0 11.82-9.15 21.4-20.45 21.4s-20.43-9.56-20.43-21.39 9.15-21.4 20.44-21.4 20.45 9.6 20.45 21.4M223.97 82.62V55.9c0-16.4-12.7-29.69-28.38-29.69a27.58 27.58 0 0 0-19.65 8.3v-2.49c0-20.74 20.74-20.74 20.74-20.74h3.26V3.16h-2.77s-29.96 0-29.96 29.96V43h-.04v39.62h8.3V52.24c1.66-10.07 10.03-17.73 20.13-17.73 11.3 0 20.45 9.58 20.45 21.4 0 .33-.04.65-.05.97h.15v25.74h7.82ZM283.1 36.02l-.08-3.05c-.18-3.1-.12-6.21.2-9.3.58-4.3 5.02-6.93 8.99-6.99h.92c1.28.03 2.56-.04 3.83-.22a4.64 4.64 0 0 0 4.06-5.3 4.68 4.68 0 0 0-4.88-4.29 408.1 408.1 0 0 0-5.3-.03h-3.75l-2.66.02V2.18c1.22-.02 2.45-.05 3.65-.09 1.56-.05 3.17-.1 4.74-.1 1.97-.02 3.94.09 5.9.32 4.4.55 7.77 5.38 7.23 10.34a9.78 9.78 0 0 1-9.44 8.87h-1.27l-2.05.01c-3.57.03-5.4 1.82-5.43 5.33v4.32h17.13v4.84H283.1Z"></path></g></svg>
+          </div>
+          <div class="line">
+            <span data-bs-toggle="tooltip" data-bs-title="עד 50 ק״מ ט.ל.ח"> 
+              <span>*טווח</span>
+              <span>50 ק״מ</span>
+            </span>
+            <span class="divider-line">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.85 53.77"><path fill="none" stroke="#000" stroke-width="2" d="m22.92.38-22 53" data-name="Line 5"></path></svg>
+            </span>
+            <span>
+              <span>מהירות</span>
+              <span>25 קמ״ש</span>
+            </span>
+          </div>
+          <div class="w-100 d-flex align-items-center gap-3">
+            <a href="/products/light-2-0" aria-label="מעבר לרכישה">קנה עכשיו</a>
+            <a href="/products/light-2-0/overview" class="black" aria-label="מידע נוסף">מידע נוסף</a>
+          </div>
+        </div>
+
+        <!-- Product Item 2 -->
+        <div class="item">
+          <div class="icon">
+            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 580 95.7">
+              <defs>
+               <style>
+                  .cls-1 {
+                    fill: inherit;
+                  }
+                  .cls-2 {
+                    clip-path: url(#clippath);
+                  }
+                </style>
+                <clipPath id="clippath">
+                  <rect class="cls-2" width="238.1" height="95.7"></rect>
+                </clipPath>
+              </defs>
+              <g id="Layer_1-2" data-name="Layer 1-2">
+                <g class="cls-3">
+                  <g>
+                    <path class="cls-1" d="M102.9,92.7c-3.9,0-7.8-.5-11.6-1.3-22-4.4-42.1-11.4-67.4-21.1C2.2,62,0,48.9,0,43.6c0-9.2,6.5-17.4,16.3-21,12.1-4.4,31.5-11.2,57.8-20.3,9.3-3.2,17.7-3.1,24.9.5,7.8,3.8,13.6,11.4,17.2,22.4l1,3c3.5,10.5,4.2,12.7,9.3,31.3,3.8,14,0,21.9-3.9,26-3.3,3.5-9.2,7.1-19.6,7.1M21,35.6c-4.3,1.6-7.1,4.8-7.2,8.1,0,4.9,5.5,10,14.9,13.7,24.7,9.4,44.2,16.2,65.2,20.4,8.8,1.8,15.7,1.1,18.3-1.8,2.8-3,1.7-9.4.7-12.9-5-18.2-5.7-20.4-9-30.6l-1-3.1c-1.7-5.1-4.8-11.7-10.2-14.4-3.7-1.8-8.5-1.8-14.2.2-26.2,9.1-45.6,15.9-57.6,20.3"></path>
+                    <path class="cls-1" d="M234.9,3.4h-10.4c-2.5.1-4.9,1.2-6.6,3.1l-24,25.4c-7.3,8-14.5,0-14.5,0l-24.1-25.4c-1.7-1.8-4.1-2.9-6.6-3h-10.6c-2.4,0-3,.8-3,1.7,0,.5.2.9.5,1.3.4.6,33.5,35.9,33.5,35.9,7.4,7.8,0,15.7,0,15.7l-31.4,33.4c-4,4.2,1.8,4.2,1.8,4.2h10.5c2.2,0,4.4-1,6-2.5.4-.3,23.3-24.6,23.3-24.6,7.2-8,14.4,0,14.5,0l22.7,24.1c1.7,1.8,4.1,2.9,6.6,3.1h10.3s5.8,0,1.8-4.2l-31.2-33.4c-7.3-7.8,0-15.6,0-15.7L236.7,7.6c4-4.2-1.8-4.2-1.8-4.2"></path>
+                  </g>
+                </g>
+              </g>
+              <g>
+                <path class="cls-1" d="M253.8,48.9h8.4c1.6,0,3.1,1,3.7,2.5l12.4,31.1h.1l12.2-31c.6-1.5,2.1-2.5,3.7-2.5h13.4c1.6,0,3.1,1,3.7,2.5l12.4,31.1h0l12.2-31c.6-1.5,2.1-2.5,3.7-2.5h8.4c2.9,0,4.8,3,3.7,5.6l-16.9,38.7c-.6,1.5-2.1,2.4-3.7,2.4h-13.8c-1.6,0-3.1-1-3.7-2.5l-12.8-31h-.1l-12.9,31c-.6,1.5-2.1,2.5-3.7,2.5h-13.8c-1.6,0-3-.9-3.7-2.4l-16.9-38.7c-1.2-2.6.8-5.6,3.7-5.6Z"></path>
+                <path class="cls-1" d="M366.3,48.9h13.1c1.1,0,2,.9,2,2v12.6c0,1.1.9,2,2,2h21.8c1.1,0,2-.9,2-2v-12.6c0-1.1.9-2,2-2h13.1c1.1,0,2,.9,2,2v42.7c0,1.1-.9,2-2,2h-13.1c-1.1,0-2-.9-2-2v-14.6c0-1.1-.9-2-2-2h-21.8c-1.1,0-2,.9-2,2v14.6c0,1.1-.9,2-2,2h-13.1c-1.1,0-2-.9-2-2v-42.7c0-1.1.9-2,2-2Z"></path>
+                <path class="cls-1" d="M439.3,48.9h12.6c1.2,0,2.2,1,2.2,2.2v42.3c0,1.2-1,2.2-2.2,2.2h-12.6c-1.2,0-2.2-1-2.2-2.2v-42.3c0-1.2,1-2.2,2.2-2.2Z"></path>
+                <path class="cls-1" d="M480.4,60.9h-13.9c-1.2,0-2.2-1-2.2-2.2v-7.7c0-1.2,1-2.2,2.2-2.2h49.1c1.2,0,2.2,1,2.2,2.2v7.7c0,1.2-1,2.2-2.2,2.2h-13.9c-1.2,0-2.2,1-2.2,2.2v30.4c0,1.2-1,2.2-2.2,2.2h-12.7c-1.2,0-2.2-1-2.2-2.2v-30.4c0-1.2-1-2.2-2.2-2.2Z"></path>
+                <path class="cls-1" d="M530.3,48.9h44.9c1.2,0,2.2,1,2.2,2.2v6.2c0,1.2-1,2.2-2.2,2.2h-28.4c-1.2,0-2.2,1-2.2,2.2v3.5c0,1.2,1,2.2,2.2,2.2h25.8c1.2,0,2.2,1,2.2,2.2v4.7c0,1.2-1,2.2-2.2,2.2h-25.8c-1.2,0-2.2,1-2.2,2.2v4.3c0,1.2,1,2.2,2.2,2.2h29.1c1.2,0,2.2,1,2.2,2.2v6.2c0,1.2-1,2.2-2.2,2.2h-45.5c-1.2,0-2.2-1-2.2-2.2v-42.3c0-1.2,1-2.2,2.2-2.2Z"></path>
+              </g>
+            </svg>
+          </div>
+          <div class="line">
+            <span data-bs-toggle="tooltip" data-bs-title="עד 60 ק״מ ט.ל.ח"> 
+              <span>*טווח</span>
+              <span>60 ק״מ</span>
+            </span>
+            <span class="divider-line">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.85 53.77"><path fill="none" stroke="#000" stroke-width="2" d="m22.92.38-22 53" data-name="Line 5"></path></svg>
+            </span>
+            <span>
+              <span>מהירות</span>
+              <span>25 קמ״ש</span>
+            </span>
+          </div>
+          <div class="w-100 d-flex align-items-center gap-3">
+            <a href="/products/inokim-ox-white" aria-label="מעבר לרכישה">קנה עכשיו</a>
+            <a href="/products/inokim-ox-white/overview" class="black" aria-label="מידע נוסף">מידע נוסף</a>
+          </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="item">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_2_00000085940672023508175190000007379248996197994914_" x="0" y="0" style="enable-background:new 0 0 238.1 95.7" version="1.1" viewBox="0 0 238.1 95.7"><g id="Layer_1-2"><defs><path id="SVGID_2_" d="M0 0h238.1v95.7H0z"></path></defs><clipPath id="SVGID_00000124841458205192159830000006952234173744848015_"><use xlink:href="#SVGID_2_" style="overflow:visible"></use></clipPath><g style="clip-path:url(#SVGID_00000124841458205192159830000006952234173744848015_)"><path d="M102.9 92.7c-3.9 0-7.8-.5-11.6-1.3C69.3 87 49.2 80 23.8 70.3 2.2 62 0 48.9 0 43.6c.1-9.2 6.5-17.4 16.3-21 12-4.4 31.5-11.2 57.7-20.3 9.3-3.2 17.7-3.1 24.9.5 7.8 3.8 13.6 11.4 17.2 22.4l1 3c3.5 10.5 4.2 12.7 9.3 31.3 3.8 14-.1 21.9-3.9 26-3.3 3.6-9.2 7.2-19.6 7.2M21 35.6c-4.3 1.6-7.1 4.8-7.2 8.1-.1 4.9 5.5 10 14.9 13.7C53.4 66.9 72.9 73.6 94 77.8c8.8 1.8 15.7 1.1 18.3-1.8 2.8-3 1.7-9.4.7-12.9-5-18.2-5.7-20.4-9-30.6l-1-3.1c-1.7-5.1-4.8-11.7-10.2-14.4-3.7-1.8-8.5-1.8-14.2.2C52.4 24.4 33 31.3 21 35.6M234.9 3.4h-10.4c-2.5.1-4.9 1.2-6.6 3.1l-24 25.4c-7.3 8-14.5 0-14.5 0L155.3 6.4a9.68 9.68 0 0 0-6.6-3h-10.6c-2.4 0-3 .8-3 1.7 0 .5.2.9.5 1.3.4.6 33.5 35.9 33.5 35.9 7.4 7.8 0 15.7 0 15.7l-31.4 33.4c-4 4.2 1.8 4.2 1.8 4.2H150c2.2-.1 4.4-1 6-2.5.4-.3 23.3-24.6 23.3-24.6 7.2-8 14.4 0 14.5 0l22.7 24.1c1.7 1.8 4.1 2.9 6.6 3.1h10.3s5.8 0 1.8-4.2l-31-33.5c-7.3-7.8-.1-15.6 0-15.7l32.5-34.7c4-4.2-1.8-4.2-1.8-4.2" class="st1"></path></g></g></svg>
+          </div>
+          <div class="line">
+            <span data-bs-toggle="tooltip" data-bs-title="עד 60 ק״מ ט.ל.ח"> 
+              <span>*טווח</span>
+              <span>60 ק״מ </span>
+            </span>
+            <span class="divider-line">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.85 53.77"><path fill="none" stroke="#000" stroke-width="2" d="m22.92.38-22 53" data-name="Line 5"></path></svg>
+            </span>
+            <span>
+              <span>מהירות</span>
+              <span>25 קמ״ש</span>
+            </span>
+          </div>
+          <div class="w-100 d-flex justify-content-center align-items-center gap-3">
+            <a href="/products/ox-carbon" aria-label="מעבר לקניה">קנה עכשיו</a>
+            <a href="/products/ox-carbon/overview" class="black" aria-label="מידע נוסף">מידע נוסף</a>
+
+          </div>
+        </div>
+
+        <!-- Product Item 4 -->
+        <div class="item">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" viewBox="0 0 409.07 95.37"><defs><clipPath id="quick_a"><path d="M0 0h409.07v95.37H0z"></path></clipPath></defs><g data-name="Layer 1" style="clip-path:url(#quick_a)"><path d="M409.08 24.03v-.43h-4.97V4.8a4.8 4.8 0 0 0-.5-2.32 3.78 3.78 0 0 0-1.32-1.4 6.66 6.66 0 0 0-2.1-.82c-.88-.18-1.77-.27-2.66-.27a20 20 0 0 0-2.99.25 5.08 5.08 0 0 0-2.91 1.68l-14.77 18.59A8.01 8.01 0 0 0 375.6 23a5.73 5.73 0 0 0-.18 1.75 6.07 6.07 0 0 0 .82 3.33c.54.78 1.53 1.74 4.42 1.88h15.3c0 .07-.27 5.24 2.62 6.96a8.23 8.23 0 0 0 4.96 1.36h.55l.02-8.32v-.03c1.8-.12 4.96-1 4.96-5.9m-12.68-.47h-11.21c-.37-.02-.8-.08-.85-.35-.08-.2.05-.55.28-.97l8.94-12.63.34-.38c.17-.17.86-.58 1.27-.4.69.07 1.17.75 1.23 1.93v12.8ZM258.76 79.63a38.77 38.77 0 0 1-27.4-11.34c-14.61-14.75-14.9-37.89-.66-53.83a36.55 36.55 0 0 1 27.33-11.92 39.61 39.61 0 0 1 23.45 7.78l.43.32-.28.45c-.05.1-.11.19-.19.27-2.77 5.12-7.12 7.01-11.9 5.23-.45-.22-.86-.4-1.28-.58l-.41-.17a25.05 25.05 0 0 0-12.35-1.59 26.53 26.53 0 0 0-17.29 9.33 26.77 26.77 0 0 0 .68 35.65c7.77 8.5 17.62 10.9 28.64 6.6l.71-.27 1.15-.5c4.73-1.69 9 .23 11.74 5.24l.46.72.27.44-.4.33a36.05 36.05 0 0 1-22.7 7.84M128.95 78.5a26.47 26.47 0 0 1-2.76-.15l-.88-.16c-12.7-1.78-22.79-11.48-24.63-23.77a94.18 94.18 0 0 1-.74-13.53c-.06-9.57 0-35.85 0-36.12V4.2h1.3c3.48 0 6.15.97 7.95 2.87 1.27 1.36 2.73 3.9 2.46 8.25 0 .05.02.13.02 8.57v1.57l.02 21.9c.03 10 5.65 17.44 14.3 18.96l.5.1c.86.13 1.73.19 2.6.2 10.32 0 17.55-7.92 17.59-19.25.02-7.3.03-14.6.02-21.91v-1.57c0-6.5 0-8.04.03-8.44-.28-4.49 1.18-7.02 2.46-8.38 1.8-1.9 4.46-2.87 7.93-2.87h1.31v.58c0 .27.06 26.55 0 36.12.08 4.52-.17 9.04-.74 13.53-2.05 13.73-14.4 24.08-28.73 24.08M195.7 77.88h-1.24a9.1 9.1 0 0 1-6.93-2.58c-1.84-1.94-2.7-4.9-2.5-8.53 0-.19-.02-5.59 0-8.58l-.02-21.51v-12.8c0-2.23 0-8.38.03-8.52-.21-3.7.65-6.65 2.49-8.6a9.1 9.1 0 0 1 6.93-2.57h1.23v.58s.04 17.94.02 29.67c.02 13.22-.02 42.86-.02 42.86l.02.58ZM58.23 95.37c-1.2 0-2.16 0-2.37-.02-4.3-.23-6.3-1.92-7.64-6.45-1.96-7.27-5.8-8.1-8.52-8.1-.46 0-.89.02-1.26.04l-.68.03h-.72c-.37 0-.74 0-1.05-.03C15.17 79.48-.96 61.2.04 40.09 1.01 19.7 18.55 3.1 39.14 3.1h.84a39 39 0 0 1 36.38 28.74 39.04 39.04 0 0 1-14.27 41.43l-.61.45-.03-.06c-2.61 1.8-4.1 3.86-4.46 6.13-.25 1.62-.03 4.2 2.4 7.32l.14.19 3.87 5.67 1.56 2.37-6.72.02M38.7 14.23a27.87 27.87 0 0 0-27.63 27.88 27.9 27.9 0 0 0 27.77 27.78c7.42 0 14.52-3 19.7-8.31a27.63 27.63 0 0 0 8.12-19.8 27.9 27.9 0 0 0-27.8-27.55l-.16-.58v.58ZM316.47 77.88c-3.43 0-6.07-.96-7.85-2.85-1.27-1.35-2.74-3.89-2.47-8.26-.04-.24-.03-51.24.04-51.46-.3-4.34 1.16-6.87 2.43-8.23 1.78-1.89 4.42-2.85 7.85-2.85h1.3v42.03l32.84-42.88.35.06c.8.29 1.52.78 2.08 1.42 4.79 4.9.5 11.1.45 11.16-.93 1.27-7.24 9.68-14.26 18.93l9.99 18.14c5.16 9.38 10.36 18.81 10.72 19.49l.46.86h-.01l2.41 4.36h-8.01c-5.34-.43-7.33-3.95-8.93-6.77-.27-.48-.53-.95-.8-1.38-2.1-3.85-10.7-19.46-13.52-24.55L317.8 63.2l-.03 14.68h-1.3Z"></path></g></svg>
+          </div>
+          <div class="line">
+            <span data-bs-toggle="tooltip" data-bs-title="עד 50 ק״מ ט.ל.ח"> 
+              <span>*טווח</span>
+              <span>50 ק״מ</span>
+            </span>
+            <span class="divider-line">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.85 53.77"><path fill="none" stroke="#000" stroke-width="2" d="m22.92.38-22 53" data-name="Line 5"></path></svg>
+            </span>
+            <span>
+              <span>מהירות</span>
+              <span>25 קמ״ש</span>
+            </span>
+          </div>
+          <div class="w-100 d-flex justify-content-center align-items-center gap-3">
+            <a href="/products/inokim-quick-4/overview#secondHand" aria-label="מעבר לקניה">מצא מלאי</a>
+            <a href="/products/inokim-quick-4/overview" class="black" aria-label="מידע נוסף">מידע נוסף</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section with Video -->
+  <section class="info">
+    <div class="video-container">
+      <video
+        class="info-video lazyload"
+        width="100%"
+        height="auto"
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="none"
+        poster="/optimized/bgVideo.webp"
+        data-src="/videos/ox.MOV"
+      >
+        <source data-src="/videos/ox.MOV" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+  
+      <div class="video-overlay-dark"></div>
+  
+      <div class="video-overlay">
+        <h2>לא בטוחים איזה דגם מתאים לכם?</h2>
+        <a href="/contact-us" aria-label="בקשת שיחה חוזרת" class="btn btn-outline">בקש שיחה חוזרת</a>
+      </div>
+    </div>
+
+    
+  
+    <!-- Info Content Section -->
+    <div class="info-content">
+      <div class="row">
+        <div class="col-md-6 info-text">
+          <div class="px-2 p-3 px-md-5">
+            <h2>איתכם גם למרחקים ארוכים</h2>
+            <p>
+              גם אחרי הקניה, אנחנו לא נוסעים לשום מקום וממשיכים ללוות ולדאוג לכם מתי שאתם צריכים, עם תחנות שירות ברחבי הארץ. יש תקלה בכלי? צריכים אביזרים? רוצים סתם לומר שלום ולבדוק מה חדש? בואו למרכז השירות של INOKIM.
+            </p>
+            <a class="btn btn-dark" href="/find-us">גלו מרכזי שירות</a>
+          </div>
+        </div>
+  
+        <div class="col-md-6 info-image p-0">
+          <%- optimizeImage('/img/info.png', 'אינוקים אוקס מקופל', 'lazyload') %>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-md-row">
+        <div class="info-image">
+          <%- optimizeImage('/img/info1.jpg', 'אינוקים אוקס מקופל', 'lazyload') %>
+        </div>
+        <div class="info-image">
+          <%- optimizeImage('/img/info2.jpg', 'אינוקים אוקס מקופל', 'lazyload') %>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Inokim Specs Section -->
+  <section class="inokim-home-specs">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="info-image">
+
+              <img class="lazyload" src="/optimized/Fast_shipping_160x.webp" alt="Free Shipping">
+            </div>
+            <h5 class="text-center">משלוחים מהירים</h5>
+            <p>עד כ-5 ימי עסקים</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="info-image">
+              <img src="/optimized/warranty_icon_5a7cfc3e-550f-4890-8ce7-4d673e71a586_160x.avif" alt="">
+            </div>
+            <h5 class="text-center">אחריות מלאה </h5>
+            <p>אחריות לשנה הראשונה חינם
+            </p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="info-image">
+              <%- optimizeImage('/optimized/Saftey_icon_7290da1a-03ff-4b61-af3b-68b42f58dd34_160x (2).png', 'אינוקים אוקס מקופל', 'lazyload') %>
+            </div>
+            <h5 class="text-center">מקסימום בטיחות
+
+            </h5>
+            <p class="text-center">הקורקינטים שלנו מצוידים ,במערכות הבטיחות המתקדמות ביותר .כדי לשמור עליכם בדרך</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="info-image">
+              <%- optimizeImage('/img/Designed_in_TLV_icon_503bae62-0bcf-499e-bcec-aff55a49e69f_160x.png', 'אינוקים אוקס מקופל', 'lazyload') %>
+            </div>
+            <h5 class="text-center">START-UP SCOOTERS
+
+            </h5>
+            <p class="text-center">הדגמים של אינוקים תוכננו ועוצבו בישראל וזכו להצלחה עולמית</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <%- include('./partials/testride', {
+    title: 'הירשמו לניוזלטר שלנו!',
+    subtitle: 'הירשמו לניוזלטר שלנו ותהנו ממבצעים לפני כולם',
+    type: 'newsletter'
+  }) %>
+
+
+<section class="pt-4 pt-md-5 pb-5 bg-pd">
+  <h2 class="text-center">קבלו הצצה לקהילת הרוכבים שלנו </h2>
+  <p class="text-center" style="font-size: 1.3em; font-weight: 600;">INOKIM#</p>
+
+  <!-- Splide Carousel -->
+  <section class="splide" id="riders">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <li class="splide__slide">
+          <div class="home-review-item">
+            <%- optimizeImage('/img/slide1.png', 'אינוקים אוקס מקופל', 'lazyload') %>
+
+        
+          </div>
+        </li>
+        <li class="splide__slide">
+          <div class="home-review-item">
+            <%- optimizeImage('/img/slide2.png', 'אינוקים אוקס מקופל', 'lazyload') %>
+
+          </div>
+        </li>
+        <li class="splide__slide">
+          <div class="home-review-item">
+            <%- optimizeImage('/img/slide3.png', 'אינוקים אוקס מקופל', 'lazyload') %>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+
+<%- include('./partials/footer.ejs')  %>
+
+<%- include('./partials/contactUsBtn.ejs')  %>
+
+</main>
+
+
+

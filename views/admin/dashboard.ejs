@@ -1,0 +1,163 @@
+<%- include("./partials/header-admin.ejs") %>
+
+
+
+<main id="content">
+
+    <section id="dash-all-content">
+        <section id="dash-content">
+
+            <div class="d-flex mb-3">
+           
+                  
+    
+                <h1>שלום, <%- user.name  %></h1>
+            </div>
+         
+        
+      
+        <section class="dash-p">
+        <div class="row mb-5">
+        <div class="admin-card col-12 col-sm-12 col-md-4">
+            <div class="box border">
+                <div class="text w-100">
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="d-flex flex-column">
+                            <strong class="mb-3">כמות הזמנות חודשי </strong>
+                            <span id="onlineUsers" class="good"> <%= stats.scootersSold %> </span>
+                        </div>
+                        <svg width="61" height="60" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd" d="M0.666504 30V37C0.666504 49.7025 10.964 60 23.6665 60H30.6665H37.6665C50.3691 60 60.6665 49.7025 60.6665 37V30V23C60.6665 10.2975 50.3691 0 37.6665 0H30.6665H23.6665C10.964 0 0.666504 10.2975 0.666504 23V30Z" fill="#FF9066"/>
+                            <path d="M36.9995 31.5C32.8574 31.5 29.4995 29.821 29.4995 27.75C29.4995 25.6789 32.8574 24 36.9995 24C41.1416 24 44.4995 25.6789 44.4995 27.75C44.4995 29.821 41.1416 31.5 36.9995 31.5Z" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M29.4995 33.75C29.4995 35.821 32.8574 37.5 36.9995 37.5C41.1416 37.5 44.4995 35.821 44.4995 33.75" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.4995 26.25C17.4995 28.321 20.8574 30 24.9995 30C26.6883 30 28.2466 29.721 29.5003 29.25" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.4995 31.5C17.4995 33.571 20.8574 35.25 24.9995 35.25C26.6879 35.25 28.246 34.971 29.4995 34.5003" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.4995 20.25V36.75C17.4995 38.821 20.8574 40.5 24.9995 40.5C26.688 40.5 28.246 40.2208 29.4995 39.75" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M32.4995 24.75V20.25" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M29.4995 27.75V39.75C29.4995 41.821 32.8574 43.5 36.9995 43.5C41.1416 43.5 44.4995 41.821 44.4995 39.75V27.75" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M24.9995 24C20.8574 24 17.4995 22.3211 17.4995 20.25C17.4995 18.1789 20.8574 16.5 24.9995 16.5C29.1416 16.5 32.4995 18.1789 32.4995 20.25C32.4995 22.3211 29.1416 24 24.9995 24Z" stroke="#FF9871" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                    </div>
+
+                  
+
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-danger" role="progressbar" aria-label="Example with label" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    <small>  יעד </small>
+                </div>
+              
+
+             
+            </div>
+        </div>
+        <div class="admin-card col-12 col-sm-6 col-md-4">
+            <div class="box border">
+                <div class="text w-100">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="d-flex flex-column">
+                            <strong class="mb-3">מכירות חודשיות</strong>
+                            <span id="uniqueVisits"> <%=  formatter.format(stats.monthlySales) %>  </span>
+                        </div>
+                        <svg width="61" height="60" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.21" fill-rule="evenodd" clip-rule="evenodd" d="M0.333496 30V37C0.333496 49.7025 10.6309 60 23.3335 60H30.3335H37.3335C50.036 60 60.3335 49.7025 60.3335 37V30V23C60.3335 10.2975 50.036 0 37.3335 0H30.3335H23.3335C10.6309 0 0.333496 10.2975 0.333496 23V30Z" fill="#FEC53D"/>
+                            <path d="M24.0005 30H37.5005M24.0005 30L21.0005 27H15.0005L18.0005 30L15.0005 33H21.0005L24.0005 30ZM37.5005 30L34.5005 27M37.5005 30L34.5005 33" stroke="#FEC53D" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M36.0005 45.75C40.1426 45.75 43.5005 38.6985 43.5005 30C43.5005 21.3015 40.1426 14.25 36.0005 14.25C31.8584 14.25 28.5005 21.3015 28.5005 30C28.5005 38.6985 31.8584 45.75 36.0005 45.75Z" stroke="#FEC53D" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                    </div>
+                  
+      
+
+                        <div class="progress mb-3">
+                  
+                            <div class="progress-bar  bg-warning" role="progressbar" aria-label="Example with label" style="width: 23%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+              
+                    <small> יעד </small>
+                </div>
+
+              
+                    
+                    
+                
+              
+            </div>
+        </div>
+            <div class="admin-card col-12 col-sm-6 col-md-4">
+                <div class="box border">
+                    <div class="text w-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex flex-column">
+                                <strong class="mb-3">סשנים</strong>
+                                <span id="pageVisits"> <%= stats.sessions.toLocaleString('he-IL')  %> </span>
+ 
+                            </div>
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.21" fill-rule="evenodd" clip-rule="evenodd" d="M0 30V37C0 49.7025 10.2975 60 23 60H30H37C49.7025 60 60 49.7025 60 37V30V23C60 10.2975 49.7025 0 37 0H30H23C10.2975 0 0 10.2975 0 23V30Z" fill="#8280FF"/>
+                                <path d="M33 22.5C34.6569 22.5 36 21.1569 36 19.5C36 17.8431 34.6569 16.5 33 16.5C31.3431 16.5 30 17.8431 30 19.5C30 21.1569 31.3431 22.5 33 22.5Z" stroke="#8280FF" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M39 43.5C41.4854 43.5 43.5 41.4854 43.5 39C43.5 36.5146 41.4854 34.5 39 34.5C36.5146 34.5 34.5 36.5146 34.5 39C34.5 41.4854 36.5146 43.5 39 43.5Z" stroke="#8280FF" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 43.5C23.4853 43.5 25.5 41.4854 25.5 39C25.5 36.5146 23.4853 34.5 21 34.5C18.5147 34.5 16.5 36.5146 16.5 39C16.5 41.4854 18.5147 43.5 21 43.5Z" stroke="#8280FF" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M29.2512 38.9999L31.5012 32.9999L24.1777 29.9999L28.6781 24.75L33.1781 28.5001H38.4281" stroke="#8280FF" stroke-width="2.325" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                        </div>
+
+
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: %;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <small>80,000 ₪ יעד </small>
+                    </div>
+
+                 
+                        
+                       
+                  
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+        <div class="admin-card normal col-12 col-md-8">
+
+            <div class="box border h-100" style="flex-direction: column; justify-content: flex-start; align-items:start">
+                <h3 class="title">גרף מכירות</h3>
+                <canvas id="orderChart"></canvas>
+            </div>
+
+        </div>
+
+        <div class="admin-card normal col-12 col-md-4">
+            <div class="box border top-pages" style="flex-direction: column;">
+                <h3 class="title">עמודים מובילים</h3>
+                <div id="liveUserStats">
+                    <ul>
+                        
+                        <% stats.topPages.forEach(page => { %>
+                            <li>
+                              <button type="button" data-url="<%= page.path %>">
+                                <span><%= page.path %></span>
+                                <span><%= page.views.toLocaleString() %></span>
+                              </button>
+                            </li>
+                          <% }) %>
+                
+                
+                </ul>
+                </div>
+         </div>
+        </div>
+  
+        </div>
+    </section>
+  
+    </section>
+    </section>
+
+
+
+</main>
+
+
+<%- include("./partials/admin-footer.ejs") %>

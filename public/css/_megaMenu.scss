@@ -1,0 +1,122 @@
+// Variables
+$primary-color: #5c5e62;
+$secondary-color: #fff;
+$highlight-color: #007bff;
+$highlight-hover-color: #0056b3;
+$box-shadow-color: rgba(0, 0, 0, 0.1);
+
+// Mega Menu Base
+.mega-dropdown {
+  position: static;
+
+  .mega-inokim{
+    padding: 1em 7em;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    top: 97%;
+    left: 0;
+    border-radius: 0;
+    border: none;
+    background-color: $secondary-color;
+    box-shadow: 0 4px 8px $box-shadow-color;
+  }
+}
+
+// Mega Menu Image Section
+.mega-menu-img {
+  width: 100%;
+  max-width: 220px;
+
+  h3 {
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+  a {
+    text-decoration: underline;
+    color: $primary-color;
+    font-weight: 500;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+// Mega Menu Item Styling
+.mega-menu-item {
+  padding: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Dropdown Item Styling
+.dropdown-item {
+  text-align: right;
+}
+
+// Mega Menu Product Section
+.mega-menu-product {
+  text-align: center;
+
+  .product-image {
+    img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .product-links {
+    a {
+      display: inline-block;
+      margin: 0.3rem;
+      color: $highlight-color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $highlight-hover-color;
+      }
+    }
+  }
+}
+
+// Responsive Mega Menu
+@media (max-width: 768px) {
+  .mega-dropdown {
+    .dropdown-menu {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  }
+
+  .mega-menu-item {
+    padding: 0.5rem;
+  }
+
+  .mega-menu-product {
+    .product-title {
+      font-size: 1rem;
+    }
+
+    .product-links a {
+      font-size: 0.9rem;
+    }
+  }
+}

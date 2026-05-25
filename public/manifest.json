@@ -1,0 +1,26 @@
+{
+  "short_name": "INOKIM",
+  "name": "INOKIM - Electric Scooters",
+  "dir": "rtl",
+  "lang": "he",
+  "icons": [
+    {
+      "src": "/optimized/favicon_192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/optimized/favicon_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#f9f9f9",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "orientation": "portrait"
+}

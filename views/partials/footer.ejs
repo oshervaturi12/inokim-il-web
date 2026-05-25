@@ -1,0 +1,30 @@
+<footer class="footer py-3">
+    <div class="container">
+      <div class="border-bottom px-0 px-md-5 py-3 mb-3 text-end">
+        <small>
+          <%=  footerSections.disclaimer %>
+        </small>
+      </div>
+      <div class="row">
+
+        <% footerSections.sections.forEach(section => { %>
+          <div class="col-6 col-md-2 text-end text-md-center">
+            <h6 class="text-uppercase mb-3"><%= section.label %></h6>
+            <ul class="list-unstyled">
+              <% section.links.forEach(link => { %>
+                <li><a href="<%= link.path %>"><%= link.title %></a></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% }) %>
+
+
+      </div>
+  
+      <!-- Legal Section -->
+      <%- include("./infoFooter.ejs") %>
+    </div>
+  </footer>
+  
+
+ 

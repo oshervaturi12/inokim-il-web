@@ -1,0 +1,50 @@
+<div class="modal fade" id="noVAT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="noVATLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="noVATLabel">מתכננים ביקור באילת?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+          <div class="img d-flex align-items-center justify-content-center mb-3">
+              <% 
+                const firstVariant = product?.variants?.[0];
+                const firstImage = firstVariant?.gallery?.[0];
+              %>
+              <% if (firstImage) { %>
+                <img 
+                  src="<%= `${s3path}${firstImage.replace('/img', '/optimized')}` %>" 
+                  class="img-fluid" 
+                  alt="<%= product?.title || 'מוצר אינוקים' %>"
+                >
+              <% } %>
+            </div>
+          </div>
+          <div class="col-6">
+     <div class="text-body">
+          <p>
+            באפשרותכם להזמין את המוצרים לפני הגעתכם לאילת והמוצרים ימתינו עבורכם בסניף.
+          </p>
+          <p>
+            פשוט בחרו את המוצרים שברצונכם לרכוש באילת ובחרו באפשרות 
+            <strong>"איסוף באילת"</strong> בעגלת הקניות וציינו סניף האיסוף.
+          </p>
+          <p>
+            בעת סיום ההזמנה תתבקשו למלא פרטי כרטיס אשראי כאמצעי ביטחון בלבד.<br>
+            <small>*בהתאם למלאי הזמין בסניפים התומכים בשירות</small>
+          </p>
+        </div>
+          </div>
+        </div>
+ 
+
+   
+      </div>
+
+    </div>
+  </div>
+</div>

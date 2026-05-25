@@ -1,0 +1,113 @@
+<!-- Sticky Bottom CTA -->
+<div class="tesla-sticky-wrapper">
+  <div class="container d-flex justify-content-center">
+    
+    <div class="tesla-sticky-bar d-flex align-items-center justify-content-between px-3 py-2">
+
+      <!-- Chat Button -->
+
+
+              <a
+  href="https://wa.me/972549045216"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="btn btn-link d-flex align-items-center gap-2 text-decoration-none text-dark tesla-btn"
+>
+   
+        
+        <!-- Chat Icon -->
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8L3 20l1.8-3.6A7.5 7.5 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+
+        <span class="small fw-medium">דברו איתנו</span>
+    </a>
+
+      <!-- Divider -->
+      <div class="tesla-divider mx-3"></div>
+
+      <!-- Test Drive Button -->
+            <a
+            href="/test-ride"
+            class="btn btn-link d-flex align-items-center gap-2 text-decoration-none text-dark tesla-btn fw-semibold"
+            >
+
+               
+        
+        <!-- Steering Icon -->
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18M12 12l3 3M12 12l-3 3"/>
+        </svg>
+
+       <span class="small">תיאום נסיעת מבחן</span>
+    </a>
+
+    </div>
+  </div>
+</div>
+
+
+<style>
+.tesla-sticky-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  pointer-events: none;
+  padding-bottom: 16px;
+}
+
+.tesla-sticky-bar {
+  pointer-events: auto;
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.04);
+}
+
+.tesla-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(0,0,0,0.1);
+}
+
+.tesla-btn {
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+.tesla-btn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 767.98px) {
+  .tesla-sticky-wrapper {
+    padding-bottom: 0;
+  }
+
+  .tesla-sticky-wrapper .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .tesla-sticky-bar {
+    max-width: 100%;
+    width: 100%;
+     border-radius: 12px 12px 0 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+  }
+}
+</style>

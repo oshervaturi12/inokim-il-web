@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Dynamic SEO Tags -->
+  <title><%= typeof seo !== 'undefined' && seo.pageTitle ? seo.pageTitle : (typeof title !== 'undefined' ? title : 'Inokim') %></title>
+  <meta name="description" content="<%= typeof seo !== 'undefined' && seo.metaDescription ? seo.metaDescription : (typeof description !== 'undefined' ? description : 'ברוכים הבאים לאינוקים - הקורקינטים החשמליים הטובים ביותר בישראל!') %>">
+
+   <meta name="robots" content="<%= typeof seo !== 'undefined' && seo.noIndex ? 'noindex, nofollow' : 'index, follow' %>">
+
+  <link rel="canonical" href="<%= typeof seo !== 'undefined' && seo.canonicalUrl ? seo.canonicalUrl : '' %>">
+  
+  <!-- Open Graph Meta Tags (For Social Sharing) -->
+  <meta property="og:title" content="<%= typeof seo !== 'undefined' && seo.ogTitle ? seo.ogTitle : (typeof title !== 'undefined' ? title : 'Inokim') %>">
+  <meta property="og:description" content="<%= typeof seo !== 'undefined' && seo.metaDescription ? seo.metaDescription : (typeof description !== 'undefined' ? description : 'קורקינטים חשמליים הטובים ביותר בישראל') %>">
+  <meta property="og:image" content="<%= typeof seo !== 'undefined' && seo.ogImage ? seo.ogImage : '/img/default-og-image.png' %>">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:title" content="<%= typeof seo !== 'undefined' && seo.twitterTitle ? seo.twitterTitle : (typeof title !== 'undefined' ? title : 'Inokim') %>">
+  <meta name="twitter:description" content="<%= typeof seo !== 'undefined' && seo.twitterDescription ? seo.twitterDescription : (typeof description !== 'undefined' ? description : 'קורקינטים חשמליים מעוצבים ובטיחותיים') %>">
+  <meta name="twitter:image" content="<%= typeof seo !== 'undefined' && seo.twitterImage ? seo.twitterImage : '/img/default-twitter-image.png' %>">
+  
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="<%= typeof themeColor !== 'undefined'? themeColor: "#ffff" %>">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://d3kxrpm9y5cv3a.cloudfront.net/optimized/favicon_192.png" type="image/x-icon" sizes="16x16" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="<%= manifest['css.css'] %>">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+    <!-- TinyMCE -->
+  <% if(typeof isAdmin !== 'undefined' || isAdmin)  { %>
+    <script src="https://cdn.tiny.cloud/1/srbey28qt4vc8zovjxj586e7m8hypim3w5w9c6r33k6x1u5h/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <% }  %>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "אינוקים ישראל",
+  "alternateName": ["Inokim Israel", "Inokim IL", "אינוקים"],
+  "url": "https://il.inokim.com",
+  "logo": "https://il.inokim.com/optimized/logo.svg",
+  "description": "אינוקים ישראל היא ההפצה הרשמית של מותג Inokim בישראל – מותג הקורקינטים החשמליים הפרימיום המוביל בעולם. החברה מציעה קורקינטים חשמליים לכל הרמות, עם אחריות מלאה, שירות ותמיכה ישראלית.",
+  "foundingDate": "2009",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "תל אביב, ישראל"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IL",
+    "addressLocality": "ישראל"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://il.inokim.com/support",
+      "availableLanguage": "Hebrew"
+    }
+  ],
+  "sameAs": [
+    "https://inokim.com",
+    "https://www.facebook.com/inokimisrael",
+    "https://www.instagram.com/inokim_israel"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "קורקינטים חשמליים אינוקים",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים OX DUBAI",
+          "url": "https://il.inokim.com/products/ox-dubai"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים KIX",
+          "url": "https://il.inokim.com/products/inokim-kix"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים OX קרבון",
+          "url": "https://il.inokim.com/products/ox-carbon"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים OX White",
+          "url": "https://il.inokim.com/products/inokim-ox-white"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים OX לנדסרפר",
+          "url": "https://il.inokim.com/products/inokim-ox-land-surfer"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים לייט 2 2025",
+          "url": "https://il.inokim.com/products/light-2-0"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "קוויק 4 2025",
+          "url": "https://il.inokim.com/products/inokim-quick-4"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "אינוקים סייבורג",
+          "url": "https://il.inokim.com/products/cyborg"
+        }
+      }
+    ]
+  }
+}
+    </script>
+
+
+  <!-- GOOGLE ANALITYCS -->
+   <% if(typeof isAdmin === 'undefined' || !isAdmin)  { %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49CH5MY1MJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-49CH5MY1MJ');
+    </script>
+
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w83orketw6");
+</script>
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','<%= storeSettings.analytics.googleTagManagerId %>');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+
+<!-- 3201406643204985 -->
+  <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '<%= storeSettings.analytics.facebookPixelId %>');
+      fbq('track', 'PageView');
+
+
+      <% 
+        let cartValue = 0;
+        let numItems = 0;
+        let contentIds = [];
+        if (typeof cart !== 'undefined' && cart && cart.items && cart.items.length > 0) {
+          cartValue = cart.totalPrice || 0;
+          numItems = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+          contentIds = cart.items.map(item => item.sku || item.prdId || item._id);
+        }
+      %>
+
+      if (window.location.pathname.startsWith('/checkout')) {
+        fbq('track', 'InitiateCheckout', {
+          value: <%= cartValue %>,                 
+          currency: 'ILS',                     
+          num_items: <%= numItems %>,          
+          content_ids: <%- JSON.stringify(contentIds) %>, 
+          content_type: 'product'           
+        });
+      }
+
+
+      </script>
+      <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=<%= storeSettings.analytics.facebookPixelId %>&ev=PageView&noscript=1"
+      /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <% }  %>
+
+  <!-- PRELOAD -->
+  <% if (typeof preload !== 'undefined') { %>
+    <link rel="preload" as="image" href="<%= preload %>" fetchpriority="high">
+  <% } %>
+  <% if (typeof mobilePrelaod !== 'undefined') { %>
+    <link rel="preload" as="image" href="<%= mobilePrelaod %>" fetchpriority="high">
+  <% } %>
+
+
+
+</head> 
+
+<!-- <body class="<%= typeof isHome !== 'undefined' && isHome ? 'home-page' : '' %> <%= typeof stickyNav !== 'undefined' && stickyNav === false ? 'no-sticky-nav' : '' %>"> -->
+  <body class="<%= typeof isHome !== 'undefined' && isHome ? 'home-page' : '' %> 
+    <%= typeof stickyNav !== 'undefined' && stickyNav === false ? 'no-sticky-nav' : '' %> 
+    <%= typeof isAdmin !== 'undefined' && isAdmin ? 'admin' : '' %>">
+
+
+  <%- body %>
+
+  <!-- Alerts -->
+  <div id="alerts">
+    <button id="alerts-info" style="display: none;"></button>
+  </div>
+
+  <!-- App JS Bundle -->
+  <script src="<%= manifest['js.js'] %>" defer></script>
+
+  <!-- JSON-LD Structured Data for SEO -->
+  <% if (typeof seo !== 'undefined' && seo.jsonLd) { %>
+    <script type="application/ld+json">
+      <%- JSON.stringify(seo.jsonLd, null, 2) %>
+    </script>
+  <% } %>
+
+
+  <% if(typeof isAdmin === 'undefined' || !isAdmin)  { %>
+
+  <!-- <script src="<%= manifest['tracker.js'] %>" defer></script>  -->
+
+  <script id="ab-tests-data" type="application/json">
+    <%- JSON.stringify(abTests || {}) %>
+  </script>
+
+  <script>
+    try {
+      window.AB_TESTS = JSON.parse(document.getElementById('ab-tests-data').textContent);
+      console.log(window.AB_TESTS)
+    } catch (e) {
+      window.AB_TESTS = {};
+      console.error("❌ Failed to parse AB_TESTS:", e);
+    }
+  </script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=<%= storeSettings.analytics.googleTagManagerId %>"
+   height="0" width="0" style="display:none;visibility:hidden">
+  </iframe>
+</noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Accessibility Code for "inokim.com" -->
+<script>
+  /*
+  Want to customize your button? visit our documentation page:
+  https://enterprise.nagich.co.il/custom-button.taf
+  */
+  window.interdeal = {
+      "sitekey": "f2f6937d31c6aedf7491a1b8e1924fbb",
+      "Position": "right",
+      "domains": {
+          "js": "https://js.nagich.co.il/",
+          "acc": "https://access.nagich.co.il/"
+      },
+      "Menulang": "HE",
+      "btnStyle": {
+          "vPosition": [
+              "80%",
+              "10%"
+          ],
+          "scale": [
+              "0.3",
+              "0.3"
+          ],
+          "color": {
+              "main": "#000000",
+              "second": "#ffffff"
+          },
+          "icon": {
+              "outline": true,
+              "type": 11,
+              "shape": "circle"
+          }
+      }
+  };
+  (function(doc, head, body){
+      var coreCall             = doc.createElement('script');
+      coreCall.src             = interdeal.domains.js + 'core/4.6.10/accessibility.js';
+      coreCall.defer           = true;
+      coreCall.integrity       = 'sha512-YxhVaPiQod/CzOAJfJGAvDUZwFnOTWC43rUispL33FBWCOyWe/JSqlx2Zk9rw8RZsFYyw+xXVkTQY8NsHxx/QA==';
+      coreCall.crossOrigin     = 'anonymous';
+      coreCall.setAttribute('data-cfasync', true );
+      body? body.appendChild(coreCall) : head.appendChild(coreCall);
+  })(document, document.head, document.body);
+  </script>
+    <% } %>
+
+
+  <script>
+ 
+    window.cartToken = '<%= (typeof cart !== "undefined" && cart) ? cart._id : "" %>';
+    
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+</html>

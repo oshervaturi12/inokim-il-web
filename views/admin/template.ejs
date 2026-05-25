@@ -1,0 +1,14 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main id="table-sort-con" class="py-3 px-3">
+    <h1><%= title  %></h1>
+    <section class="actions">
+        <div class="table-info table-container table-responsive">
+            <%- include("./tables/searchTable.ejs",{placeholder: "חפש במערכת"}) %> 
+            <%- include("./tables/tableTemplate.ejs", { tableManager: tableManager ,headers: headers }) %>
+            <%- include("./tables/paginate.ejs") %>
+        </div>
+    </section>
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>

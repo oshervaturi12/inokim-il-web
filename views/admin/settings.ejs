@@ -1,0 +1,294 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main class="container py-4">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <aside class="col-md-3">
+            <h4 class="mb-3">הגדרות</h4>
+            <div class="list-group box border">
+                <a href="#" class="list-group-item list-group-item-action active" data-bs-toggle="tab" data-bs-target="#general">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.257 1h-6.514c-.384 0-.746.176-.983.478l-2.386 3.037a1.75 1.75 0 0 0-.374 1.08v.655a2.75 2.75 0 0 0 1.5 2.45v4.55c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 0 0 1.75-1.75v-4.55a2.75 2.75 0 0 0 1.5-2.45v-.481c0-.504-.17-.994-.48-1.39l-2.28-2.901a1.25 1.25 0 0 0-.983-.478m-.257 12.5h.75a.25.25 0 0 0 .25-.25v-4.25a2.74 2.74 0 0 1-2-.863c-.501.532-1.212.863-2 .863s-1.499-.331-2-.863a2.74 2.74 0 0 1-2 .863v4.25c0 .138.112.25.25.25h3.75v-2.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1zm-7-6h-.25c-.69 0-1.25-.56-1.25-1.25v-.654q.001-.086.053-.155l2.312-2.941h6.27l2.205 2.805c.104.133.16.296.16.464v.481c0 .69-.56 1.25-1.25 1.25h-.25c-.69 0-1.25-.56-1.25-1.25v-.5a.75.75 0 0 0-1.5 0v.5a1.25 1.25 0 0 1-2.5 0v-.5a.75.75 0 0 0-1.5 0v.5c0 .69-.56 1.25-1.25 1.25"></path></svg>
+                    כללי</a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#payments">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.75 8.227v-2.227c-.778 0-1.044.005-1.283.062a2.2 2.2 0 0 0-.65.27c-.21.128-.398.31-.943.854l-.594.594a.749.749 0 1 1-1.06-1.06l.654-.655c.46-.46.78-.78 1.16-1.012a3.7 3.7 0 0 1 1.083-.45c.433-.103.888-.103 1.546-.103h.087v1.48h11v1.62c0 .84 0 1.26-.164 1.581a1.5 1.5 0 0 1-.655.656c-.32.163-.74.163-1.581.163h-2.705a1.94 1.94 0 0 1-.61.73l-2.73 1.965c-.566.407-.93.67-1.336.859-.358.167-.736.29-1.125.363-.44.083-.889.083-1.586.083h-1.508a.75.75 0 0 1 0-1.5h1.436c.794 0 1.095-.003 1.379-.057q.4-.076.77-.248c.261-.122.508-.296 1.152-.76l2.67-1.923a.422.422 0 0 0-.349-.753l-4.876 1.219a.75.75 0 0 1-.364-1.456z"></path><path d="M15.586 3.069c.153.298.163.683.164 1.411h-11c0-.728.011-1.113.163-1.411.144-.282.374-.512.656-.656.32-.163.74-.163 1.581-.163h6.2c.84 0 1.26 0 1.581.163a1.5 1.5 0 0 1 .655.656"></path></svg>
+                
+                תשלומים
+
+
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#shipping">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.75 2.5a.75.75 0 0 0 0 1.5h3.25a1 1 0 0 1 0 2h-4.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 0 0 1.5h.458a2.5 2.5 0 1 0 4.78.75h3.024a2.5 2.5 0 1 0 4.956-.153 1.75 1.75 0 0 0 1.032-1.597v-1.22a1.75 1.75 0 0 0-1.326-1.697l-1.682-.42a.25.25 0 0 1-.18-.174l-.426-1.494a2.75 2.75 0 0 0-2.645-1.995zm2.75 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path></svg>
+                    משלוחים</a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#tax">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.133 1.517c-.131-.547.332-1.017.895-1.017h3.944c.563 0 1.026.47.895 1.017-.225.939-.716 1.72-1.355 2.203a5.3 5.3 0 0 1 3.49 3.315l1.108 3.13c.922 2.603-1.008 5.335-3.77 5.335h-4.68c-2.762 0-4.692-2.732-3.77-5.335l1.108-3.13a5.3 5.3 0 0 1 3.49-3.315c-.639-.484-1.13-1.264-1.355-2.203m5.559 5.791a.625.625 0 0 1 0 .884l-4.5 4.5a.625.625 0 0 1-.884-.884l4.5-4.5a.625.625 0 0 1 .884 0m-4.692 1.692a1 1 0 1 0 0-2 1 1 0 0 0 0 2m5 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path></svg>
+                    מס</a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#analytics">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 8a7 7 0 0 1 12.584-4.222 2 2 0 0 0-2.327 1.806 3.5 3.5 0 0 0-1.862 2.166h-1.395a1.255 1.255 0 0 1-.764-2.248l.462-.357a.89.89 0 0 0 .347-.707v-.04c0-.747.606-1.353 1.353-1.353h.057c.193 0 .37-.069.509-.184a5.5 5.5 0 0 0-6.945 2.804l1.89 1.89c.378.379.591.892.591 1.427v.518a1 1 0 0 0 1 1 1.5 1.5 0 0 1 1.5 1.5v1.5q.647-.002 1.253-.143c.029.546.277 1.035.658 1.379a7 7 0 0 1-8.911-6.736"></path><path d="M13.25 5a.75.75 0 0 1 .75.75v.75h.75a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 0 0 1.5h.5a2.25 2.25 0 0 1 .25 4.486v.264a.75.75 0 0 1-1.5 0v-.25h-.75a.75.75 0 0 1 0-1.5h2a.75.75 0 0 0 0-1.5h-.5a2.25 2.25 0 0 1-.25-4.486v-.764a.75.75 0 0 1 .75-.75"></path></svg>
+                    אנליטיקות</a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#policies">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 1a2 2 0 0 0-2 2v3.75c0 .414.336.75.75.75h2v4.36a1.875 1.875 0 0 0 3.75-.001v-.605c0-.416.338-.754.754-.754h5.246v-7.5a2 2 0 0 0-2-2zm13.25 10.75h-7.5v.11a3.125 3.125 0 0 1-3.002 3.122q-.131.018-.248.018h8.55a2.2 2.2 0 0 0 2.2-2.2zm-13.252-9.25a.5.5 0 0 0-.498.5v3h1v-3a.5.5 0 0 0-.5-.5zm4.002 1.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5zm-.75 3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75"></path></svg>
+                    מדיניות</a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#redirects">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 3.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v.5h2v-.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1.273l.417.196a2.75 2.75 0 0 1 1.583 2.49v3.791a2.75 2.75 0 0 1-2.75 2.75h-8.5a2.75 2.75 0 0 1-2.75-2.75v-3.791a2.75 2.75 0 0 1 1.583-2.49l.417-.196zm.75 4a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5z"></path></svg>
+                    
+                    הפניות 301
+
+                
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#googleMerchant">
+                    <img class="ms-2" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M0.435974%202.18404C0%203.03969%200%204.15979%200%206.4V9.6C0%2011.8402%200%2012.9603%200.435974%2013.816C0.819467%2014.5686%201.43139%2015.1805%202.18404%2015.564C3.03969%2016%204.15979%2016%206.4%2016H9.6C11.8402%2016%2012.9603%2016%2013.816%2015.564C14.5686%2015.1805%2015.1805%2014.5686%2015.564%2013.816C16%2012.9603%2016%2011.8402%2016%209.6V6.4C16%204.15979%2016%203.03969%2015.564%202.18404C15.1805%201.43139%2014.5686%200.819467%2013.816%200.435974C12.9603%200%2011.8402%200%209.6%200H6.4C4.15979%200%203.03969%200%202.18404%200.435974C1.43139%200.819467%200.819467%201.43139%200.435974%202.18404ZM8.11224%204.69C8.93877%204.69%209.67347%204.97%2010.2602%205.51L11.8673%203.935C10.8929%203.045%209.62755%202.5%208.11224%202.5C5.91836%202.5%204.02551%203.735%203.10204%205.535C2.71939%206.275%202.5%207.11%202.5%208C2.5%208.89%202.71939%209.725%203.10204%2010.465V10.47C4.02551%2012.265%205.91836%2013.5%208.11224%2013.5C9.62755%2013.5%2010.898%2013.01%2011.8265%2012.17C12.8878%2011.21%2013.5%209.8%2013.5%208.125C13.5%207.735%2013.4643%207.36%2013.398%207H8.11224V9.13H11.1327C11%209.815%2010.602%2010.395%2010.0051%2010.785C9.5051%2011.115%208.86734%2011.315%208.11224%2011.315C6.65306%2011.315%205.41326%2010.35%204.96938%209.05H4.96272L4.96939%209.045C4.85714%208.715%204.79082%208.365%204.79082%208C4.79082%207.635%204.85714%207.28499%204.96939%206.95499C5.41327%205.65499%206.65306%204.69%208.11224%204.69Z%22%2F%3E%3C%2Fsvg%3E" alt="" aria-hidden="true">
+                    Google Merchant
+                  </a>
+                  
+            </div>
+        </aside>
+
+        <!-- Content Section -->
+        <section class="col-md-9">
+            <div class="tab-content">
+                
+                <!-- General Settings Tab -->
+                <div class="tab-pane fade show active" id="general">
+                    <h3>הגדרות כלליות</h3>
+                    <div class="box border">
+                        <form id="generalSettingsForm">
+                            <div class="mb-3">
+                                <label for="storeName" class="form-label">שם החנות</label>
+                                <input type="text" id="storeName" name="storeName" class="form-control" value="<%= data.settings?.storeName || '' %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="storeEmail" class="form-label">אימייל החנות</label>
+                                <input type="email" id="storeEmail" name="storeEmail" class="form-control" value="<%= data.settings?.storeEmail || '' %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="storeEmail" class="form-label">טלפון</label>
+                                <input type="email" id="storeEmail" name="storeEmail" class="form-control" value="<%= data.settings?.storePhone || '' %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="storeEmail" class="form-label">לוגו אתר</label>
+                                <input type="email" id="storeLogo" value="<%= data.settings?.storeLogo || '' %>" name="storeLogo" class="form-control">
+                            </div>
+                        
+                            <div class="mb-3">
+                                <label class="form-label">אימיילים להתראות מנהל (מופרדים בפסיק)</label>
+                                <textarea class="form-control" name="adminEmails" rows="2"><%= (data.settings?.adminEmails || []).join(', ') %></textarea>
+                                <small class="text-muted">לדוגמה: admin@example.com, osher@inokim.com</small>
+                              </div>
+                            <button type="submit" class="btn btn-primary">שמור שינויים</button>
+                        </form>
+                    </div>
+       
+                </div>
+
+                <!-- Payment Settings -->
+                <div class="tab-pane fade" id="payments">
+                    <h3>הגדרות תשלומים</h3>
+                    <div class="box border">
+                        <form>
+                            <div class="mb-3">
+                                <label for="paymentMethod" class="form-label">שיטת תשלום</label>
+                                <select id="paymentMethod" name="paymentMethod" class="form-select">
+                                    <option value="credit">כרטיס אשראי</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="bank">העברה בנקאית</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">שמור שינויים</button>
+                        </form>
+                    </div>
+            
+                </div>
+
+                <!-- Shipping Settings -->
+                <div class="tab-pane fade" id="shipping">
+                    <h3>הגדרות משלוחים</h3>
+                    <div class="box border">
+                        <form>
+                            <div class="mb-3">
+                                <label for="shippingCost" class="form-label">עלות משלוח</label>
+                                <input type="number" id="shippingCost" name="shippingCost" class="form-control" value="250"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="shippingCost" class="form-label">תנאים</label>
+                                <input type="number" id="shippingCost" name="shippingCost" class="form-control"> 
+                            </div>
+                            <button type="submit" class="btn btn-primary">שמור שינויים</button>
+                        </form>
+                    </div>
+            
+                    
+                </div>
+
+                <!-- Tax Settings -->
+                <div class="tab-pane fade" id="tax">
+                    <h3>הגדרות מס</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="taxRate" class="form-label">שיעור מס (%)</label>
+                            <input type="number" id="taxRate" name="taxRate" class="form-control" value="<%= +data.settings?.taxRate || 18 %>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">שמור שינויים</button>
+                    </form>
+                </div>
+
+                <!-- Analytics -->
+                <div class="tab-pane fade" id="analytics">
+                    <h3>הגדרות אנליטיקות</h3>
+                    <div class="box border">
+                        <form>
+                            <div class="mb-3">
+                                <label for="googleTagManagerId" class="form-label">Google Tag Manager</label>
+                                <input type="text" id="googleTagManagerId" name="googleTagManagerId" class="form-control" value="<%= data.settings?.analytics?.googleTagManagerId || '' %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="googleTagManagerId" class="form-label">Meta Pixel</label>
+                                <input type="text" id="googleTagManagerId" name="googleTagManagerId" class="form-control" value="<%= data.settings?.analytics?.facebookPixelId || '' %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="googleTagManagerId" class="form-label">TikTok Pixel</label>
+                                <input type="text" id="googleTagManagerId" name="googleTagManagerId" class="form-control" value="<%= data.settings?.analytics?.googleTagManagerId || '' %>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">שמור שינויים</button>
+                        </form>
+                    </div>
+                  
+                    
+                </div>
+
+                <div class="tab-pane fade" id="googleMerchant">
+                    <h3>Google Merchant - ניהול</h3>
+                    <div class="box border p-3">
+                      <p>כאן תוכל לשלוח את כל המוצרים הפעילים ל-Google Merchant באמצעות לחיצה על כפתור.</p>
+                  
+                      <button id="uploadToGoogleMerchant" class="btn btn-success">
+                        שלח מוצרים פעילים
+                      </button>
+                  
+                      <div id="merchantStatus" class="mt-3"></div>
+                  
+                      <div class="mt-4">
+                        <h5>העלאות אחרונות</h5>
+                        <table class="table table-bordered table-sm">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>מוצר</th>
+                              <th>קישור</th>
+                              <th>תאריך העלאה</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% if (data.merchantUploads && data.merchantUploads.length > 0) { %>
+                              <% data.merchantUploads.forEach((upload, i) => { %>
+                                <tr>
+                                  <td><%= i + 1 %></td>
+                                  <td><%= upload.title %></td>
+                                  <td><a href="<%= upload.link %>" target="_blank">צפה</a></td>
+                                  <td><%= upload.uploadedAt %></td>
+                                </tr>
+                              <% }) %>
+                            <% } else { %>
+                              <tr>
+                                <td colspan="4" class="text-muted text-center">לא בוצעו העלאות לאחרונה</td>
+                              </tr>
+                            <% } %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                <!-- Policies -->
+                <div class="tab-pane fade" id="policies">
+                    <h3>מדיניות חנות</h3>
+                    <div class="box border">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">תנאי שירות</label>
+                                <textarea class="form-control" rows="5" readonly><%= data.terms?.description || 'לא הוגדר' %></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">מדיניות פרטיות</label>
+                                <textarea class="form-control" rows="5" readonly><%= data.privacy?.description || 'לא הוגדר' %></textarea>
+                            </div>
+                        </form>
+                    </div>
+             
+                    
+                </div>
+                
+        
+                <!-- Redirects Settings Tab -->
+                <div class="tab-pane fade" id="redirects">
+                    <h3 class="mb-4">הפניות 301</h3>
+                    
+                    <!-- Add New Redirect Form -->
+                    <div class="box border shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">הוסף הפניה חדשה</h5>
+                            <form id="redirectForm">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="fromUrl" class="form-label">כתובת ישנה</label>
+                                        <input type="text" id="fromUrl" name="from" class="form-control" placeholder="/old-url" required>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="toUrl" class="form-label">כתובת חדשה</label>
+                                        <input type="text" id="toUrl" name="to" class="form-control" placeholder="/new-url" required>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-end">
+                                        <button type="submit" class="btn btn-primary w-100">הוסף</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                
+                    <!-- Redirects Table -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">רשימת הפניות</h5>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>כתובת ישנה</th>
+                                            <th>כתובת חדשה</th>
+                                            <th>קבועה (301)</th>
+                                            <th>פעולות</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="redirectsTable">
+                                        <% if (data.redirects.length > 0) { %>
+                                            <% data.redirects.forEach((redirect, index) => { %>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <td><%= redirect.from %></td>
+                                                    <td><%= redirect.to %></td>
+                                                    <td><%= redirect.isPermanent ? '✔' : '✖' %></td>
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm delete-redirect" data-id="<%= redirect._id %>">מחק</button>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="5" class="text-center text-muted">אין הפניות 301</td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>

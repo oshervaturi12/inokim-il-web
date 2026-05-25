@@ -1,0 +1,117 @@
+// alerts
+
+#alerts {
+    position: fixed;
+    left: 1rem;
+    top: 3em;
+    font-size: 1.1em;
+    display: flex;
+    flex-flow: column-reverse;
+    z-index: 1052;
+  
+    #alerts-info {
+      display: none;
+      font-size: 0.8em;
+      margin-top: 1em;
+      padding: 0.5em;
+      border: none;
+      background: rgba(179, 2, 2, 0.8);
+      color: #000;
+    }
+  
+    .alert {
+      background: #f9f9f9;
+      color: #000;
+      position: relative;
+      margin-top: 1.5em;
+      min-width: 300px;
+      max-width: 425px;
+      box-shadow: 0 0 0.6em rgb(0 0 0 / 10%);
+      left: -50px;
+      opacity: 0;
+      padding: 0;
+      transition: left 400ms, opacity 400ms, padding 300ms 100ms;
+      margin-bottom: 0;
+      border: none;
+  
+      &.timer.open {
+        padding: 0.5em 0.5em 0.5em;
+      }
+  
+      &:nth-last-child(1) {
+        margin-top: 0;
+      }
+  
+      &.open {
+        padding: 0.5em;
+        left: 0;
+        opacity: 1;
+        transition: padding 200ms, left 350ms 200ms, opacity 350ms 200ms;
+      }
+  
+      &.bad {
+        border-right: 0.3em solid #b30202;
+  
+        .close-al {
+          background: #b6171f;
+          stroke: #fff;
+          z-index: 9999999;
+        }
+      }
+  
+      &.success {
+        border-right: 0.3em solid #09e93d;
+  
+        .close-al {
+          background: #09e93d;
+          stroke: #fff;
+          z-index: 9999999;
+        }
+      }
+  
+      .close-al {
+        width: 1em;
+        height: 1em;
+        stroke-width: 4;
+        stroke-linecap: round;
+        position: absolute;
+        background: #b30202;
+        stroke: #ffffff;
+        top: -5px;
+        left: -5px;
+        padding: 0.13em;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 9999999;
+      }
+    }
+  }
+  
+  .alert-icon {
+    background: #73707021;
+    padding: 0.4em;
+    border-radius: 0.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    svg {
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
+  
+  .alert-body {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  
+    .header-alert {
+      font-weight: 400;
+    }
+  
+    .alert-body-msg {
+      font-size: 0.8em;
+    }
+  }
+  

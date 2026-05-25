@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>אישור הזמנה</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .logo {
+      margin-bottom: 20px;
+      text-align: start;
+      direction: rtl;
+    }
+    .logo img {
+      width: 150px;
+      text-align: start;
+      direction: rtl;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: start;
+      direction: rtl;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      text-align: start;
+      direction: rtl;
+      font-size: 40px;
+      text-align: center;
+    }
+    .product-image img {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .steps {
+      text-align: right;
+      margin: 30px 0;
+    }
+    .steps li {
+      margin-bottom: 10px;
+    }
+    .store-links img {
+      width: 130px;
+      margin: 10px 5px;
+    }
+    .order-details {
+      text-align: right;
+      margin: 30px 0;
+      line-height: 1.8;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #aaa;
+    }
+    a {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+
+ <% const formatter = new Intl.NumberFormat('he-IL', {
+  style: 'currency',
+  currency: 'ILS',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+%>
+
+
+
+<div style="word-spacing: normal;
+    background-color: rgb(244, 244, 244);">
+  <div class="email-container">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://d3kxrpm9y5cv3a.cloudfront.net/optimized/logo-email.png" alt="">
+    </div>
+
+    <!-- Header -->
+    <h1>תודה</h1>
+    <p class="subtitle">ההזמנה אושרה</p>
+
+
+    <!-- Product Image -->
+    <div class="product-image">
+      <img src="https://d3kxrpm9y5cv3a.cloudfront.net/optimized/all_Scooters.png" alt="Inokim">
+    </div>
+
+    <!-- Steps -->
+    <div class="steps">
+      <h3 style="    font-size: 24px;
+      line-height: 26px;
+      color: rgb(92, 94, 98);">השלבים הבאים</h3>
+      <ul style="direction: rtl; font-size: 17px;">
+        <% if(data.paymentType === "paymentPhone") { %>
+          <li>בדקות הקרובות נציג אינוקים ייצור אתכם קשר לטובת ביצוע החיוב</li>
+       <% } else { %>
+        <li>בימים הקרובים תקבלו מספר סידורי של האינוקים החדש שלכם ותוכלו להפעיל את האחריות דרך חשבון האינוקים האישי שלכם</li>
+      <% } %>
+      </ul>
+
+    </div>
+
+    <!-- Order Details -->
+    <div class="order-details">
+      <h3 style="    font-size: 24px;
+      line-height: 26px;
+      color: rgb(92, 94, 98);">ההזמנה שלכם</h3>
+
+      <% if(data && data.items && data.items.length > 0 ) { %>
+        <% data.items.forEach(el =>{ %>
+          <p style="direction: rtl; font-size: 17px;"> <strong>דגם: </strong> <%= el.prdName  %>, <%= el.color.name  %>  </p>
+          <p style="direction: rtl; font-size: 17px;"> <strong>מחיר:</strong> <%= formatter.format(el.price)  %> </p>
+       <% })  %>
+
+     <% } %>
+
+
+
+      <h3>מספר ההזמנה</h3>
+      <p style="direction: rtl; font-size: 17px;"> <%= data._id  %> </p>
+
+      <h3>תשלום</h3>
+      <p style="direction: rtl; font-size: 17px;">
+        
+        <%= formatter.format(data.totalPrice)  %> 
+      
+      </p>
+
+      <h3>סוג החיוב</h3>
+
+      <p style="direction: rtl; font-size: 17px;">
+        
+        <%= data.paymentType === "paymentPhone" ? "תשלום טלפוני (הזמנה לא חויבה)": "תשלום בכרטיס אשראי"  %> 
+      
+      </p>
+
+      <p style="font-size: 17px;   color: rgb(92, 94, 98);">
+        למידע נוסף,
+        <a href="" style="color: rgb(92, 94, 98);"> בקרו בשאלות הנפוצות שלנו.</a>
+      </p>
+      <hr>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2025 אינוקים בע״מ.</p>
+      <p><a href="#">פרטיות ותנאים משפטיים</a></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

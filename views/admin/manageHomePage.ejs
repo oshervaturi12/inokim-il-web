@@ -1,0 +1,160 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<div class="container py-5">
+    <h1 class="mb-4">ניהול עמוד הבית</h1>
+  
+    <form action="/admin/homepage/update" method="POST" enctype="multipart/form-data">
+  
+      <!-- Announcement -->
+      <fieldset class="mb-5 border rounded p-3">
+        <legend class="fw-bold">בר עליון</legend>
+        <div class="mb-3">
+          <label class="form-label">טקסט</label>
+          <input type="text" name="announcement.text" class="form-control" value="<%= data?.announcement?.text || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">כפתור טקסט</label>
+          <input type="text" name="announcement.buttonText" class="form-control" value="<%= data?.announcement?.buttonText || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">קישור כפתור</label>
+          <input type="text" name="announcement.buttonLink" class="form-control" value="<%= data?.announcement?.buttonLink || '' %>" />
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="announcement.isSale" <%= data?.announcement?.isSale ? 'checked' : '' %> />
+          <label class="form-check-label">מבצע?</label>
+        </div>
+      </fieldset>
+  
+      <!-- Hero Section -->
+      <fieldset class="mb-5 border rounded p-3">
+        <legend class="fw-bold">הירו</legend>
+        <div class="mb-3">
+          <label class="form-label">כותרת</label>
+          <input type="text" name="hero.title" class="form-control" value="<%= data?.hero?.title || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">תת כותרת</label>
+          <input type="text" name="hero.subtitle" class="form-control" value="<%= data?.hero?.subtitle || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">כפתור טקסט</label>
+          <input type="text" name="hero.buttonText" class="form-control" value="<%= data?.hero?.buttonText || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">קישור כפתור</label>
+          <input type="text" name="hero.buttonLink" class="form-control" value="<%= data?.hero?.buttonLink || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">תמונת רקע</label>
+          <input type="file" name="hero.backgroundImage" class="form-control" />
+        </div>
+        <div class="mb-2">
+          <%- optimizeImage(`${data.hero.backgroundImage}`, 'תמונת מוצר', 'img-thumbnail') %>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">תמונה למובייל</label>
+          <input type="file" name="hero.mobileImage" class="form-control" />
+        </div>
+        <div class="mb-2">
+          <%- optimizeImage(`${data.hero.mobileImage}`, 'תמונת מוצר', 'img-thumbnail') %>
+
+        </div>
+      </fieldset>
+  
+      <!-- Product Highlights -->
+      <fieldset class="mb-5 border rounded p-3">
+        <legend class="fw-bold">הנבחרת שלנו</legend>
+      
+        <div class="mb-3">
+          <label class="form-label">כותרת הנבחרת</label>
+          <input type="text" name="productHighlightsTitle" class="form-control" value="<%= data?.productHighlightsTitle || '' %>" />
+        </div>
+      
+        <div class="mb-4">
+          <label class="form-label">תמונת רקע (קובץ או קישור)</label>
+          <input type="text" name="productHighlightsImage" class="form-control" value="<%= data?.productHighlightsImage || '' %>" />
+        </div>
+      
+        <h5 class="fw-bold mt-4">מוצרים בנבחרת</h5>
+      
+        <% data?.productHighlights?.forEach((highlight, i) => { %>
+          <div class="border p-3 mb-3 rounded bg-light">
+            <div class="row g-2">
+              <div class="col-md-6">
+                <label class="form-label">שם</label>
+                <input type="text" name="productHighlights[<%= i %>].name" class="form-control" value="<%= highlight.name %>" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Slug מוצר</label>
+                <input type="text" name="productHighlights[<%= i %>].productSlug" class="form-control" value="<%= highlight.productSlug %>" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Slug סקירה</label>
+                <input type="text" name="productHighlights[<%= i %>].overviewSlug" class="form-control" value="<%= highlight.overviewSlug %>" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">טווח</label>
+                <input type="text" name="productHighlights[<%= i %>].range" class="form-control" value="<%= highlight.range %>" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">מהירות</label>
+                <input type="text" name="productHighlights[<%= i %>].speed" class="form-control" value="<%= highlight.speed %>" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">סדר הופעה</label>
+                <input type="number" name="productHighlights[<%= i %>].order" class="form-control" value="<%= highlight.order || 0 %>" />
+              </div>
+              <div class="col-12">
+                <label class="form-label">SVG אייקון</label>
+                <textarea name="productHighlights[<%= i %>].iconSvg" class="form-control" rows="3"><%= highlight.iconSvg %></textarea>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </fieldset>
+      
+  
+      <!-- Info Block -->
+      <fieldset class="mb-5 border rounded p-3">
+        <legend class="fw-bold">בלוק מידע</legend>
+        <div class="mb-3">
+          <label class="form-label">כותרת</label>
+          <input type="text" name="infoBlock.heading" class="form-control" value="<%= data?.infoBlock?.heading || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">פסקה</label>
+          <textarea name="infoBlock.paragraph" class="form-control"><%= data?.infoBlock?.paragraph || '' %></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">תמונה</label>
+          <input type="file" name="infoBlock.image" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">טקסט כפתור</label>
+          <input type="text" name="infoBlock.buttonText" class="form-control" value="<%= data?.infoBlock?.buttonText || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">קישור כפתור</label>
+          <input type="text" name="infoBlock.buttonLink" class="form-control" value="<%= data?.infoBlock?.buttonLink || '' %>" />
+        </div>
+      </fieldset>
+  
+      <!-- Newsletter -->
+      <fieldset class="mb-5 border rounded p-3">
+        <legend class="fw-bold">ניוזלטר</legend>
+        <div class="mb-3">
+          <label class="form-label">כותרת</label>
+          <input type="text" name="newsletterTitle" class="form-control" value="<%= data?.newsletterTitle || '' %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">תת כותרת</label>
+          <input type="text" name="newsletterSubtitle" class="form-control" value="<%= data?.newsletterSubtitle || '' %>" />
+        </div>
+      </fieldset>
+  
+      <button class="btn btn-primary">שמור</button>
+    </form>
+  </div>
+  
+<%- include("./partials/admin-footer.ejs") %>

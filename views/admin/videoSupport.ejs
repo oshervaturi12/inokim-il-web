@@ -1,0 +1,71 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main class="py-3 px-3">
+  <form action="/admin/support/<%= videoSupport._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-12 col-md-7">
+        <div class="box border mb-3">
+          <div class="mb-3">
+            <label for="modelName" class="form-label">שם הדגם</label>
+            <input type="text" class="form-control" id="modelName" name="modelName" value="<%= videoSupport.modelName %>" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="slug" class="form-label">כתובת (slug)</label>
+            <input type="text" class="form-control" id="slug" name="slug" value="<%= videoSupport.slug || '' %>" />
+          </div>
+
+          <div class="mb-3">
+            <label for="modelImg" class="form-label">תמונה של הדגם</label><br />
+            <% if (videoSupport.modelImg) { %>
+              <img src="<%= videoSupport.modelImg %>" alt="תמונה" class="img-thumbnail mb-3" width="150" />
+            <% } %>
+            <input type="file" class="form-control" name="modelImg" />
+          </div>
+
+          <div class="mb-3">
+            <label for="modelLogoSvg" class="form-label">לוגו SVG</label>
+            <textarea class="form-control" name="modelLogoSvg" rows="5"><%= videoSupport.modelLogoSvg || '' %></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="">
+          <h3 class="mb-3">סרטונים</h3>
+          <div id="video-list">
+            <% videoSupport.videos.forEach((video, i) => { %>
+              <div class="border box  p-3 mb-3 video-block">
+                <div class="mb-2">
+                  <label>כותרת</label>
+                  <input type="text" class="form-control" name="videos[<%= i %>][title]" value="<%= video.title %>" required />
+                </div>
+                <div class="mb-2">
+                  <label>קישור וידאו (YouTube וכו')</label>
+                  <input type="text" class="form-control" name="videos[<%= i %>][url]" value="<%= video.url %>" required />
+                </div>
+                <div class="mb-2">
+                  <label>תיאור</label>
+                  <textarea class="form-control" name="videos[<%= i %>][description]"><%= video.description || '' %></textarea>
+                </div>
+                <div class="mb-2">
+                  <label>Thumbnail (קישור)</label>
+                  <input type="text" class="form-control" name="videos[<%= i %>][thumbnail]" value="<%= video.thumbnail || '' %>" />
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <button type="button" class="btn btn-light mt-2 mb-3" onclick="addVideo()">+ הוסף סרטון</button>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">שמור שינויים</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אין חיבור לאינטרנט - INOKIM</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+    }
+
+    .offline-wrapper {
+      max-width: 500px;
+      padding: 2rem;
+      border-radius: 16px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-refresh {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-refresh:hover {
+      background-color: #444;
+    }
+
+    .logo {
+      max-width: 150px;
+      margin-bottom: 1.5rem;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="offline-wrapper">
+    <img src="/optimize/logo.svg" alt="INOKIM לוגו" class="logo" />
+    <div class="emoji">⚡</div>
+    <h1>אופס! נראה שאין חיבור לאינטרנט</h1>
+    <p>אנחנו לא מצליחים לטעון את הדף. ברגע שתחזור לרשת, תוכל להמשיך לגלוש באתר.</p>
+    <button onclick="location.reload()" class="btn-refresh">נסה שוב</button>
+  </div>
+
+</body>
+</html>

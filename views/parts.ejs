@@ -1,0 +1,65 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+
+<main id="partsCategory">
+
+
+    <div class="image-container px-5 py-3 position-relative text-center mt-5">
+        
+      <!-- <picture>
+        <source media="(max-width: 430px)" srcset="/optimized/OXCyborg-2200X1080.jpg" type="image/webp">
+        <source media="(max-width: 1024px)" srcset="/optimized/OXCyborg-2200X1080.jpg" type="image/webp">
+        <source srcset="/optimized/OXCyborg-2200X1080.jpg" type="image/webp">
+        <source media="(max-width: 430px)" srcset="/optimized/OXCyborg-2200X1080.jpg">
+        <source media="/optimized/OXCyborg-2200X1080.jpg">
+        <img src="/optimized/OXCyborg-2200X1080.jpg" alt="image">
+      </picture> -->
+  
+      <!-- Text Overlay -->
+      <div class="overlay text-black">
+        <h1><%= title  %></h1>
+        <p>כל מה שצריך לאינוקים שלך</p>
+        <!-- <input type="text" name="searchPrd" id="searchPrd" placeholder="חפש מוצר" class="searchPrd form-control"> -->
+      </div>
+
+    </div>
+  
+    <section id="catAllPrd" class="mb-5 actions">
+
+
+
+        <div class="container">
+          <div class="input-wrapper mb-3">
+            <select id="catType" class="days-filter btn btn-light ms-2">
+              <option value="67bd6998c1d73e0a72d9ff90" <%= cat === 'accessories' ? 'selected' : '' %>>אביזרים</option>
+              <option value="67bd69a3c1d73e0a72d9ff92" <%= cat === 'spare-parts' ? 'selected' : '' %>>חלקי חילוף</option>
+            </select>
+          </div>
+
+            <div class="row" id="catAllPrdContainer" data-table-manager="parts">
+      
+            </div>
+            <div id="paginationContainer" class="pagination-wrapper text-center">
+              <button id="prevButton" class="pagination-btn" disabled>
+                <svg viewBox="0 0 20 20" focusable="false" aria-hidden="true" width="16" height="16" fill="currentColor">
+                  <path fill-rule="evenodd" d="M7.72 14.53a.75.75 0 0 1 0-1.06l3.47-3.47-3.47-3.47a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.06 0Z"></path>
+                </svg>
+              </button>
+            
+              <span id="paginationInfo"></span> <!-- You can use this to show pagination info if needed -->
+            
+              <button id="nextButton" class="pagination-btn" disabled>
+                <svg viewBox="0 0 20 20" focusable="false" aria-hidden="true" width="16" height="16" fill="currentColor">
+                  <path fill-rule="evenodd" d="M11.764 5.204a.75.75 0 0 1 .032 1.06l-3.516 3.736 3.516 3.736a.75.75 0 1 1-1.092 1.028l-4-4.25a.75.75 0 0 1 0-1.028l4-4.25a.75.75 0 0 1 1.06-.032Z"></path>
+                </svg>
+              </button>
+            </div>
+        </div>
+ 
+     
+        
+    </section>
+</main>
+
+<%- include("./partials/footer.ejs") %>

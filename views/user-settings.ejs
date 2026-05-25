@@ -1,0 +1,166 @@
+
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+<main id="top-app">
+
+    <section class="user-page">
+    
+        <header class="header">
+            <div class="container">
+                <h1 class="display-6">הגדרות משתמש</h1>
+            </div>
+        </header>
+    
+        <div class="container py-3 py-md-4">
+    
+            <div class="row">
+    
+                <aside class="col-12 col-md-3">
+    
+                    <%- include("./partials/userMenu.ejs") %>
+    
+                </aside>
+
+                <main class="col-12 col-md-9">
+    
+                    <form action="#" method="post" id="userSelfInfo" class="mb-4">
+    
+                        <h2 class="mb-3 text-muted">פרטים אישיים</h2>
+    
+                        <div class="row g-2">
+    
+                            <div class="col-6 mb-3">
+                                <label for="firstNameLb" class="form-label">שם פרטי</label>
+                                <input type="text" id="firstNameLb" name="first_name" class="form-control" value="" required="">
+                            </div>
+    
+                            <div class="col-6 mb-3">
+                                <label for="lastNameLb" class="form-label">שם משפחה</label>
+                                <input type="text" id="lastNameLb" name="last_name" class="form-control" value="" required="">
+                            </div>
+    
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="phoneLb" class="form-label">נייד\טלפון</label>
+                            <input id="phoneLb" type="text" class="form-control" name="phone" value="" pattern="^([\d\-+() ]+)$" title="">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="emailLb" class="form-label">אימייל</label>
+                            <input type="email" id="emailLb" class="form-control" value="" readonly="">
+                            <small class="text-muted">אי אפשר לשנות אימייל, הוא יחודי והוא מחובר למשתמש.</small>
+                        </div>
+    
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">עדכן פרטי משתמש</button>
+                        </div>
+    
+                    </form>
+    
+                    <form action="#" method="post" id="userSelfShippingInfo" class="mb-4">
+    
+                        <h2 class="mb-3 text-muted">פרטי משלוח</h2>
+                        <p>אתם יכולים לשמור את פרטי המשלוח שלכם לרכישה מהירה יותר!</p>
+    
+                        <div class="row g-2">
+    
+                            <div class="col mb-3">
+                                <label class="form-label" for="lbCity">עיר</label>
+                                <input type="text" name="city" id="lbCity" class="form-control" value="df" required="">
+                            </div>
+    
+                            <div class="col mb-3">
+                                <label class="form-label" for="lbAddress">כתובת\רחוב</label>
+                                <input type="text" name="address" id="lbAddress" class="form-control" value="ddf 1" required="">
+                            </div>
+    
+                            <div class="col mb-3">
+                                <label class="form-label" for="lbAddressNum">מספר בניין\רחוב</label>
+                                <input type="text" name="address_num" id="lbAddressNum" class="form-control" value="3" required="">
+                            </div>
+    
+                        </div>
+    
+                        <div class="row g-2">
+    
+                            <div class="col mb-3">
+                                <label class="form-label" for="lbFHome">קומה</label>
+                                <input type="number" name="home_floor" id="lbFHome" class="form-control" value="" required="">
+                            </div>
+    
+                            <div class="col mb-3">
+                                <label class="form-label" for="lbNHome">דירה</label>
+                                <input type="number" name="home_num" id="lbNHome" class="form-control" value="32">
+                            </div>
+                            
+                            <div class="col mb-3">
+                                <label class="form-label" id="lbHomeEntrance">כניסה</label>
+                                <input type="text" name="home_entrance" id="lbHomeEntrance" class="form-control" value="">
+                            </div>
+    
+                        </div>
+    
+    
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">עדכן פרטי משלוח</button>
+                        </div>
+    
+                    </form>
+    
+                    <h2 class="text-muted mb-4">התחברות צד שלישי</h2>
+    
+                    <div class="row">
+    
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card stat-card">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-icon"><path d="M113.47 309.4l-17.82 66.54-65.14 1.38A254.85 254.85 0 010 256c0-42.45 10.32-82.48 28.62-117.73h.02l57.99 10.63 25.4 57.64a152.17 152.17 0 00-8.21 49.46c0 18.8 3.4 36.8 9.65 53.4z" fill="#fbbb00"></path><path d="M507.53 208.18A256.28 256.28 0 01512 256c0 18.33-1.93 36.2-5.6 53.45a255.95 255.95 0 01-90.13 146.19l-.02-.02-73.04-3.72-10.34-64.54a152.57 152.57 0 0065.65-77.9h-136.9V208.17h245.9z" fill="#518ef8"></path><path d="M416.25 455.62l.02.02A254.92 254.92 0 01256 512c-97.5 0-182.25-54.5-225.5-134.68l82.97-67.91c21.62 57.7 77.28 98.77 142.53 98.77 28.05 0 54.32-7.58 76.87-20.82l83.38 68.26z" fill="#28b446"></path><path d="M419.4 58.94l-82.93 67.9A151.32 151.32 0 00256 103.81c-66.73 0-123.43 42.96-143.97 102.72l-83.4-68.27C71.22 56.12 157.05 0 256 0a254.92 254.92 0 01163.4 58.94z" fill="#f14336"></path></svg>
+                                <span class="big mb-1"></span>
+                                                                <h3 class="text-muted">
+                                                                    <% if(user.googleId) { %>
+                                                                        מחובר עם גוגל 
+                                                                   <% } else { %>
+                                                                    לא מחובר
+                                                                  <% }  %>
+                                                                    
+                                                              
+                                                                </h3>
+                            </div>
+                        </div>
+    
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card stat-card">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg-icon"><path d="M21 0H3a3 3 0 00-3 3v18a3 3 0 003 3h18a3 3 0 003-3V3a3 3 0 00-3-3z" fill="#3b5999"></path><path d="M16.5 12V9c0-.83.67-.75 1.5-.75h1.5V4.5h-3A4.5 4.5 0 0012 9v3H9v3.75h3V24h4.5v-8.25h2.25l1.5-3.75z" fill="#fff"></path></svg>
+                                <span class="big mb-1"></span>
+                                                                <h3 class="text-muted">לא מחובר</h3>
+                                                        </div>
+                        </div>
+    
+                    </div>
+    
+                    <h2 class="text-muted mb-4">אבטחה ופרטיות</h2>
+    
+                    <div class="row">
+    
+                        <div class="col-12 mb-3">
+                            <h5 class="text-muted">שינוי סיסמא</h5>
+                            <p></p>
+                            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#userPasswordModal">שנה סיסמא</button>
+                        </div>
+    
+    
+                    </div>
+    
+                </main>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+
+    
+    
+    </main>
+
+
+    <%- include("./partials/footer.ejs") %>

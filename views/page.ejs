@@ -1,0 +1,59 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+<main id="top-app" class="container py-5">
+  <div class="container" style="max-width: 800px;">
+    <h1 class="display-4 mb-4 text-center fw-bold"><%= title %></h1>
+    
+    <%- include('./partials/breadcrumbs', { breadcrumbs }) %>
+      
+
+    <% if (contentBlocks && contentBlocks.length) { %>
+      <% contentBlocks.forEach(block => { %>
+        
+        <!-- Text Block -->
+<% if (block.blockType === 'text') { %>
+  <section class="mb-4">
+    <% if (block.content && block.content.heading) { %>
+      <h2 class="h4 fw-semibold border-bottom pb-2 mb-3">
+        <%= block.content.heading %>
+      </h2>
+    <% } %>
+    
+    <% if (block.content && block.content.text) { %>
+      <p><%= block.content.text %></p>
+    <% } %>
+  </section>
+        <!-- List Block -->
+        <% } else if (block.blockType === 'list') { %>
+          <section class="mb-5">
+            <% if (block.content && block.content.title) { %>
+              <h3 class="h5 fw-bold"><%= block.content.title %></h3>
+            <% } %>
+
+            <% if (block.content && block.content.items && block.content.items.length) { %>
+              <ul class="list-group">
+                <% block.content.items.forEach(item => { %>
+                  <li><%= item %></li>
+                <% }) %>
+              </ul>
+            <% } else { %>
+              <p class="text-muted">אין פריטים זמינים ברשימה זו.</p>
+            <% } %>
+          </section>
+
+        <!-- Image Block -->
+        <% } else if (block.blockType === 'image') { %>
+          <section class="my-4 text-center">
+            <img src="<%= block.imageUrl %>" alt="<%= block.title || 'Image' %>" class="img-fluid rounded shadow-sm" />
+          </section>
+        <% } %>
+
+      <% }) %>
+    <% } else { %>
+      <p class="text-muted text-center">אין תוכן זמין לעמוד זה.</p>
+    <% } %>
+  </div>
+</main>
+
+<%- include("./partials/footer.ejs") %>

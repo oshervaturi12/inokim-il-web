@@ -1,0 +1,55 @@
+<div class="modal fade" id="videoUpsellProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="videoUpsellProductLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-body p-0 modal-video-body">
+
+        <div class="d-flex flex-column-reverse flex-md-row flex-md-wrap h-100">
+
+
+          <!-- צפייה בסייבורג -->
+          <div class="video-info p-3">
+
+            <div class="container">
+              <button type="button" class="btn-close me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+
+              <h3 class="mb-3">הכירו את INOKIM CYBORG</h3>
+              <%- svg %>
+
+              <p class="text-muted" style="font-weight: 400;">
+                השדרוג החכם והמתקדם ביותר לדגם ה-OX – עכשיו עם מסך חכם, דיבורית, ניווט באמצעות Waze ועוד.
+              </p>
+              
+              <ul class="list-unstyled p-3 text-end">
+                <li class="mb-2"> <strong>תמיכה ב-Apple CarPlay + Android</strong> לחוויית רכיבה מחוברת</li>
+                <li class="mb-2"> <strong>דיבורית מובנית</strong> לתקשורת בטוחה ברכיבה</li>
+                <li class="mb-2"> <strong>ניווט מתקדם עם Waze</strong> ישירות מהקורקינט</li>
+                <li class="mb-2"> <strong>ניטור ביצועים בזמן אמת</strong>: מהירות, טווח, סוללה</li>
+                <li class="mb-2"> <strong>רמקול חזק מובנה</strong> למוזיקה והתראות</li>
+              </ul>
+              
+              <p class="fw-bold mt-3">
+                הצטרפו למהפכת הרכיבה החכמה – CYBORG משנה את כללי המשחק 
+              </p>
+            </div>
+       
+
+            
+          </div>
+
+          <div class="video-container">
+            <video class="video-player" autoplay muted loop playsinline>
+              <source src="<%= `${video}` %>" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

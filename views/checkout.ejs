@@ -1,0 +1,497 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+    <main id="top-app">
+        <div id="cart-page" class="pt-4 pt-md-5 pb-3">
+
+            <div class="container">
+
+                    <% if (
+                            typeof user !== "undefined" &&
+                            user &&
+                            (user.role === "superAdmin" || user.role === "salesManager")
+                        ) {  %>
+
+                            <h1>היי, נלי</h1>
+                            <p>פה תוכלי לערוך ולשנות את פרטי ההזמנה לפני שליחת התשלום</p>
+
+                      <%  }%>
+        
+                <div class="row g-md-5 align-items-start">
+        
+                    <form action="#" method="post" class="col-12 col-md-8" id="checkoutForm">
+
+                        <% if(!user) { %>
+                            <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
+                                <strong>זיהינו שאתם לא מחוברים למערכת</strong>
+                                <br>
+                                הרשמה לאתר מאפשרת מעקב יעיל אחר הזמנות, צפייה ברכישות קודמות, גישה מהירה למוצרים שאהבתם ועוד.
+                                <a href="/login" class="btn btn-light mt-2">התחברו</a>
+        
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                       <% } %>
+        
+                        <h2 class="nice-title mb-3">פרטי איש קשר</h2>
+        
+                        <div class="row g-2">
+        
+                            <div class="col-12 col-sm mb-2">
+                                <label class="form-label must" for="lbFirstName">שם פרטי</label>
+                                <input type="text" name="first_name" id="lbFirstName" class="form-control" value="" required="">
+                            </div>
+        
+                            <div class="col-12 col-sm mb-3">
+                                <label class="form-label must" for="lbLastName">שם משפחה</label>
+                                <input type="text" name="last_name" id="lbLastName" class="form-control" value="" required="">
+                            </div>
+        
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label must" for="lbEmail">אימייל</label>
+                            <input type="email" name="email" id="lbEmail" class="form-control" value="" required="">
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label must" for="lbPhone">טלפון</label>
+                            <input type="text" name="phone" id="lbPhone" class="form-control" value="" required="">
+                        </div>
+
+                      
+
+                 
+
+                        <% if(user && user.role !== "dealer" || !user) { %>
+
+                    
+                            <h2 class="mt-4 nice-title mb-3">בחר שיטת אספקה</h2>
+                                <% if(!noVAT) { %>
+                            <div class="form-check item-payment mb-3">
+                                <input class="form-check-input" type="radio" name="shipping_method" id="pickupSelf" value="self_pickup" checked>
+                                <label class="form-check-label" for="pickupSelf">
+                                    איסוף עצמי <small>(חינם!)</small>
+                                </label>
+                            </div>
+    
+                            <% if(shippingPrices &&  shippingPrices.length > 0 ) { %>
+                                <% shippingPrices.forEach(el =>{ %>
+                                    <div class="form-check item-payment mb-2">
+                                        <input class="form-check-input" type="radio" name="shipping_method" id="deliveryHome"
+                                         value="home_delivery"
+                                         data-shipping-cost="<%= hasCoupon? 0 : el.fixedPrice %>"
+                                         >
+
+                                         <% if(hasCoupon) { %>
+                                            <label class="form-check-label" for="deliveryHome">
+                                            <%= el.name %> <small>חינם!</small>
+                                         </label>
+                                        <% } else { %>
+                                        <label class="form-check-label" for="deliveryHome">
+                                            <%= el.name %> <small>(<%= formatter.format(el.fixedPrice) %>)</small>
+                                        </label>
+                                       <% } %>
+                                      
+                                    </div>
+                               <% }) %>
+    
+                          
+                           <% }  %>
+                               <% } else { %>
+
+                            <div class="form-check item-payment mb-3">
+                                <input class="form-check-input" type="radio" name="shipping_method" id="pickupSelf" value="self_pickup" checked>
+                                <label class="form-check-label" for="pickupSelf">
+                                    איסוף עצמי <small>(אילת בלבד)</small>
+                                </label>
+                            </div>
+
+                            <div class="form-check item-payment mb-3">
+                                <input 
+                                    class="form-check-input" 
+                                    type="radio" 
+                                    name="shipping_method" 
+                                    id="deliveryHome" 
+                                    value="home_delivery"
+                                    data-shipping-cost="100"
+                                >
+                                <label class="form-check-label" for="deliveryHome">
+                                    משלוח עד החדר <small>(100 ש״ח)</small>
+                                </label>
+                            </div>
+
+             
+                                 
+                              <% } %>
+
+                                 <% } %>
+    
+            
+                                 <!-- Shipping Address (Hidden by Default) -->
+                                    <div id="shippingAddressSection" class="d-none">
+
+                                            <% if(!noVAT) { %>
+
+                                        <h2 class="mt-4 nice-title mb-3">כתובת משלוח</h2>
+    
+                                        <div class="row g-2">
+                                            <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="lbCity">עיר</label>
+                                                <input type="text" name="city" id="lbCity" class="form-control" value="">
+                                            </div>
+                                            <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="lbAddress">כתובת\רחוב</label>
+                                                <input type="text" name="address" id="lbAddress" class="form-control" value="">
+                                            </div>
+                                            <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="lbAddressNum">מספר בניין\רחוב</label>
+                                                <input type="text" name="address_num" id="lbAddressNum" class="form-control" value="">
+                                            </div>
+                                        </div>
+    
+                                        <div class="row g-2">
+                                            <div class="col mb-3">
+                                                <label class="form-label must" for="lbHomeNum">מספר דירה</label>
+                                                <input type="number" name="home_num" id="lbHomeNum" class="form-control" value="">
+                                            </div>
+                                            <div class="col mb-3">
+                                                <label class="form-label" for="lbfloor">מספר קומה</label>
+                                                <input type="number" name="home_floor" id="lbfloor" class="form-control" value="">
+                                            </div>
+                                            <div class="col mb-3">
+                                                <label class="form-label" for="lbHomeEntrance">כניסה</label>
+                                                <input type="text" name="home_entrance" id="lbHomeEntrance" class="form-control" value="">
+                                            </div>
+                                        </div>
+    
+                                        <div class="mb-3">
+                                            <label class="form-label" for="lbHomeCode">קוד כניסה</label>
+                                            <input type="text" name="home_entrance_code" id="lbHomeCode" class="form-control" placeholder="להשאיר ריק אם אין קוד כניסה לבניין" value="">
+                                        </div>
+    
+                                        <div class="row g-2">
+            
+                                            <div class="col mb-3">
+                                                <label class="form-label must" for="lbHomeNum">מספר דירה</label>
+                                                <input type="number" name="home_num" id="lbHomeNum" class="form-control" value="">
+                                            </div>
+                        
+                                            <div class="col mb-3">
+                                                <label class="form-label" for="lbfloor">מספר קומה</label>
+                                                <input type="number" name="home_floor" id="lbfloor" class="form-control" value="">
+                                            </div>
+                        
+                                            <div class="col mb-3">
+                                                <label class="form-label" for="lbHomeEntrance">כניסה</label>
+                                                <input type="text" name="home_entrance" id="lbHomeEntrance" class="form-control" value="">
+                                            </div>
+                                        </div>
+                        
+                                        <div class="mb-3">
+                        
+                                            <label class="form-label" for="lbHomeCode">קוד כניסה</label>
+                                            <input type="text" name="home_entrance_code" id="lbHomeCode" class="form-control" placeholder="להשאיר ריק אם אין קוד כניסה לבניין" value="">
+                        
+                                        </div>
+    
+    
+                                        <h2 class="mt-4 nice-title mb-3">הערות למשלוח</h2>
+                        
+                                        <div class="col mb-3">
+                                            <label class="form-label" for="lbNotes">הערות</label>
+                                            <textarea name="note" id="lbNotes" class="form-control" placeholder="הנחיות הגעה, קוד כניסה, לצלצל לפני הגעה, לצלצל בפעמון וכו׳..." rows="5"></textarea>
+                                        </div>
+                                              <% } else { %>
+                                         <h2 class="mt-4 nice-title mb-3">משלוח עד החדר במלון!</h2>
+
+                                         <div class="row g-2">
+                                            <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="lbCity">שם מלון</label>
+                                                <input type="text" name="hotelName" id="hotelName" class="form-control" value="">
+                                            </div>
+                                            <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="lbAddress">תאריך הגעה</label>
+                                                <input type="date" name="arrivalDate" id="arrivalDate" class="form-control" value="">
+                                            </div>
+
+                                              <div class="col-12 col-sm mb-3">
+                                                <label class="form-label must" for="arrivalTime">שעת הגעה</label>
+                                                <select name="arrivalTime" id="arrivalTime" class="form-control">
+                                                <option value="">בחר שעה</option>
+                                                <option value="8-12">08:00–12:00</option>
+                                                <option value="12-17">12:00–17:00</option>
+                                                </select>
+                                            </div>
+              
+                                        </div>
+
+                                        <h2 class="mt-4 nice-title mb-3">הערות למשלוח</h2>
+                        
+                                        <div class="col mb-3">
+                                            <label class="form-label" for="lbNotes">הערות</label>
+                                            <textarea 
+                                            name="note" 
+                                            id="lbNotes" 
+                                            class="form-control" 
+                                            placeholder="מגיעים לאילת? ספרו לנו את שם המלון, מספר חדר, ותאריך הגעה כדי שנוכל לדאוג שהמשלוח יגיע עד החדר שלכם" 
+                                            rows="5"
+                                            ></textarea>
+
+                                        </div>
+
+
+                                     <% } %>
+                                    </div>
+
+                               
+
+             
+
+        
+        
+                        <h2 class="mt-4 nice-title mb-3">תשלום</h2>
+    
+                        <% if(user && user.role === "dealer") { %>
+                            <div class="form-check item-payment mb-2">
+                                <input class="form-check-input" type="radio" name="payment_type" id="paymentDealer" value="paymentDealer" checked="">
+                                <label class="form-check-label" for="paymentDealer">
+                                    יצירת הזמנה <small>(דרור ייצור אתכם קשר תוך מספר שעות)</small>
+                                </label>
+                            </div>
+               
+                       <% } else { %>
+                        <div class="form-check item-payment mb-2">
+                            <input class="form-check-input" type="radio" name="payment_type" id="paymentCredit" value="direct" checked="">
+                            <label class="form-check-label" for="paymentCredit">
+                            
+                                תשלום באשראי <small>
+                                    (
+                                 
+                                    כולל Apple Pay וBit
+    
+                                    <img src="/img/google-pay.svg" alt="">   
+                                    <img src="/img/BIT_LOGO.jpg" alt=""> 
+                                    
+                                    )</small>
+                            </label>
+                        </div>
+    
+                        <% if (
+                            !user ||
+                            (user && !["salesManager", "superAdmin"].includes(user.role))
+                            ) { %>
+
+
+                
+                    <% if(!noVAT) { %>
+                        <div class="form-check item-payment mb-2">
+                            <input class="form-check-input" type="radio" name="payment_type" id="paymentPhone" value="paymentPhone">
+                            <label class="form-check-label" for="paymentPhone">
+                                תשלום טלפוני <small>(נציג אינוקים יתקשר תוך מספר דקות)</small>
+                            </label>
+                        </div>
+                         <% } %>
+                        <% } %>
+                     <% } %>
+    
+    
+                       <% if (
+                            !user ||
+                            (user && !["salesManager", "superAdmin"].includes(user.role))
+                            ) { %>
+
+                        <div class="form-check form-switch mt-4">
+                            <input class="form-check-input" type="checkbox" name="newsletter" value="on" id="newsletterSwitch" checked="">
+                            <label class="form-check-label" for="newsletterSwitch">אני מעוניין לקבל תוכן שיווקי באימייל.</label>
+                        </div>
+        
+                        <div class="form-check form-switch mb-2 mt-1">
+                            <input class="form-check-input" type="checkbox" name="terms" value="on" id="termsSwitch" required="">
+                            <label class="form-check-label" for="termsSwitch">קראתי ואני מסכים ל<a href="/pages/terms-of-use">תקנון ותנאי שימוש</a>  של האתר.</label>
+                        </div>
+                        <% } %>
+        
+        
+                        <% if (typeof user !== "undefined" && user) { %>
+                            <input type="hidden" name="userId" value="<%= user._id %>">
+                        <% } else { %>
+                            <input type="hidden" name="userId" value="">
+                        <% } %>
+                        
+                        <input type="hidden" name="amount" value="<%=  cart.totalPrice %>">
+                        
+                            <p class="text-muted mt-4"> ניתן לשלם 36 תשלומים </p>
+    
+                            <button type="submit" class="btn btn-primary w-100" id="submitOrder">המשך לתשלום</button>
+        
+                        
+        
+                    </form>
+        
+                    <aside class="col-12 col-md-4 mb-4 mb-md-0" id="checkout-side">
+        
+                     
+        
+                        <div id="cart-items">
+                            <div class="cart-view">
+        
+                                <div class="cart-view-items">
+                
+
+        
+                              </div>
+        
+                             </div>           
+                     </div>
+
+                     <% if (
+                            typeof user !== "undefined" &&
+                            user &&
+                            (user.role === "superAdmin" || user.role === "salesManager")
+                        ) { %>
+                        
+                            <form id="adminUpdatePricesForm" action="" method="POST" class="mb-4">
+                            <h2 class="nice-title mb-3" style="font-size: 1.5em;">עדכון מחירי מוצרים בהזמנה</h2>
+                            <input type="hidden" name="cartId" value="<%= cart._id %>">
+
+                            <div class="row g-3">
+                                <% cart.items.forEach((item, idx) => { %>
+                                    <div class="col-12">
+                                        <div class="border-bottom p-2">
+                                            <div class="card-body row g-3">
+                                                <div class="col-8">
+                                                    <div class="mb-1">  <strong> <%= item.prdName %> </strong> </div>
+                                                    <% if( item.suspensions ) { %>
+                                                        <div> <strong>שיכוך:</strong>   <%= item.suspensions %></div>
+                                                   <% } %>
+                                                    <% if( item.color ) { %>
+                                                        <div> <strong>צבע:</strong>  <%= item.color.name %></div>
+                                                   <% } %>
+                                                    <div class="text-muted small mb-2">
+                                                        מחיר מקורי: <span class="badge bg-danger"><%= formatter.format(item.price) %></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label class="form-label mb-1 fw-normal">מחיר חדש</label>
+                                                    <input
+                                                        type="number"
+                                                        name="newPrices[<%= idx %>]"
+                                                        value="<%= item.price %>"
+                                                        min="0"
+                                                        step="0.01"
+                                                        class="form-control text-end"
+                                                    >
+                                                    <input type="hidden" name="itemIds[<%= idx %>]" value="<%= item._id %>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mt-4 d-flex align-items-center justify-content-center gap-2">
+                                עדכן מחירים
+                              <svg style="width: 1.5em; fill: #fff;" enable-background="new 0 0 520 520" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" id="fi_2376625"><g id="_x31_97_x2C__Discount_x2C__Ecommerce_x2C__Offer_x2C__Online_Shopping"><g><path d="m506.247 252.191-39.212-31.37c-.528-.422-.892-1.023-1.015-1.643-.01-.185-.387-1.163.232-2.286l24.207-43.996c3.085-5.609.173-12.646-5.982-14.427l-48.257-13.964c-1.264-.367-2.287-1.701-2.124-3.178l5.548-49.929c.707-6.351-4.661-11.75-11.043-11.043l-49.931 5.548c-.675.077-1.348-.089-1.953-.495-.101-.092-1.003-.519-1.351-1.712l-13.999-48.248c-1.784-6.157-8.826-9.059-14.431-5.971l-43.979 24.238c-1.262.695-2.914.33-3.779-.751l-31.37-39.212c-3.999-4.999-11.616-5.002-15.617 0l-31.37 39.212c-.783.979-1.86 1.038-1.98 1.081-.66.132-1.361.024-1.949-.299l-43.995-24.207c-5.606-3.087-12.646-.173-14.427 5.981l-13.964 48.257c-.378 1.306-1.737 2.284-3.178 2.124l-49.93-5.547c-6.364-.703-11.75 4.676-11.043 11.043l5.548 49.931c.075.671-.093 1.354-.495 1.953-.092.1-.521 1.005-1.712 1.35l-48.248 14c-6.149 1.785-9.063 8.82-5.971 14.431l24.238 43.979c.688 1.25.341 2.906-.751 3.78l-39.212 31.37c-4.999 3.999-5.002 11.616 0 15.617l39.212 31.369c.988.792 1.036 1.854 1.08 1.98.133.666.027 1.357-.298 1.949l-24.207 43.996c-3.086 5.607-.172 12.646 5.981 14.426l48.259 13.966c1.406.405 2.27 1.842 2.122 3.177l-5.547 49.93c-.707 6.361 4.677 11.754 11.043 11.043l49.93-5.548c.674-.077 1.351.09 1.946.489.1.092 1.012.525 1.358 1.718l14 48.248c1.785 6.148 8.822 9.063 14.431 5.971l43.979-24.239c1.275-.703 2.937-.303 3.78.752l31.37 39.212c3.999 4.999 11.616 5.002 15.617 0l31.369-39.212c.768-.959 1.727-1.013 1.826-1.05.103-.004 1.07-.302 2.104.268l43.996 24.207c5.607 3.085 12.646.173 14.426-5.982l13.964-48.255c.398-1.379 1.799-2.28 3.179-2.126l49.93 5.548c6.376.707 11.75-4.687 11.043-11.043l-5.548-49.931c-.074-.673.094-1.354.466-1.911.102-.112.531-1.041 1.74-1.393l48.248-13.999c6.147-1.782 9.064-8.819 5.972-14.431l-24.239-43.979c-.65-1.182-.388-2.867.752-3.779l39.212-31.37c4.998-3.999 5.001-11.616-.001-15.618zm-51.705 31.37c-8.715 6.97-11.137 19.326-5.774 29.052l18.205 33.031-36.241 10.516c-10.516 3.051-17.764 13.453-16.512 24.721l4.167 37.507-37.504-4.167c-5.36-.592-10.793.736-15.246 3.723-.008.005-.095.063-.103.069-4.472 2.995-7.758 7.487-9.252 12.65l-10.489 36.249-33.044-18.181c-4.86-2.675-10.409-3.405-15.416-2.406l-.211.041 1.941 9.81-2.073-9.783c-5.293 1.047-10.063 3.94-13.43 8.149l-23.56 29.45-23.562-29.452c-6.952-8.688-19.288-11.153-29.051-5.772l-33.031 18.205-10.516-36.243c-1.498-5.162-4.787-9.652-9.329-12.688l-.127-.086c-4.482-3.003-9.899-4.331-15.264-3.735l-37.506 4.167 4.167-37.506c1.228-11.056-5.741-21.504-16.442-24.598l-36.25-10.49 18.181-33.044c5.38-9.777 2.88-22.237-5.811-29.188l-29.451-23.562 29.452-23.562c8.695-6.956 11.148-19.297 5.772-29.05l-18.205-33.032 36.243-10.516c5.163-1.498 9.653-4.787 12.633-9.246l.14-.209c3.006-4.484 4.333-9.905 3.738-15.265l-4.167-37.507 37.505 4.167c10.978 1.218 21.484-5.673 24.599-16.442l10.49-36.25 33.044 18.181c4.68 2.575 10.305 3.426 15.477 2.394l.281-.055c5.294-1.047 10.063-3.941 13.43-8.15l23.56-29.45 23.561 29.45c7.052 8.817 19.461 11.059 29.052 5.774l33.031-18.205 10.516 36.241c1.498 5.164 4.787 9.655 9.19 12.597l.265.178c4.483 3.006 9.91 4.333 15.266 3.738l37.507-4.167-4.167 37.506c-1.012 9.103 3.835 15.445 3.791 15.345 2.996 4.473 7.488 7.759 12.651 9.252l36.249 10.49-18.182 33.044c-2.593 4.713-3.441 10.216-2.403 15.425l.038.197c.001.001.026.134.027.135 1.046 5.293 3.94 10.062 8.149 13.43l29.451 23.562z"></path><path d="m372.929 132.929-240 240c-3.905 3.905-3.905 10.237 0 14.143 3.906 3.905 10.237 3.904 14.143 0l240-240c3.905-3.905 3.905-10.237 0-14.143-3.907-3.906-10.237-3.906-14.143 0z"></path><path d="m330 270c-33.084 0-60 26.916-60 60s26.916 60 60 60 60-26.916 60-60-26.916-60-60-60zm0 100c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40-17.944 40-40 40z"></path><path d="m190 250c33.084 0 60-26.916 60-60s-26.916-60-60-60-60 26.916-60 60 26.916 60 60 60zm0-100c22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40 17.944-40 40-40z"></path></g></g></svg>
+                            </button>
+                            </form>
+
+                        <% } %>
+
+                        <div id="cart-sum">
+                            <h2 class="nice-title" style="font-size: 1.5em;">סיכום ההזמנה</h2>
+
+                            <% 
+                                let rawTotal = 0;
+                                cart.items.forEach(item => {
+                                    rawTotal += (item.price || 0) * (item.quantity || 1);
+                                   
+                                });
+                                %>
+        
+                            <ul>
+                                <li>
+                                    <span>מוצרים</span>
+                                    <span id="products"> <%=  formatter.format(rawTotal)  %>  </span>
+                                </li>
+        
+                                <% if(cart.coupon) { %>
+                                    <li>
+                                        <span>קופון</span>
+                                        <span> <%= (cart.coupon.code)  %>  </span>
+                                     
+                                    </li>
+                               <% } %>
+                                
+                                
+                                <li>
+                                    <span>משלוח</span>
+                                    <span>
+                                        <span id="del-price">איסוף עצמי</span>
+                                    </span>
+                                </li>
+                                <li class="total">
+                                    <span>סך הכל</span>
+        
+                                    
+                                    <span>
+                                        <span id="total-price"> <%= formatter.format(cart.totalPrice)  %> </span>
+                                    </span>
+                                </li>
+                            </ul>
+        
+                        </div>
+
+                   
+        
+                    
+                            <% if (
+                            !user ||
+                            (user && !["salesManager", "superAdmin"].includes(user.role))
+                            ) { %>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item border-0 mb-3">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        קופון
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body p-0">
+                                        <form action="#" method="post" id="couponForm" class="mt-4">
+                                            <div class="mb-2">
+                                                <label class="form-label">קוד קופון</label>
+                                                <input type="text" name="code" class="form-control" required="">
+                                                <small class="text-muted mt-2">
+                                                    אם ברשותכם קופון אתם יכולים להוסיף אותו לעגלה והמחיר יושפע לאחר מכך. אפשר להשתמש בקופון אחד פר הזמנה.
+                                                </small>
+                                            </div>
+                                            <input type="hidden" name="cartId" value="<%= cart._id %>">
+                        
+                                            <div class="d-flex">
+                                                <button type="submit" id="couponSubmit" class="btn btn-primary me-auto">הוסף קופון</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                           <% } %>
+
+
+                        <!-- <button type="submit" class="btn btn-primary d-none d-md-block w-100" id="submitOrder">המשך לתשלום</button> -->
+
+
+                          </div>
+                        
+                        
+        
+
+                    </aside>
+        
+                </div>
+        
+            </div>
+        </div>
+    </main>
+
+<%- include('./partials/footer.ejs')  %>

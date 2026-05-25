@@ -1,0 +1,434 @@
+<%- include("./partials/announcement.ejs", { 
+    text: announcement?.text || null, 
+    buttonLink: null, 
+    buttonText: null ,
+    isSale: false
+  }) %>
+
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+
+<main id="special-template">
+    <div class="overview" style="--background: url('<%= `${s3path}${overviewImage}`%>')">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Section: Product Details -->
+                <div class="col-12 col-md-5 order-2 order-md-1">
+                    <div class="content-wrapper">
+                        <header>
+                          <%- optimizeImage(`/optimized${logoSvg}`, "Cyborg Logo", 'lazyload') %>
+                          <small>מותאם לכל דגמי אוקס מ-2018*</small>
+
+                            <h1>בטיחות, שליטה <span>וחיבור חכם לאוקס שלך</span></h1>
+                            <p class="subheading">מסך חכם תומך Apple CarPlay</p>
+                            <p class="subheading mb-3">לחיבור ישיר ופשוט לאוקס</p>
+                        </header>
+                        <div class="price-box">
+                            <span class="price"> <%= formatter.format(price)  %> </span>
+                            <span class="installments">או <%= formatter.format(Math.ceil(price / 36)) %> × 36 לחודש</span>
+
+                        </div>
+                        <div class="d-flex gap-3 w-100">
+
+                        <a href="/products/<%=slug %>" class="btn btn-danger w-100">לרכישה</a>
+                        <button type="button" class="btn btn-light w-100" data-bs-toggle="modal" data-bs-target="#cyborgInstruction">
+                          הוראות התקנה
+                        </button>
+                        </div>
+                      
+                    </div>
+                </div>
+
+                <!-- Right Section: Product Image -->
+                <div class="col-12 col-md-7 order-1 order-md-2 text-center mt-3 mt-md-0">
+
+                    <img src="<%=s3path  %>/optimized/cyborg-header.png" alt="Cyborg Display" class="product-image">
+                </div>
+            </div>
+
+            <!-- Footer Text -->
+            <div class="text-center mt-5 lastEl">
+                <span class="apple-carplay-text">היחיד בארץ שתומך Apple CarPlay + Android</span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="51.41" height="56.512" viewBox="0 0 51.41 56.512">
+                    <defs>
+                    <clipPath id="clip-path">
+                        <rect id="Rectangle_6" data-name="Rectangle 6" width="51.41" height="56.512" transform="translate(0 0)" fill="none"/>
+                    </clipPath>
+                    </defs>
+                    <g id="Group_11" data-name="Group 11" transform="translate(0 0.002)">
+                    <g id="Group_10" data-name="Group 10" transform="translate(0 -0.002)" clip-path="url(#clip-path)">
+                        <path id="Path_231" data-name="Path 231" d="M28.256,56.511A28.256,28.256,0,1,1,51.132,11.666a1.579,1.579,0,0,1-2.554,1.855,25.1,25.1,0,1,0-.023,29.5,1.578,1.578,0,0,1,2.55,1.859A28.364,28.364,0,0,1,28.256,56.511ZM23.113,16.16a1.451,1.451,0,0,0-.749-.337,1.049,1.049,0,0,0-1.049,1.049V39.259a1.049,1.049,0,0,0,1.6.889c.2-.124,19.16-10.938,19.344-11.1a1.049,1.049,0,0,0,.089-1.5c-.192-.21-18.92-11.159-19.237-11.392" transform="translate(0 0.001)" fill="#fff"/>
+                    </g>
+                    </g>
+                </svg>
+            </div>
+
+    
+
+        </div>
+    </div>
+
+    <div class="section-info-special mb-3 mb-md-5">
+        <div class="row">
+
+
+            <div class="col-12 col-md-8">
+                <div class="box" id="videoBox">
+                  <video autoplay muted loop playsinline>
+                    <source src="<%= overviewVideo  %>" type="video/mp4">
+                    הדפדפן שלך לא תומך בנגן וידאו.
+                  </video>
+                </div>
+              </div>
+
+            <div class="col-12 col-md-4">
+                <div class="text px-3 py-2 py-md-5">
+             
+                    <h2>משאירים את        <span class="d-md-block">הסלולרי בכיס</span></h2>
+                    <p class="mb-3">
+                        <p>
+                            ה-INOKIM CYBORG הופך את דגם ה-OX לקורקינט החכם בעולם עם מסך חכם מתקדם שמביא איתו חוויית רכיבה ייחודית.  
+                            עם <strong>CarPlay מובנה</strong>, <strong>דיבורית</strong>, <strong>ניווט מתקדם באמצעות Waze</strong>,  
+                            שליטה מלאה על ההגדרות וניטור ביצועים בזמן אמת – כל מה שצריך בקורקינט חכם, עכשיו זמין בלחיצת כפתור.
+                        </p>
+                        <p> תיהנו מחוויית רכיבה מחוברת, בטוחה ומתקדמת יותר מאי פעם!</p>
+                       </p>
+                       
+                       <a href="/products/<%= slug  %>" class="btn btn-danger">לרכישה</a>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+
+
+    <div class="special-specs container mb-3 mb-md-5 p-3">
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-4">
+        <% const featuresCategory = product.specs.find(c => c.category === "תכונות נוספות" || c.category === "תכונות מרכזיות"); %>
+    
+        <% if (featuresCategory) { %>
+          <div class="spec-item">
+            <%= featuresCategory.category %>
+          </div>
+    
+          <% featuresCategory.items.forEach(item => { %>
+            <div class="spec-item text-center">
+              <% if (item.icon) { %>
+               <%- item.icon %>
+              <% } %>
+              <div><%= item.label %></div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <div class="spec-item">
+            לא קיימות תכונות נוספות להצגה.
+          </div>
+        <% } %>
+      </div>
+    </div>
+    
+
+
+    <div class="tech-specs mb-3 mb-md-5">
+      <div class="row no-gutters">
+      
+        <div class="col-12 col-md-4 order-2 order-md-1">
+          <div class="spec-text p-3 p-md-5">
+            <% 
+              const specCategory = product.specs.find(c => c.category === "מפרט טכני"); 
+            %>
+    
+            <% if (specCategory) { %>
+              <h3 class="border-bottom py-3"><%= specCategory.category %></h3>
+    
+              <% specCategory.items.forEach(item => { %>
+                <div class="d-flex justify-content-between py-3 border-bottom">
+                  <span><%= item.label %></span>
+                  <strong><%= item.value %></strong>
+                </div>
+              <% }) %>
+            <% } %>
+    
+            <a href="/products/<%= slug %>" class="btn btn-danger mt-3">לרכישה</a>
+          </div>
+        </div>
+    
+        <div class="col-12 col-md-8 p-0 p-mobile order-1 order-md-2">
+          <div class="tech-specs-img" style="--background: url('<%=s3path  %>/optimized/bg-2.png')">
+            <img src="<%=s3path  %>/optimized/01-2.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+
+    <div class="extra-info">
+        <div class="container">
+            <!-- <div class="links container mb-5 p-3">
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+                    <div class="item-link">
+                        מידע נוסף
+                    </div>
+        
+                    <div class="item-link">
+                        <a href="" class="btn btn-outline-dark">
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17.5" viewBox="0 0 15 17.5">
+                                    <path id="Icon_metro-file-pdf" data-name="Icon metro-file-pdf" d="M16.907,5.914a2.272,2.272,0,0,1,.469.742,2.254,2.254,0,0,1,.2.859v11.25a.934.934,0,0,1-.937.937H3.508a.934.934,0,0,1-.937-.937V3.141A.934.934,0,0,1,3.508,2.2h8.75a2.254,2.254,0,0,1,.859.2,2.272,2.272,0,0,1,.742.469ZM12.571,3.532V7.2h3.672a1.067,1.067,0,0,0-.215-.4L12.971,3.746a1.067,1.067,0,0,0-.4-.215Zm3.75,14.922v-10H12.258a.934.934,0,0,1-.937-.937V3.453h-7.5v15h12.5ZM11.3,12.662a7.43,7.43,0,0,0,.82.547,9.691,9.691,0,0,1,1.143-.068q1.436,0,1.729.479a.472.472,0,0,1,.02.508.028.028,0,0,1-.01.02l-.02.02v.01q-.059.371-.693.371a4.028,4.028,0,0,1-1.123-.2,7.121,7.121,0,0,1-1.27-.518,17.584,17.584,0,0,0-3.828.811Q6.575,17.2,5.705,17.2a.568.568,0,0,1-.273-.068L5.2,17.018q-.01-.01-.059-.049a.4.4,0,0,1-.059-.352,2.121,2.121,0,0,1,.547-.894,4.72,4.72,0,0,1,1.289-.942.143.143,0,0,1,.225.059.056.056,0,0,1,.02.039q.508-.83,1.045-1.924A14.9,14.9,0,0,0,9.221,10.4a7.894,7.894,0,0,1-.3-1.558,3.8,3.8,0,0,1,.063-1.245Q9.094,7.2,9.4,7.2h.215a.412.412,0,0,1,.342.146.78.78,0,0,1,.088.664A.212.212,0,0,1,10,8.092a.254.254,0,0,1,.01.078v.293a12.788,12.788,0,0,1-.137,1.875A4.941,4.941,0,0,0,11.3,12.662ZM5.676,16.676a4.312,4.312,0,0,0,1.338-1.543,5.567,5.567,0,0,0-.854.82A3.246,3.246,0,0,0,5.676,16.676ZM9.563,7.692a2.9,2.9,0,0,0-.02,1.289q.01-.068.068-.43,0-.029.068-.42a.22.22,0,0,1,.039-.078.028.028,0,0,1-.01-.02.02.02,0,0,0,0-.015A.02.02,0,0,1,9.7,8a.562.562,0,0,0-.127-.352.028.028,0,0,1-.01.02v.02ZM8.352,14.147a14.324,14.324,0,0,1,2.773-.791A1.473,1.473,0,0,1,11,13.263a1.749,1.749,0,0,1-.156-.132A5.173,5.173,0,0,1,9.6,11.412a13.05,13.05,0,0,1-.811,1.924q-.293.547-.439.811Zm6.309-.156a2.337,2.337,0,0,0-1.367-.234,3.694,3.694,0,0,0,1.211.273.947.947,0,0,0,.176-.01q0-.01-.02-.029Z" transform="translate(-2.571 -2.204)"/>
+                                </svg>
+                                
+                            ברושור טכני
+
+                        </a>
+                        
+                    </div>
+        
+          
+                    <div class="item-link">
+                        <a href="" class="btn btn-outline-dark">
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17.5" viewBox="0 0 15 17.5">
+                                    <path id="Icon_metro-file-pdf" data-name="Icon metro-file-pdf" d="M16.907,5.914a2.272,2.272,0,0,1,.469.742,2.254,2.254,0,0,1,.2.859v11.25a.934.934,0,0,1-.937.937H3.508a.934.934,0,0,1-.937-.937V3.141A.934.934,0,0,1,3.508,2.2h8.75a2.254,2.254,0,0,1,.859.2,2.272,2.272,0,0,1,.742.469ZM12.571,3.532V7.2h3.672a1.067,1.067,0,0,0-.215-.4L12.971,3.746a1.067,1.067,0,0,0-.4-.215Zm3.75,14.922v-10H12.258a.934.934,0,0,1-.937-.937V3.453h-7.5v15h12.5ZM11.3,12.662a7.43,7.43,0,0,0,.82.547,9.691,9.691,0,0,1,1.143-.068q1.436,0,1.729.479a.472.472,0,0,1,.02.508.028.028,0,0,1-.01.02l-.02.02v.01q-.059.371-.693.371a4.028,4.028,0,0,1-1.123-.2,7.121,7.121,0,0,1-1.27-.518,17.584,17.584,0,0,0-3.828.811Q6.575,17.2,5.705,17.2a.568.568,0,0,1-.273-.068L5.2,17.018q-.01-.01-.059-.049a.4.4,0,0,1-.059-.352,2.121,2.121,0,0,1,.547-.894,4.72,4.72,0,0,1,1.289-.942.143.143,0,0,1,.225.059.056.056,0,0,1,.02.039q.508-.83,1.045-1.924A14.9,14.9,0,0,0,9.221,10.4a7.894,7.894,0,0,1-.3-1.558,3.8,3.8,0,0,1,.063-1.245Q9.094,7.2,9.4,7.2h.215a.412.412,0,0,1,.342.146.78.78,0,0,1,.088.664A.212.212,0,0,1,10,8.092a.254.254,0,0,1,.01.078v.293a12.788,12.788,0,0,1-.137,1.875A4.941,4.941,0,0,0,11.3,12.662ZM5.676,16.676a4.312,4.312,0,0,0,1.338-1.543,5.567,5.567,0,0,0-.854.82A3.246,3.246,0,0,0,5.676,16.676ZM9.563,7.692a2.9,2.9,0,0,0-.02,1.289q.01-.068.068-.43,0-.029.068-.42a.22.22,0,0,1,.039-.078.028.028,0,0,1-.01-.02.02.02,0,0,0,0-.015A.02.02,0,0,1,9.7,8a.562.562,0,0,0-.127-.352.028.028,0,0,1-.01.02v.02ZM8.352,14.147a14.324,14.324,0,0,1,2.773-.791A1.473,1.473,0,0,1,11,13.263a1.749,1.749,0,0,1-.156-.132A5.173,5.173,0,0,1,9.6,11.412a13.05,13.05,0,0,1-.811,1.924q-.293.547-.439.811Zm6.309-.156a2.337,2.337,0,0,0-1.367-.234,3.694,3.694,0,0,0,1.211.273.947.947,0,0,0,.176-.01q0-.01-.02-.029Z" transform="translate(-2.571 -2.204)"/>
+                                </svg>
+  
+                            מדריך התקנה</a>
+                        
+                    </div>
+        
+                    <div class="item-link">
+                        <a href="" class="btn btn-outline-dark">
+                            
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17.5" viewBox="0 0 15 17.5">
+                            <path id="Icon_metro-file-pdf" data-name="Icon metro-file-pdf" d="M16.907,5.914a2.272,2.272,0,0,1,.469.742,2.254,2.254,0,0,1,.2.859v11.25a.934.934,0,0,1-.937.937H3.508a.934.934,0,0,1-.937-.937V3.141A.934.934,0,0,1,3.508,2.2h8.75a2.254,2.254,0,0,1,.859.2,2.272,2.272,0,0,1,.742.469ZM12.571,3.532V7.2h3.672a1.067,1.067,0,0,0-.215-.4L12.971,3.746a1.067,1.067,0,0,0-.4-.215Zm3.75,14.922v-10H12.258a.934.934,0,0,1-.937-.937V3.453h-7.5v15h12.5ZM11.3,12.662a7.43,7.43,0,0,0,.82.547,9.691,9.691,0,0,1,1.143-.068q1.436,0,1.729.479a.472.472,0,0,1,.02.508.028.028,0,0,1-.01.02l-.02.02v.01q-.059.371-.693.371a4.028,4.028,0,0,1-1.123-.2,7.121,7.121,0,0,1-1.27-.518,17.584,17.584,0,0,0-3.828.811Q6.575,17.2,5.705,17.2a.568.568,0,0,1-.273-.068L5.2,17.018q-.01-.01-.059-.049a.4.4,0,0,1-.059-.352,2.121,2.121,0,0,1,.547-.894,4.72,4.72,0,0,1,1.289-.942.143.143,0,0,1,.225.059.056.056,0,0,1,.02.039q.508-.83,1.045-1.924A14.9,14.9,0,0,0,9.221,10.4a7.894,7.894,0,0,1-.3-1.558,3.8,3.8,0,0,1,.063-1.245Q9.094,7.2,9.4,7.2h.215a.412.412,0,0,1,.342.146.78.78,0,0,1,.088.664A.212.212,0,0,1,10,8.092a.254.254,0,0,1,.01.078v.293a12.788,12.788,0,0,1-.137,1.875A4.941,4.941,0,0,0,11.3,12.662ZM5.676,16.676a4.312,4.312,0,0,0,1.338-1.543,5.567,5.567,0,0,0-.854.82A3.246,3.246,0,0,0,5.676,16.676ZM9.563,7.692a2.9,2.9,0,0,0-.02,1.289q.01-.068.068-.43,0-.029.068-.42a.22.22,0,0,1,.039-.078.028.028,0,0,1-.01-.02.02.02,0,0,0,0-.015A.02.02,0,0,1,9.7,8a.562.562,0,0,0-.127-.352.028.028,0,0,1-.01.02v.02ZM8.352,14.147a14.324,14.324,0,0,1,2.773-.791A1.473,1.473,0,0,1,11,13.263a1.749,1.749,0,0,1-.156-.132A5.173,5.173,0,0,1,9.6,11.412a13.05,13.05,0,0,1-.811,1.924q-.293.547-.439.811Zm6.309-.156a2.337,2.337,0,0,0-1.367-.234,3.694,3.694,0,0,0,1.211.273.947.947,0,0,0,.176-.01q0-.01-.02-.029Z" transform="translate(-2.571 -2.204)"/>
+                        </svg>
+                        
+                            מדריך חיבור לטלפון</a>
+                        
+                    </div>
+        
+                    <div class="item-link">
+                        <a href="/faq" class="btn btn-outline-dark">
+                            
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.957" height="19.957" viewBox="0 0 19.957 19.957">
+                                <g id="Icon_feather-info" data-name="Icon feather-info" transform="translate(-2.25 -2.25)">
+                                  <path id="Path_239" data-name="Path 239" d="M21.457,12.229A9.229,9.229,0,1,1,12.229,3,9.229,9.229,0,0,1,21.457,12.229Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                  <path id="Path_240" data-name="Path 240" d="M18,21.691V18" transform="translate(-5.771 -5.771)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                  <path id="Path_241" data-name="Path 241" d="M18,12h0" transform="translate(-5.771 -3.463)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                </g>
+                              </svg>
+                              
+  
+                            שאלות נפוצות</a>
+                        
+                    </div>
+        
+                </div>
+        </div> -->
+
+        <section class="container my-5" dir="rtl">
+            <h2 class="mb-4 text-center">שאלות ותשובות – INOKIM CYBORG</h2>
+            <div class="accordion" id="cyborgFaq">
+          
+              <div class="accordion-item text-end">
+                <h2 class="accordion-header" id="faq1">
+                  <button class="accordion-button text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer1" aria-expanded="true" aria-controls="answer1">
+                    מה מגיע בערכה?
+                  </button>
+                </h2>
+                <div id="answer1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                    צג<br>
+                     ידית גז<br>
+                     כפתור הדלקה<br>
+                     רמקול
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item text-end">
+                <h2 class="accordion-header" id="faq2">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer2" aria-expanded="false" aria-controls="answer2">
+                    האם הערכה עמידה במים?
+                  </button>
+                </h2>
+                <div id="answer2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     כן, הערכה עמידה בגשם.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item text-end">
+                <h2 class="accordion-header" id="faq3">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer3" aria-expanded="false" aria-controls="answer3">
+                    האם המערכת מותאמת לכל דגמי OX?
+                  </button>
+                </h2>
+                <div id="answer3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     כן, היא מתאימה לכל דגמי OX משנת 2018 ואילך.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item text-end">
+                <h2 class="accordion-header" id="faq4">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer4" aria-expanded="false" aria-controls="answer4">
+                    האם המערכת עובדת עם בקרים ששודרגו בעבר?
+                  </button>
+                </h2>
+                <div id="answer4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     רק על בקרי אינוקים וגאגר.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header text-end" id="faq5">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer5" aria-expanded="false" aria-controls="answer5">
+                    האם זה מוצר רשמי של INOKIM?
+                  </button>
+                </h2>
+                <div id="answer5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     כמובן! המוצר פותח במשך שנה וחצי על ידי המהנדסים של INOKIM.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header text-end" id="faq6">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer6" aria-expanded="false" aria-controls="answer6">
+                    איך מתקינים את המערכת?
+                  </button>
+                </h2>
+                <div id="answer6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     התקנה פשוטה – Plug & Play.<br>
+                     ניתן לקבל התקנה חינם במעבדות INOKIM.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header text-end" id="faq7">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer7" aria-expanded="false" aria-controls="answer7">
+                    האם הצג נטען ישירות מהסוללה של הקורקינט?
+                  </button>
+                </h2>
+                <div id="answer7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     כן, הצג מתחבר ישירות למערכת החשמל של INOKIM.
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header text-end" id="faq8">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer8" aria-expanded="false" aria-controls="answer8">
+                    האם אפשר לקבל נתוני נסיעה בצג?
+                  </button>
+                </h2>
+                <div id="answer8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                    כן, הצג מציג:<br>
+                     מצב סוללה<br>
+                     מצב מהירות<br>
+                     מספר הקילומטרים שהקורקינט נסע
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header text-end" id="faq9">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer9" aria-expanded="false" aria-controls="answer9">
+                    איך מתבצע החיבור של הטלפון לצג?
+                  </button>
+                </h2>
+                <div id="answer9" class="accordion-collapse collapse" aria-labelledby="faq9" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     <strong>iPhone</strong> – חיבור Bluetooth<br>
+                     <strong>Android</strong> – נדרש כבל חיבור
+                  </div>
+                </div>
+              </div>
+          
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq10">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer10" aria-expanded="false" aria-controls="answer10">
+                    האם בערכה יש שקע טעינה לטלפון?
+                  </button>
+                </h2>
+                <div id="answer10" class="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                     כן, יש שקע USB לטעינה ישירה מהקורקינט.
+                  </div>
+                </div>
+              </div>
+
+               
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq11">
+                  <button class="accordion-button collapsed text-end" type="button" data-bs-toggle="collapse" data-bs-target="#answer11" aria-expanded="false" aria-controls="answer11">
+                    האם אפשר להתחבר עם אוזניות אלחוטיות במקום הרמקול?
+                  </button>
+                </h2>
+                <div id="answer11" class="accordion-collapse collapse" aria-labelledby="faq11" data-bs-parent="#cyborgFaq">
+                  <div class="accordion-body">
+                    כן, ניתן להתחבר עם אוזניות אלחוטיות באמצעות Bluetooth במקום להשתמש ברמקול
+                  </div>
+                </div>
+              </div>
+
+
+          
+              <div class="text-center mt-4">
+                <p class="fs-5" style="font-weight: 400;"> INOKIM CYBORG – שליטה חכמה, חוויית רכיבה מושלמת </p>
+              </div>
+            </div>
+          </section>
+          
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+
+<div class="modal fade" id="cyborgInstruction" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 overflow-hidden p-0" style="background:rgba(255,255,255,0.97)">
+      <div class="row g-0 flex-column-reverse flex-xl-row align-items-stretch">
+        
+        <!-- תוכן (ימין ב-desktop, למעלה ב-mobile) -->
+        <div class="col-xl-4 bg-white position-relative p-4 d-flex flex-column">
+          <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="mb-3 mt-4 mt-xl-2">הנחיות התקנת סייבורג</h5>
+          <div>
+            <p>קבל הנחיות מלאות להתקנת הסייבורג באינוקים אוקס החדש שלך!</p>
+            <p>בכל שלב תוכלו ליצור קשר עם צוות מומחי אינוקים לתיאום התקנה</p>
+            <small>*5081</small>
+          </div>
+        </div>
+
+        <!-- וידאו (שמאל בדסקטופ, למטה במובייל) -->
+        <div class="col-xl-8 bg-black d-flex align-items-center justify-content-center p-0">
+          <div class="ratio ratio-16x9 w-100" style="min-height:320px;">
+            <iframe
+              src="https://www.youtube.com/embed/Jl5F624ro-s?si=-kOHBBd-v6VUEMUL"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

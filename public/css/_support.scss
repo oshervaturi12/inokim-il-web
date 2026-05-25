@@ -1,0 +1,30 @@
+#modelsSupport {
+    min-height: 60vh;
+  
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  
+    .inokim-model {
+      flex-basis: 27%;
+  
+      svg {
+        width: 6em;
+        margin-bottom: 0.4em;
+      }
+  
+      img {
+        width: 75%;
+      }
+    }
+  
+    // Mobile
+    @media (max-width: 768px) {
+      .inokim-model {
+        flex-basis: 100%;
+        margin-bottom: 1em;
+      }
+    }
+  }
+  

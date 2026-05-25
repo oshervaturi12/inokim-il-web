@@ -1,0 +1,78 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<div class="container mt-3 mb-3">
+  <div class="form-section">
+    <h1 class="text-center mb-4">בדיקת זכאות להוראת קבע לרכישת אינוקים</h1>
+    <p class="text-center mb-4">מלאו את הטופס ונציג חברה יחזור אליכם לבדיקת זכאות להוראת קבע ללא תפיסת מסגרת</p>
+
+    <!-- enctype="multipart/form-data" -->
+    <form action="" class="dynamic-form">
+
+      <div class="mb-3">
+        <label for="fullName" class="form-label">שם מלא</label>
+        <input type="text" class="form-control" id="fullName" name="fullName" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">אימייל</label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">טלפון</label>
+        <input type="tel" class="form-control" id="phone" name="phone">
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">כתובת</label>
+        <input type="text" class="form-control" id="address" name="address">
+      </div>
+
+      <div class="mb-3">
+        <label for="idNumber" class="form-label">תעודת זהות</label>
+        <input type="text" class="form-control" id="idNumber" name="idNumber" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">דגם</label>
+        <input type="text" class="form-control" id="model" name="model">
+      </div>
+
+      <div class="mb-3">
+        <label for="accountHolder" class="form-label">שם בעל החשבון</label>
+        <input type="text" class="form-control" id="accountHolder" name="accountHolder">
+      </div>
+
+      <!-- <div class="mb-3">
+        <label for="accountIdDoc" class="form-label">תעודה מזהה/רישיון נהיגה</label>
+        <input class="form-control" type="file" id="accountIdDoc" name="accountIdDoc" accept=".jpg,.jpeg,.png,.pdf">
+      </div>
+
+      <div class="mb-3">
+        <label for="bankProof" class="form-label">
+          העלה צילום המכיל את שם בעל החשבון, מספר סניף, מספר חשבון<br>
+          (כרטיס אשראי, צילום צ’ק, צילום מסך עו”ש)
+        </label>
+        <input class="form-control" type="file" id="bankProof" name="bankProof" accept=".jpg,.jpeg,.png,.pdf">
+      </div> -->
+
+      <div class="mb-3">
+        <label for="installments" class="form-label">מספר תשלומים</label>
+        <input type="number" class="form-control" id="installments" name="installments" min="1" max="36">
+      </div>
+
+      <div class="mb-3">
+        <label for="paymentDate" class="form-label">תאריך תשלום</label>
+        <input type="date" class="form-control" id="paymentDate" name="paymentDate">
+      </div>
+
+      <input type="hidden" name="type" value="standingOrder" id="">
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">שלח טופס</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

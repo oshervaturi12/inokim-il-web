@@ -1,0 +1,15 @@
+<div id="site-msg" class="<%= isSale ? 'isSale' : '' %>">
+  <div>
+    <%= text %>
+  </div>
+
+  <% if (buttonLink && buttonText) { %>
+<a 
+  href="<%= buttonLink %>" 
+  <%= noVAT ? 'data-bs-toggle=modal data-bs-target=#noVAT' : '' %>
+  <%= typeof abTestKey !== 'undefined' ? 'data-ab-test="' + abTestKey + '"' : '' %>
+>
+  <%= buttonText %>
+</a>
+  <% } %>
+</div>

@@ -1,0 +1,226 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<main id="top-app" class="tr-page">
+
+  <!-- Hero -->
+  <div class="tr-hero">
+    <h1>תיאום נסיעת מבחן</h1>
+    <p>התנסו בקורקינט של אינוקים וקבלו מענה לכל השאלות שלכם</p>
+  </div>
+
+  <div class="tr-body">
+
+    <!-- Section: Model -->
+    <section class="tr-section">
+      <h2 class="tr-section-title">בחרו דגם</h2>
+
+      <div class="tr-model-hero" id="test-ride-img">
+        <img src="/optimized/newOx/1.png" alt="דגם נבחר">
+      </div>
+
+      <div class="tr-model-grid" id="choose-model">
+
+        <button type="button" class="tr-model-card active" data-img="/optimized/newOx/1.png" data-prd="inokim ox dubai">
+          <span class="tr-model-name">אינוקים אוקס דובאי</span>
+          <span class="tr-model-desc">פרימיום שלא נראה עד היום</span>
+        </button>
+
+        <button type="button" class="tr-model-card" data-img="/optimized/KiX-render.png" data-prd="inokim kix">
+          <span class="tr-model-name">אינוקים קיקס</span>
+          <span class="tr-model-desc">קל לתפעול, נגיש ואידיאלי לרכיבה יומיומית</span>
+        </button>
+
+        <button type="button" class="tr-model-card" data-img="<%= s3path %>/optimized/quiz_3_4.webp" data-prd="inokim ox carbon">
+          <span class="tr-model-name">אינוקים אוקס קרבון</span>
+          <span class="tr-model-desc">שליטה מוחלטת ונוחות מקסימלית בכל תנאי דרך</span>
+        </button>
+
+        <button type="button" class="tr-model-card" data-img="<%= s3path %>/optimized/quiz_1_0.webp" data-prd="inokim ox">
+          <span class="tr-model-name">אינוקים אוקס</span>
+          <span class="tr-model-desc">עוצמה וסטייל נפגשים</span>
+        </button>
+
+        <button type="button" class="tr-model-card" data-img="<%= s3path %>/optimized/quiz_3_2.webp" data-prd="inokim quick 4">
+          <span class="tr-model-name">אינוקים קוויק 4</span>
+          <span class="tr-model-desc">איזון מושלם בין ביצועים, נוחות ועיצוב יומיומי</span>
+        </button>
+
+        <button type="button" class="tr-model-card" data-img="<%= s3path %>/optimized/quiz_2_0.webp" data-prd="inokim light">
+          <span class="tr-model-name">אינוקים לייט 2</span>
+          <span class="tr-model-desc">הפתרון המושלם לנסיעות קצרות בעיר בלי להתפשר</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Section: Location -->
+    <section class="tr-section">
+      <h2 class="tr-section-title">סניף</h2>
+
+      <div class="tr-location-list">
+        <label class="tr-location-card">
+          <input type="radio" name="location" value="רמת גן - אבא הילל 7" form="tr-form" checked>
+          <div class="tr-location-inner">
+            <div class="tr-location-info">
+              <span class="tr-location-name">סניף רמת גן</span>
+              <span class="tr-location-addr">אבא הילל 7, רמת גן</span>
+            </div>
+            <div class="tr-location-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+        </label>
+
+        <label class="tr-location-card">
+          <input type="radio" name="location" value="סניף חיפה - קדושי יאסי 12" form="tr-form">
+          <div class="tr-location-inner">
+            <div class="tr-location-info">
+              <span class="tr-location-name">סניף חיפה</span>
+              <span class="tr-location-addr">קדושי יאסי 12, חיפה</span>
+            </div>
+            <div class="tr-location-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <!-- Section: Date & Time -->
+    <section class="tr-section">
+      <h2 class="tr-section-title">תאריך ושעה</h2>
+
+      <div class="tr-datetime">
+        <input type="date" id="tr-date" name="date" class="tr-input" form="tr-form" required>
+
+        <div class="tr-time-grid" id="timeSlots">
+          <button type="button" class="tr-time active" data-time="10:00">10:00</button>
+          <button type="button" class="tr-time" data-time="11:00">11:00</button>
+          <button type="button" class="tr-time" data-time="12:00">12:00</button>
+          <button type="button" class="tr-time" data-time="13:00">13:00</button>
+          <button type="button" class="tr-time" data-time="14:00">14:00</button>
+          <button type="button" class="tr-time" data-time="15:00">15:00</button>
+          <button type="button" class="tr-time" data-time="16:00">16:00</button>
+          <button type="button" class="tr-time" data-time="17:00">17:00</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Personal Details -->
+    <section class="tr-section">
+      <h2 class="tr-section-title">פרטי רוכב</h2>
+
+      <div class="tr-fields">
+        <input type="text" name="fullName" class="tr-input" placeholder="שם מלא" form="tr-form" required>
+        <input type="tel" name="phone" class="tr-input" placeholder="טלפון" form="tr-form" required dir="ltr" pattern="[0-9]{10}">
+        <input type="email" name="email" class="tr-input" placeholder="אימייל" form="tr-form" required dir="ltr">
+      </div>
+
+      <p class="tr-consent">* לחיצה על תיאום מאפשרת לאינוקים להשתמש בפרטים לצורך דיוור</p>
+    </section>
+
+  </div>
+
+  <!-- Hidden form that collects everything -->
+  <form id="tr-form" class="dynamic-form" style="display:none;">
+    <input type="hidden" name="model" value="inokim ox dubai" id="testDriveModelCoose">
+    <input type="hidden" name="time" id="tr-time" value="10:00">
+    <input type="hidden" name="type" value="test-ride">
+  </form>
+
+  <!-- Sticky Bottom Bar (Tesla-style) -->
+  <div class="tr-sticky">
+    <div class="tr-sticky-info">
+      <span class="tr-sticky-model" id="tr-sticky-model">אינוקים אוקס דובאי</span>
+      <span class="tr-sticky-detail" id="tr-sticky-detail">רמת גן · 10:00</span>
+    </div>
+    <button type="submit" form="tr-form" class="tr-sticky-btn">תיאום</button>
+  </div>
+
+</main>
+
+<%- include("./partials/footer.ejs") %>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modelInput = document.getElementById('testDriveModelCoose');
+  const timeInput = document.getElementById('tr-time');
+  const dateInput = document.getElementById('tr-date');
+  const previewImg = document.querySelector('#test-ride-img img');
+  const stickyModel = document.getElementById('tr-sticky-model');
+  const stickyDetail = document.getElementById('tr-sticky-detail');
+
+  // Set min date to today
+  if (dateInput) {
+    const today = new Date();
+    dateInput.min = today.toISOString().split('T')[0];
+    dateInput.value = dateInput.min;
+  }
+
+  // ─── Model selection ───
+  const modelCards = document.querySelectorAll('.tr-model-card');
+  modelCards.forEach(card => {
+    card.addEventListener('click', () => {
+      modelCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      if (modelInput) modelInput.value = card.dataset.prd;
+      if (stickyModel) stickyModel.textContent = card.querySelector('.tr-model-name').textContent;
+
+      if (previewImg && card.dataset.img) {
+        previewImg.style.opacity = '0';
+        previewImg.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+          previewImg.src = card.dataset.img;
+          previewImg.onload = () => {
+            previewImg.style.opacity = '1';
+            previewImg.style.transform = 'scale(1)';
+          };
+        }, 180);
+      }
+
+      updateStickyDetail();
+    });
+  });
+
+  // ─── Time slots ───
+  const timeSlots = document.querySelectorAll('.tr-time');
+  timeSlots.forEach(slot => {
+    slot.addEventListener('click', () => {
+      timeSlots.forEach(s => s.classList.remove('active'));
+      slot.classList.add('active');
+      timeInput.value = slot.dataset.time;
+      updateStickyDetail();
+    });
+  });
+
+  // ─── Location ───
+  document.querySelectorAll('input[name="location"]').forEach(radio => {
+    radio.addEventListener('change', () => updateStickyDetail());
+  });
+
+  // ─── Date ───
+  if (dateInput) {
+    dateInput.addEventListener('change', () => updateStickyDetail());
+  }
+
+  // ─── Update sticky bar summary ───
+  function updateStickyDetail() {
+    const location = document.querySelector('input[name="location"]:checked');
+    const locationName = location ? location.closest('.tr-location-card').querySelector('.tr-location-name').textContent : '';
+    const time = timeInput.value || '';
+    const date = dateInput?.value || '';
+
+    let dateStr = '';
+    if (date) {
+      const d = new Date(date + 'T00:00:00');
+      dateStr = d.toLocaleDateString('he-IL', { day: 'numeric', month: 'short' });
+    }
+
+    const parts = [locationName, dateStr, time].filter(Boolean);
+    if (stickyDetail) stickyDetail.textContent = parts.join(' · ');
+  }
+
+  updateStickyDetail();
+});
+</script>

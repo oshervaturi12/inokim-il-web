@@ -1,0 +1,308 @@
+{
+    "name": "Inokim OX White",
+    "title": "זהו האוקס הטוב והמתקדם ביותר אי פעם",
+    "overviewSubtitle": "כשעוצמה וסטייל נפגשים",
+    "overviewImage": "/img/oxOverview.png",
+    "overviewVideo": "/videos/ox_video.mp4",
+    "variants": [
+        {
+            "subModel": "OX 60V 21Ah",
+            "gallery": [
+                "/img/OX-white.png",
+                "/img/OX-white.png",
+                "/img/OX-white.png"
+            ],
+            "colors": [
+                {
+                    "name": "white",
+                    "hex": "#FFFF",
+                    "sku": "OX60V21AH-RED",
+                    "inventoryQty": 10,
+                    "price": 6900,
+                    "compareAtPrice": 7500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/red.png"
+     
+                }
+            ]
+   
+        },
+        {
+            "subModel": "OX 48V 21Ah",
+            "gallery": [
+                "/img/OX-white.png",
+                "/img/OX-white.png",
+                "/img/OX-white.png"
+            ],
+            "colors": [
+                {
+                    "name": "white",
+                    "hex": "#FFFF",
+                    "sku": "OX60V21AH-RED",
+                    "inventoryQty": 10,
+                    "price": 6900,
+                    "compareAtPrice": 7500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/red.png"
+     
+                }
+            ]
+        }
+    ],
+    "specs": [
+        {
+            "category": "מידות",
+            "image": "/img/specs.png",
+            "items": [
+                {
+                    "label": "במצב פתוח",
+                    "value": "48 inch (אורך) x 23.2 inch (רוחב) x 51.2 inch (גובה)",
+     
+                },
+                {
+                    "label": "במצב סגור",
+                    "value": "48 inch (אורך) x 23.2 inch (רוחב) x 21.3 inch (גובה)",
+       
+                },
+                {
+                    "label": "משקל",
+                    "value": "29 קילו"
+             
+                }
+            ]
+
+        },
+        {
+            "category": "הנעה",
+            "items": [
+                {
+                    "label": "מהירות",
+                    "value": "עד 25 ק״מש"
+
+                },
+                {
+                    "label": "סוללה",
+                    "value": "60V 21ah או 48V 21 ah"
+                },
+                {
+                    "label": "טווח",
+                    "value": "עד 60 ק״מ"
+           
+                },
+                {
+                    "label": "הנעה",
+                    "value": "מנוע אחורי"
+                  
+                }
+            ]
+  
+        },
+        {
+            "category": "טעינה",
+            "items": [
+                {
+                    "label": "מהירות טעינה",
+                    "value": "7 שעות לטעינה מלאה"
+                }
+            ]
+   
+        }
+    ],
+    "mainInfo": [
+        {
+            "key": "משקל נשיאה",
+            "value": "120 ק״ג"
+        },
+        {
+            "key": "טווח",
+            "value": "60 ק״מ"
+        },
+        {
+            "key": "מנוע",
+            "value": "מנוע עוצמתי"
+        }
+    ],
+    "price": 6500,
+    "compareAtPrice": 7490,
+    "logoSvg": "/images/logo/ox.svg",
+    "templateType": "scooter",
+    "slug": "inokim-ox-white"
+}
+
+
+{
+    "name": "מודל אוקס פנימית",
+    "title": "פנימית 3 אינץ׳ מקורית אינוקים",
+    "description": "פנימית מקורית בגודל 3 אינץ׳ המתאימה לדגמי אינוקים.",
+    "price": 15,
+    "compareAtPrice": 20
+     }
+
+
+
+
+
+
+
+{
+    "name": "Inokim OX",
+    "title": "זהו האוקס הטוב ביותר שייצרנו",
+    "overviewSubtitle": "The best OX EVER.",
+    "overviewImage": "/img/oxOverview.png",
+    "overviewVideo": "/videos/ox_video.mp4",
+    "variants": [
+        {
+            "subModel": "OX 60V 21Ah",
+            "gallery": [
+                "/img/1.webp",
+                "/img/1.webp",
+                "/img/1.webp"
+            ],
+            "colors": [
+                {
+                    "name": "Red",
+                    "hex": "#FF0000",
+                    "sku": "OX60V21AH-RED",
+                    "inventoryQty": 10,
+                    "price": 6900,
+                    "compareAtPrice": 7500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/red.png"
+     
+                },
+                {
+                    "name": "Blue",
+                    "hex": "#0000FF",
+                    "sku": "OX60V21AH-BLUE",
+                    "inventoryQty": 10,
+                    "price": 6900,
+                    "compareAtPrice": 7500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/blue.png"
+                },
+                {
+                    "name": "Yellow",
+                    "hex": "#FFFF00",
+                    "sku": "OX60V21AH-YELLOW",
+                    "inventoryQty": 10,
+                    "price": 6900,
+                    "compareAtPrice": 7500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/yellow.png"
+                }
+            ],
+   
+        },
+        {
+            "subModel": "OX 48V 21Ah",
+            "gallery": [
+                "/img/ox48v21ah/gallery1.png",
+                "/img/ox48v21ah/gallery2.png",
+                "/img/ox48v21ah/gallery3.png"
+            ],
+            "colors": [
+                {
+                    "name": "Red",
+                    "hex": "#FF0000",
+                    "sku": "OX48V21AH-RED",
+                    "inventoryQty": 10,
+                    "price": 5900,
+                    "compareAtPrice": 6500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/red.png"
+                },
+                {
+                    "name": "Blue",
+                    "hex": "#0000FF",
+                    "sku": "OX48V21AH-BLUE",
+                    "inventoryQty": 10,
+                    "price": 5900,
+                    "compareAtPrice": 6500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/blue.png"
+                },
+                {
+                    "name": "Yellow",
+                    "hex": "#FFFF00",
+                    "sku": "OX48V21AH-YELLOW",
+                    "inventoryQty": 10,
+                    "price": 5900,
+                    "compareAtPrice": 6500,
+                    "costPrice": 5000,
+                    "image": "/img/colors/yellow.png"
+                }
+            ],
+        }
+    ],
+    "specs": [
+        {
+            "category": "מידות",
+            "image": "/img/specs.png",
+            "items": [
+                {
+                    "label": "במצב פתוח",
+                    "value": "48 inch (אורך) x 23.2 inch (רוחב) x 51.2 inch (גובה)"
+                },
+                {
+                    "label": "במצב סגור",
+                    "value": "48 inch (אורך) x 23.2 inch (רוחב) x 21.3 inch (גובה)"
+                },
+                {
+                    "label": "משקל",
+                    "value": "29 קילו"
+                }
+            ]
+        },
+        {
+            "category": "הנעה",
+            "items": [
+                {
+                    "label": "מהירות",
+                    "value": "עד 25 ק״מש"
+                },
+                {
+                    "label": "סוללה",
+                    "value": "60V 21ah או 48V 21 ah"
+                },
+                {
+                    "label": "טווח",
+                    "value": "עד 60 ק״מ"
+                },
+                {
+                    "label": "הנעה",
+                    "value": "מנוע אחורי"
+                }
+            ]
+        },
+        {
+            "category": "טעינה",
+            "items": [
+                {
+                    "label": "מהירות טעינה",
+                    "value": "7 שעות לטעינה מלאה"
+                }
+            ]
+        }
+    ],
+    "mainInfo": [
+        {
+            "key": "משקל נשיאה",
+            "value": "120 ק״ג"
+        },
+        {
+            "key": "טווח",
+            "value": "60 ק״מ"
+        },
+        {
+            "key": "מנוע",
+            "value": "מנוע עוצמתי"
+        }
+    ],
+
+    "logoSvg": "/images/logo/ox.svg",
+    "createdAt": "2025-02-24T18:31:32.061Z",
+    "updatedAt": "2025-02-25T19:59:46.948Z",
+    "templateType": "scooter",
+    "seo": "67be1e988f4412c7558edc3a",
+    "slug": "inokim-ox-60v-21ah"
+}

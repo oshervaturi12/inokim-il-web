@@ -1,0 +1,90 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main id="" class="py-3">
+  
+
+    <main class="py-4 px-3">
+      <form action="/admin/blog/<%= blog._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="box border p-3 mb-4">
+              <h2 class="mb-3">עריכת פוסט בבלוג</h2>
+    
+              <div class="mb-3">
+                <label for="title" class="form-label">כותרת</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= blog.title %>" required />
+              </div>
+    
+              <div class="mb-3">
+                <label for="slug" class="form-label">Slug (כתובת URL)</label>
+                <input type="text" class="form-control" id="slug" name="slug" value="<%= blog.slug %>" />
+              </div>
+    
+              <div class="mb-3">
+                <label for="excerpt" class="form-label">תקציר (Excerpt)</label>
+                <textarea class="form-control" id="excerpt" name="excerpt" rows="3"><%= blog.excerpt || '' %></textarea>
+              </div>
+    
+              <div class="mb-3">
+                <label for="content" class="form-label">תוכן מלא</label>
+                <textarea class="form-control" id="content" name="content" rows="10" required><%= blog.content %></textarea>
+              </div>
+    
+              <div class="mb-3">
+                <label for="tags" class="form-label">תגיות (מופרדות בפסיקים)</label>
+                <input type="text" class="form-control" id="tags" name="tags" value="<%= blog.tags.join(', ') %>" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="box border p-3 mb-4">
+              <h5>הגדרות</h5>
+    
+              <div class="mb-3">
+                <label for="author" class="form-label">מחבר</label>
+                <select name="author" id="author" class="form-control" required>
+
+                    <option value="">
+            
+                    </option>
+
+                </select>
+              </div>
+    
+              <div class="mb-3">
+                <label for="category" class="form-label">קטגוריה</label>
+                <select name="category" id="category" class="form-control">
+                  <option value="">בחר קטגוריה</option>
+               
+                </select>
+              </div>
+    
+              <div class="mb-3">
+                <label class="form-label">תמונת קאבר</label><br />
+                <% if (blog.coverImage) { %>
+                  <img src="<%= blog.coverImage %>" alt="Cover" class="img-thumbnail mb-2" width="100" />
+                <% } %>
+                <input type="file" class="form-control" name="coverImage" />
+              </div>
+    
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="isPublished" name="isPublished" value="true" <%= blog.isPublished ? 'checked' : '' %>>
+                <label class="form-check-label" for="isPublished">פורסם</label>
+              </div>
+    
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary w-100"> שמור</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+    
+    <%- include('./partials/admin-footer.ejs') %>
+    
+
+</main>
+
+<%- include("./partials/admin-footer.ejs") %>

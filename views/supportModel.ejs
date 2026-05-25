@@ -1,0 +1,47 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<header class="text-center p-5">
+  <%- include('./partials/breadcrumbs', { breadcrumbs }) %>
+    <h1>הכירו את ה-<%= data[0].modelName %></h1>
+    <p>
+      למדו את היסודות של <%= data[0].modelName %>.
+    </p>
+  </header>
+  
+  <main id="modelSupportVideo" class="container p-3 px-md-5">
+  
+    <% if (data[0].videos && data[0].videos.length > 0) { %>
+      <div class="row g-4 text-center">
+        <% data[0].videos.forEach((video, index) => { %>
+          <div class="col-12 col-md-6 col-lg-6 d-flex flex-column align-items-center">
+            <!-- ✅ YouTube Embed -->
+            <div class="ratio ratio-16x9 w-100">
+              <iframe
+                src="https://www.youtube.com/embed/<%= extractYouTubeId(video.url) %>"
+                title="<%= video.title %>"
+                allowfullscreen
+                frameborder="0"
+              ></iframe>
+            </div>
+  
+            <!-- ✅ Video Info -->
+            <div class="text-center mt-2">
+              <small class="text-muted">
+                (<%= index + 1 %> מתוך <%= data[0].videos.length %>)
+              </small>
+              <h6 class="fw-bold mt-1"><%= video.title %></h6>
+              <% if (video.description) { %>
+                <p class="text-muted small"><%= video.description %></p>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="text-center text-muted">לא נמצאו סרטונים עבור דגם זה.</p>
+    <% } %>
+  
+  </main>
+  
+  <%- include("./partials/footer.ejs") %>
+  

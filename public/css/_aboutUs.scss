@@ -1,0 +1,83 @@
+.about-us-page {
+    // Section About Us
+    .section-about-us {
+      background: #5d5d5d;
+      background-position: top center;
+      background-image: var(--background);
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  
+      .image-text {
+        padding: 0 5em;
+        color: #fff;
+        width: 50%;
+  
+        h1 {
+          font-size: 2.5em;
+        }
+  
+        p {
+          font-size: 1.5em;
+          font-weight: 400;
+        }
+      }
+    }
+  
+    img {
+      border-radius: 0.5em;
+    }
+  
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 2em;
+      font-size: 1.2em;
+    }
+  
+    .divider {
+      width: 100%;
+      background-color: #bcb8b8;
+      height: 3em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      span {
+        margin-right: 3em;
+        font-size: 1.6em;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+  
+    .section-2 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+  
+      .text {
+        width: 50%;
+      }
+    }
+  }
+  
+
+  @media (max-width: 768px) {
+    .about-us-page .section-about-us .image-text{
+      width: 100%;
+      padding: 0 1em;
+    }
+
+    .about-us-page .section-2 .text{
+      width: 100%;
+      padding: 0 1em;
+    }
+  }

@@ -1,0 +1,30 @@
+<div class="modal fade" id="supportModal-<%= item.variantId %>" tabindex="-1" aria-labelledby="supportModalLabel-<%= item.variantId %>" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        
+        <form action="" id="modelSupportForm"  class="dynamic-form">
+          <input type="hidden" name="variantId" value="<%= item.variantId %>">
+          <input type="hidden" name="prdName" value="<%= item.prdName %>">
+          <input type="hidden" name="serialNumber" value="<%= item.serialNumber %>">
+  
+          <div class="modal-header">
+            <h5 class="modal-title" id="supportModalLabel-<%= item.variantId %>">פתיחת קריאה עבור <%= item.prdName %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגור"></button>
+          </div>
+  
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="issue-<%= item.variantId %>" class="form-label">תיאור הבעיה</label>
+              <textarea class="form-control" id="issue-<%= item.variantId %>" name="issue" rows="4" required></textarea>
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary w-100">שלח קריאה</button>
+          </div>
+        </form>
+  
+      </div>
+    </div>
+  </div>
+  

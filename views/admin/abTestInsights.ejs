@@ -1,0 +1,81 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<div class="container py-4" id="insights">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">תובנות למבחן A/B</h1>
+  </div>
+
+  <div class="mb-4 p-3 border box">
+    <h4>מפתח:</h4>
+    <code><%= tests.key %></code>
+    <% if (tests.description) { %>
+      <p class="text-muted mt-2"><%= tests.description %></p>
+    <% } %>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <% const boxes = [
+      { title: "תובנה על מבחן A/B", content: insight },
+      { title: "תובנה מהתנהגות גולשים", content: insight1 },
+      { title: "תובנה משולבת", content: combinedInsight }
+    ] %>
+
+    <% boxes.forEach(box => { %>
+      <div class="col-md-4">
+        <div class="box border h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-3"><%= box.title %></h5>
+            <p class="card-text text-secondary" style="white-space: pre-line;">
+              <%= box.content || "אין תובנה זמינה כרגע." %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <h3 class="mb-3">ניתוח דף הבית</h3>
+
+  <div class="col-12 mb-3">
+    <div class="box border h-100">
+      <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+          <h5 class="card-title mb-3">דף הבית</h5>
+          <p class="card-text text-secondary" style="white-space: pre-line;">
+            <%- siteInsight?.replace(/\n/g, '<br>') %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <h3 class="mb-3">📊 נתוני ביצוע לפי וריאנט</h3>
+  <table class="table table-bordered text-center align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>וריאנט</th>
+        <th>משקל</th>
+        <th>צפיות</th>
+        <th>קליקים</th>
+        <th>המרות</th>
+        <th>CTR</th>
+        <th>CR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tests.variants.forEach(v => { %>
+        <tr>
+          <td><strong><%= v.name %></strong></td>
+          <td><%= v.weight %>%</td>
+          <td><%= v.impressions %></td>
+          <td><%= v.clicks %></td>
+          <td><%= v.conversions %></td>
+          <td><%= v.impressions ? ((v.clicks / v.impressions) * 100).toFixed(1) + '%' : '—' %></td>
+          <td><%= v.clicks ? ((v.conversions / v.clicks) * 100).toFixed(1) + '%' : '—' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<%- include("./partials/admin-footer.ejs") %>

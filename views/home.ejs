@@ -1,0 +1,665 @@
+
+
+
+
+
+
+
+
+ <%- include("./partials/announcement.ejs", { 
+    text: home.announcement.text, 
+    buttonLink: home.announcement.buttonLink, 
+    buttonText: home.announcement.buttonText,
+    isSale: home.announcement.isSale,
+    abTestKey: 'home.announcement'
+  }) %> 
+
+
+  
+   <%- include("./partials/navbar.ejs", { customClass: customClass }) %> 
+  
+  <main id="homePage">
+
+
+
+
+
+<!-- ${s3path}${home.hero.mobileImage} -->
+
+    <section class="hero <%= noVAT ? "noVAT" : ""  %>" style="--bg-image: url('<%= `${s3path}${home.hero.backgroundImage}`%>'); --bg-image-mobile: url('<%= `${s3path}${home.hero.mobileImage}`%>');">
+      <div class="hero-text">
+               <h6 style="font-size: 28px; line-height: .3px;">אינוקים אוקס דובאי</h6>
+
+               <h1><%= home.hero.title %></h1>
+                 <p><%= home.hero.subtitle %></p>
+                <div class="d-flex align-items-center justify-content-between justify-content-md-start gap-4 mb-3">
+                  <div class="spec-item text-center">
+                                <svg style="width: 4em; height: 4em;" xmlns="http://www.w3.org/2000/svg" width="73.501" height="107.465" viewBox="0 0 73.501 107.465">
+                      <g id="gps-app" transform="translate(-583.02 -313.33)">
+                          <path id="Path_28" data-name="Path 28" d="M936.731,996.736l1.542,6.027,4.833-13.68-13.68,4.833,6.079,1.555h0a1.679,1.679,0,0,1,1.223,1.265Zm-.343,12.2-2.676-10.462L923.3,995.814a1.68,1.68,0,0,1-.195-3.223l0,0,22.1-7.808a1.679,1.679,0,0,1,2.233,2.108h0l-7.808,22.1a1.679,1.679,0,0,1-3.24-.049v0Z" transform="translate(-317.619 -629.053)" fill="white"/>
+                          <path id="Path_29" data-name="Path 29" d="M597.251,313.33H642.29a14.269,14.269,0,0,1,14.231,14.231v79A14.269,14.269,0,0,1,642.29,420.8H597.251a14.269,14.269,0,0,1-14.231-14.231v-79a14.269,14.269,0,0,1,14.231-14.231Zm45.039,3.359H597.251a10.908,10.908,0,0,0-10.873,10.873v79a10.909,10.909,0,0,0,10.873,10.873H642.29a10.909,10.909,0,0,0,10.873-10.873v-79a10.908,10.908,0,0,0-10.873-10.873Z" fill="white"/>
+                          <path id="Path_30" data-name="Path 30" d="M584.7,475.368a1.679,1.679,0,0,0,0,3.359h70.142a1.679,1.679,0,1,0,0-3.359Zm0,65.712a1.679,1.679,0,0,0,0,3.359h70.142a1.679,1.679,0,1,0,0-3.359Zm35.071,5.445a5.761,5.761,0,0,1,5.833,5.833,5.833,5.833,0,1,1-5.833-5.833Zm0,3.359a2.474,2.474,0,1,0,2.474,2.474A2.467,2.467,0,0,0,619.77,549.884Zm-5.537-84.115a1.679,1.679,0,1,0,0,3.359h11.075a1.679,1.679,0,1,0,0-3.359Zm5.538,20.278a23.855,23.855,0,1,1-16.868,6.987A23.784,23.784,0,0,1,619.771,486.048Zm14.494,9.361a20.5,20.5,0,1,0,6,14.494A20.434,20.434,0,0,0,634.265,495.409Z" transform="translate(0 -142.841)" fill="white"/>
+                      </g>
+                      </svg>
+                    <div>אזעקה ושלט חכם</div>
+                  </div>
+                  <!-- <div class="spec-item text-center">
+                    <svg id="fi_3103277" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m19.5 19h-5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h5c.827 0 1.5-.673 1.5-1.5v-1c0-.276.224-.5.5-.5h.991c.276 0 .5-.224.5-.5v-6c0-.276-.224-.5-.5-.5h-.991c-.276 0-.5-.224-.5-.5v-1c0-.827-.673-1.5-1.5-1.5h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3c1.378 0 2.5 1.122 2.5 2.5v.5h.491c.827 0 1.5.673 1.5 1.5v6c0 .827-.673 1.5-1.5 1.5h-.491v.5c0 1.378-1.122 2.5-2.5 2.5z"></path><path d="m6.5 19h-4c-1.378 0-2.5-1.122-2.5-2.5v-10c0-1.378 1.122-2.5 2.5-2.5h7c.276 0 .5.224.5.5s-.224.5-.5.5h-7c-.827 0-1.5.673-1.5 1.5v10c0 .827.673 1.5 1.5 1.5h4c.276 0 .5.224.5.5s-.224.5-.5.5z"></path><path d="m9.303 21c-.079 0-.16-.019-.234-.058-.215-.114-.317-.367-.24-.599l2.094-6.343h-3.923c-.186 0-.356-.103-.443-.268-.086-.165-.074-.364.032-.517l6.926-10c.136-.196.395-.266.611-.174.219.096.34.333.289.566l-1.408 6.393h3.993c.19 0 .364.108.449.279.084.171.063.375-.053.526l-7.697 10c-.097.127-.245.195-.396.195zm-1.348-8h3.66c.161 0 .311.077.405.207s.12.297.069.45l-1.39 4.209 5.285-6.866h-3.599c-.151 0-.295-.069-.39-.187s-.131-.273-.099-.421l.996-4.521z"></path></svg>
+                    <div>מצב סוללה</div>
+                  </div> -->
+           
+                  <div class="spec-item text-center">
+                              <svg style="width: 4em; height: 4em;" xmlns="http://www.w3.org/2000/svg" width="92.688" height="107.465" viewBox="0 0 92.688 107.465">
+            <g id="nfc-tag" transform="translate(-4.4)">
+                <path id="Path_23" data-name="Path 23" d="M42.719,59.679h3.409a3.323,3.323,0,0,0,3.392-3.392V54.574a1.679,1.679,0,1,0-3.358,0l-.034,1.73-3.442-.034.034-10.276,3.442.034V47.74a1.679,1.679,0,0,0,3.358,0V46.027a3.323,3.323,0,0,0-3.392-3.392H42.719a3.323,3.323,0,0,0-3.392,3.392V56.27A3.327,3.327,0,0,0,42.719,59.679Zm-12.577,0A1.684,1.684,0,0,0,31.822,58V52.845h3.442a1.679,1.679,0,0,0,0-3.358H31.822V46.011h5.155a1.679,1.679,0,0,0,0-3.358H30.143a1.684,1.684,0,0,0-1.679,1.679V57.983A1.677,1.677,0,0,0,30.143,59.679Zm-13.484,0A1.684,1.684,0,0,0,18.338,58V51.468l3.644,7.287a1.678,1.678,0,0,0,1.494.924,1.525,1.525,0,0,0,.386-.05A1.685,1.685,0,0,0,25.156,58V44.348a1.679,1.679,0,0,0-3.358,0V50.88l-3.644-7.287a1.673,1.673,0,0,0-3.174.739V57.983A1.688,1.688,0,0,0,16.659,59.679ZM25.34,7.138h13.8a1.679,1.679,0,0,0,0-3.358H25.34a1.679,1.679,0,1,0,0,3.358Z" transform="translate(7.185 2.567)" fill="white"/>
+                <path id="Path_24" data-name="Path 24" d="M62.6,0H16.272A11.882,11.882,0,0,0,4.4,11.872V95.594a11.882,11.882,0,0,0,11.872,11.872H62.6A11.882,11.882,0,0,0,74.471,95.594V11.872A11.882,11.882,0,0,0,62.6,0Zm8.513,95.594a8.524,8.524,0,0,1-8.513,8.513H16.272a8.524,8.524,0,0,1-8.513-8.513V11.872a8.524,8.524,0,0,1,8.513-8.513H62.6a8.524,8.524,0,0,1,8.513,8.513Z" fill="white"/>
+                <path id="Path_25" data-name="Path 25" d="M60.193,7.56H11.683A2.121,2.121,0,0,0,9.55,9.676V84.347a2.132,2.132,0,0,0,2.133,2.116H60.176a2.121,2.121,0,0,0,2.133-2.116V9.676A2.128,2.128,0,0,0,60.193,7.56ZM58.95,83.1H12.908V10.918H58.95Zm-17.329,7.3H30.254a1.679,1.679,0,1,0,0,3.358H41.622a1.679,1.679,0,1,0,0-3.358ZM78.613,40.085A1.675,1.675,0,1,0,76.2,42.4a8.454,8.454,0,0,1-.269,11.939,1.672,1.672,0,0,0-.05,2.368,1.655,1.655,0,0,0,1.209.521,1.625,1.625,0,0,0,1.159-.47A11.8,11.8,0,0,0,78.613,40.085Z" transform="translate(3.498 5.134)" fill="white"/>
+                <path id="Path_26" data-name="Path 26" d="M54.67,24.849a1.675,1.675,0,1,0-2.418,2.317A14.025,14.025,0,0,1,51.8,46.98a1.672,1.672,0,0,0-.05,2.368,1.655,1.655,0,0,0,1.209.521,1.625,1.625,0,0,0,1.159-.47A17.385,17.385,0,0,0,54.67,24.849Z" transform="translate(31.84 16.525)" fill="white"/>
+                <path id="Path_27" data-name="Path 27" d="M57.341,22.8a1.675,1.675,0,1,0-2.418,2.317,19.053,19.053,0,0,1-.6,26.9,1.672,1.672,0,0,0-.05,2.368,1.655,1.655,0,0,0,1.209.521,1.625,1.625,0,0,0,1.159-.47A22.4,22.4,0,0,0,57.341,22.8Z" transform="translate(33.551 15.133)" fill="white"/>
+            </g>
+            </svg>
+                    <div>פתיחה חכמה NFC</div>
+                  </div>
+                       <div class="spec-item text-center">
+
+                        <svg style="width: 4em; height: 4em;" xmlns="http://www.w3.org/2000/svg" width="53.8" height="126.536" viewBox="0 0 53.8 126.536">
+                    <g id="remote-control" transform="translate(-147.581 -1)">
+                      <path id="Path_31" data-name="Path 31" d="M200.725,11.083a39.2,39.2,0,0,0-52.488,0,1.985,1.985,0,1,0,2.658,2.948,35.227,35.227,0,0,1,47.172,0,1.985,1.985,0,1,0,2.658-2.948Z" transform="translate(0)" fill="white"/>
+                      <path id="Path_32" data-name="Path 32" d="M193.061,60.926a1.985,1.985,0,0,0,1.292-3.493,26.792,26.792,0,0,0-34.833,0,1.985,1.985,0,1,0,2.581,3.016,22.823,22.823,0,0,1,29.67,0A1.976,1.976,0,0,0,193.061,60.926Zm-16.125,2.232a14.527,14.527,0,0,0-8.651,2.832,1.985,1.985,0,0,0,2.348,3.2,10.662,10.662,0,0,1,12.606,0,1.985,1.985,0,0,0,2.348-3.2A14.526,14.526,0,0,0,176.937,63.157ZM195.086,76.64h-36.3a7.94,7.94,0,0,0-7.932,8.295l2.584,57.727a23.52,23.52,0,0,0,46.994,0l2.584-57.727a7.939,7.939,0,0,0-7.932-8.295Zm1.382,65.844a19.551,19.551,0,0,1-39.062,0l-2.584-57.727a3.97,3.97,0,0,1,3.966-4.148h36.3a3.97,3.97,0,0,1,3.966,4.148Z" transform="translate(-2.456 -37.595)" fill="white"/>
+                      <path id="Path_33" data-name="Path 33" d="M218.337,199.083h-13.4A7.949,7.949,0,0,0,197,207.023v33.743a7.949,7.949,0,0,0,7.939,7.939h13.4a7.949,7.949,0,0,0,7.939-7.939V207.023A7.948,7.948,0,0,0,218.337,199.083Zm-13.4,3.97h13.4a3.974,3.974,0,0,1,3.97,3.97v14.887H200.97V207.023A3.974,3.974,0,0,1,204.939,203.053Zm13.4,41.682h-13.4a3.974,3.974,0,0,1-3.97-3.97V225.879h21.337v14.887A3.974,3.974,0,0,1,218.337,244.735Zm-6.947-50.284a1.985,1.985,0,0,0,1.985-1.985v-2.481a1.985,1.985,0,0,0-3.97,0v2.481A1.985,1.985,0,0,0,211.39,194.451Z" transform="translate(-37.158 -140.604)" fill="white"/>
+                      <path id="Path_34" data-name="Path 34" d="M240.684,290.8h-5.706a1.985,1.985,0,1,0,0,3.97h5.706a1.985,1.985,0,1,0,0-3.97Zm-2.729-13.894A5.955,5.955,0,1,0,232,270.955,5.961,5.961,0,0,0,237.955,276.909Zm0-7.94a1.985,1.985,0,1,1-1.985,1.985A1.987,1.987,0,0,1,237.955,268.97Z" transform="translate(-63.474 -198.499)" fill="white"/>
+                    </g>
+                  </svg>
+                    <div>GPS + אפליקציה</div>
+                  </div>
+                </div> 
+
+
+
+
+        <% if (home.hero?.buttonLink && home.hero?.buttonText) { %>
+          <div class="d-flex align-items-center justify-content-center  w-100">
+           <a 
+            href="<%= home.hero.buttonLink %>" 
+            data-ab-test="home.hero"
+          >
+            <%= home.hero.buttonText %>
+          </a> 
+
+            <a class="me-2 bg-danger text-white"
+            href="<%= home.hero.buttonLink %>/overview" 
+            data-ab-test="home.hero"
+          >
+           מידע נוסף
+          </a> 
+
+
+          </div>
+
+        <% } %>
+
+      </div>
+    </section>
+    
+    <% if(!noVAT) { %>
+
+    <section class="home-prd">
+      <div class="container">
+        <div class="our-team">
+          <div class="text"> <%= home.productHighlightsTitle%> </div>
+
+          <div class="d-none d-md-block">
+            <%- optimizeImage(`${home.productHighlightsImage}`, 'קולקציית אינוקים', 'img-fluid') %>
+          </div>
+
+
+          <div class="d-block d-md-none">
+             <%- optimizeImage(`/optimized/test.png`, 'קולקציית אינוקים', 'img-fluid') %>
+          </div>
+        
+
+
+        </div>
+      </div>
+        <div class="items d-none d-md-flex">
+          <% home.productHighlights.forEach(product => { %>
+            <div class="item">
+              <div class="icon"><%- product.iconSvg %></div>
+              <div class="line">
+                <span>
+                  <span data-bs-toggle="tooltip" data-bs-title="עד <%= product.range  %> ק״מ ט.ל.ח">*טווח</span>
+                <span><%= product.range %></span>
+              </span>
+                <span class="divider-line">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.85 53.77"><path stroke="#000" stroke-width="2" d="m22.92.38-22 53" data-name="Line 5"></path></svg>
+                </span>
+                <span><span>מהירות</span><span><%= product.speed %></span></span>
+              </div>
+              <div class="w-100 d-flex align-items-center gap-3">
+                <a href="/products/<%= product.productSlug %>">קנה עכשיו</a>
+                <a href="/products/<%= product.overviewSlug %>" class="black">מידע נוסף</a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+     
+     
+    </section>
+
+
+    <%- include('./partials/inokim-swiper-init')  %>
+
+
+   <% } %>
+  
+
+
+    <% if(noVAT) { %>
+
+      <section class="py-5 home-prd">
+        <div class="swiper" dir="rtl">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="card border-0 bg-slide text-white"  style="background-image: url('https://d3kxrpm9y5cv3a.cloudfront.net/optimized/oxOverview.avif');">
+                <div class="card-overlay">
+                  <span class=" small mb-2">The best OX EVER.</span>
+                  <svg style="fill: #fff; margin-bottom:1em" version="1.1" id="Layer_2_00000008124612354920978640000011976485645727631034_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 580 95.7" style="enable-background:new 0 0 580 95.7" xml:space="preserve"><style>.st0{clip-path:url(#SVGID_00000134225610879928470050000018247528640205601188_)}</style><g id="Layer_1-2"><g><g><defs><rect id="SVGID_1_" width="238.1" height="95.7"></rect></defs><clipPath id="SVGID_00000142882488110452192160000014850225778463939518_"><use xlink:href="#SVGID_1_" style="overflow:visible"></use></clipPath><g style="clip-path:url(#SVGID_00000142882488110452192160000014850225778463939518_)"><g><path d="M102.9,92.7c-3.9,0-7.8-0.5-11.6-1.3C69.3,87,49.2,80,23.9,70.3C2.2,62,0,48.9,0,43.6c0-9.2,6.5-17.4,16.3-21
+                        c12.1-4.4,31.5-11.2,57.8-20.3C83.4-0.9,91.8-0.8,99,2.8c7.8,3.8,13.6,11.4,17.2,22.4l1,3c3.5,10.5,4.2,12.7,9.3,31.3
+                        c3.8,14,0,21.9-3.9,26C119.3,89,113.4,92.6,102.9,92.7 M21,35.6c-4.3,1.6-7.1,4.8-7.2,8.1c0,4.9,5.5,10,14.9,13.7
+                        c24.7,9.4,44.2,16.2,65.2,20.4c8.8,1.8,15.7,1.1,18.3-1.8c2.8-3,1.7-9.4,0.7-12.9c-5-18.2-5.7-20.4-9-30.6l-1-3.1
+                        c-1.7-5.1-4.8-11.7-10.2-14.4c-3.7-1.8-8.5-1.8-14.2,0.2c-26.2,9.1-45.6,15.9-57.6,20.3"></path><path d="M234.9,3.4h-10.4c-2.5,0.1-4.9,1.2-6.6,3.1l-24,25.4c-7.3,8-14.5,0-14.5,0L155.3,6.5c-1.7-1.8-4.1-2.9-6.6-3h-10.6
+                        c-2.4,0-3,0.8-3,1.7c0,0.5,0.2,0.9,0.5,1.3c0.4,0.6,33.5,35.9,33.5,35.9c7.4,7.8,0,15.7,0,15.7l-31.4,33.4
+                        c-4,4.2,1.8,4.2,1.8,4.2H150c2.2,0,4.4-1,6-2.5c0.4-0.3,23.3-24.6,23.3-24.6c7.2-8,14.4,0,14.5,0l22.7,24.1
+                        c1.7,1.8,4.1,2.9,6.6,3.1h10.3c0,0,5.8,0,1.8-4.2L204,58.2c-7.3-7.8,0-15.6,0-15.7l32.7-34.9C240.7,3.4,234.9,3.4,234.9,3.4"></path></g></g></g></g></g><g><path d="M278.9,52.5l14,4.2c-0.9,3.9-2.4,7.2-4.4,9.8c-2,2.6-4.5,4.6-7.5,5.9s-6.8,2-11.4,2c-5.6,0-10.2-0.8-13.7-2.4
+                c-3.6-1.6-6.6-4.5-9.2-8.6c-2.6-4.1-3.9-9.3-3.9-15.7c0-8.5,2.3-15.1,6.8-19.7s11-6.9,19.2-6.9c6.5,0,11.6,1.3,15.3,3.9
+                c3.7,2.6,6.5,6.7,8.3,12.1l-14.1,3.3c-0.5-1.6-1-2.7-1.5-3.4c-0.9-1.2-2-2.2-3.3-2.8c-1.3-0.7-2.7-1-4.3-1c-3.6,0-6.4,1.5-8.3,4.4
+                c-1.5,2.2-2.2,5.5-2.2,10.1c0,5.7,0.9,9.6,2.6,11.7c1.7,2.1,4.2,3.2,7.3,3.2c3,0,5.3-0.9,6.9-2.6C277.1,58.4,278.2,55.8,278.9,52.5
+                z"></path><path d="M332.3,65.2h-18.1l-2.5,8.5h-16.3l19.4-51.5h17.4l19.4,51.5h-16.7L332.3,65.2z M329,54l-5.7-18.6L317.7,54L329,54L329,54z"></path><path d="M356.8,73.7V22.1h26.5c4.9,0,8.7,0.4,11.3,1.3c2.6,0.9,4.7,2.4,6.3,4.7s2.4,5.1,2.4,8.3c0,2.9-0.6,5.3-1.8,7.4
+                c-1.2,2.1-2.9,3.8-5,5c-1.4,0.8-3.2,1.5-5.6,2c1.9,0.6,3.3,1.3,4.1,1.9c0.6,0.4,1.4,1.3,2.5,2.7c1.1,1.4,1.9,2.5,2.2,3.2l7.7,14.9
+                h-18l-8.5-15.8c-1.1-2-2-3.4-2.9-4c-1.1-0.8-2.4-1.2-3.9-1.2h-1.4v20.9h-15.9V73.7z M372.8,43h6.7c0.7,0,2.1-0.2,4.2-0.7
+                c1.1-0.2,1.9-0.8,2.6-1.6c0.7-0.9,1-1.9,1-3c0-1.7-0.5-2.9-1.6-3.8c-1.1-0.9-3-1.3-5.9-1.3h-7V43L372.8,43z"></path><path d="M412.7,22.1h29.8c5,0,8.8,1.2,11.4,3.7c2.6,2.5,4,5.5,4,9.1c0,3-0.9,5.7-2.8,7.8c-1.3,1.5-3.1,2.6-5.6,3.4
+                c3.7,0.9,6.4,2.4,8.2,4.6c1.7,2.2,2.6,4.9,2.6,8.2c0,2.7-0.6,5.1-1.9,7.2c-1.3,2.1-2.9,3.8-5.1,5.1c-1.3,0.8-3.4,1.3-6,1.7
+                c-3.6,0.5-6,0.7-7.1,0.7h-27.5V22.1z M428.7,42.3h6.9c2.5,0,4.2-0.4,5.2-1.3c1-0.9,1.5-2.1,1.5-3.7c0-1.5-0.5-2.7-1.5-3.5
+                s-2.7-1.3-5.1-1.3h-7V42.3z M428.7,62.5h8.1c2.7,0,4.7-0.5,5.8-1.5s1.7-2.3,1.7-3.9c0-1.5-0.6-2.7-1.7-3.7c-1.1-1-3.1-1.4-5.9-1.4
+                h-8.1L428.7,62.5L428.7,62.5z"></path><path d="M466.6,48c0-8.4,2.3-15,7-19.7s11.2-7,19.6-7c8.6,0,15.2,2.3,19.8,6.9s7,11.1,7,19.4c0,6-1,11-3,14.8c-2,3.8-5,6.9-8.8,9
+                s-8.6,3.2-14.3,3.2c-5.8,0-10.6-0.9-14.4-2.8s-6.9-4.8-9.3-8.8C467.8,58.9,466.6,54,466.6,48z M482.5,48c0,5.2,1,8.9,2.9,11.2
+                c1.9,2.3,4.6,3.4,7.9,3.4c3.4,0,6.1-1.1,7.9-3.3s2.8-6.2,2.8-12c0-4.9-1-8.4-2.9-10.6c-2-2.2-4.6-3.4-8-3.4c-3.2,0-5.8,1.1-7.7,3.4
+                C483.5,39,482.5,42.8,482.5,48z"></path><path d="M528.7,22.1h14.9L563,50.7V22.1h15v51.5h-15l-19.3-28.3v28.3h-15L528.7,22.1L528.7,22.1z"></path></g></svg>
+                    <div class="w-100 d-flex align-items-center gap-3">
+                      <a class="btn btn-primary" style="width: 10em;" href="/products/<%=  %>">קנה עכשיו</a>
+                      <a class="btn btn-light" style="width: 10em;" href="/products/<%=  %>" class="black">מידע נוסף</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- שקופית 2 -->
+           <div class="swiper-slide">
+              <div class="card border-0 bg-slide text-white"  style="background-image: url('https://d3kxrpm9y5cv3a.cloudfront.net/optimized/overviewWhite.webp');">
+                <div class="card-overlay">
+                  <span class=" small mb-2">The best OX EVER.</span>
+                  <svg style="fill: #fff; margin-bottom:1em" version="1.1" id="Layer_2_00000008124612354920978640000011976485645727631034_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 580 95.7" style="enable-background:new 0 0 580 95.7" xml:space="preserve"><style>.st0{clip-path:url(#SVGID_00000134225610879928470050000018247528640205601188_)}</style><g id="Layer_1-2"><g><g><defs><rect id="SVGID_1_" width="238.1" height="95.7"></rect></defs><clipPath id="SVGID_00000142882488110452192160000014850225778463939518_"><use xlink:href="#SVGID_1_" style="overflow:visible"></use></clipPath><g style="clip-path:url(#SVGID_00000142882488110452192160000014850225778463939518_)"><g><path d="M102.9,92.7c-3.9,0-7.8-0.5-11.6-1.3C69.3,87,49.2,80,23.9,70.3C2.2,62,0,48.9,0,43.6c0-9.2,6.5-17.4,16.3-21
+                        c12.1-4.4,31.5-11.2,57.8-20.3C83.4-0.9,91.8-0.8,99,2.8c7.8,3.8,13.6,11.4,17.2,22.4l1,3c3.5,10.5,4.2,12.7,9.3,31.3
+                        c3.8,14,0,21.9-3.9,26C119.3,89,113.4,92.6,102.9,92.7 M21,35.6c-4.3,1.6-7.1,4.8-7.2,8.1c0,4.9,5.5,10,14.9,13.7
+                        c24.7,9.4,44.2,16.2,65.2,20.4c8.8,1.8,15.7,1.1,18.3-1.8c2.8-3,1.7-9.4,0.7-12.9c-5-18.2-5.7-20.4-9-30.6l-1-3.1
+                        c-1.7-5.1-4.8-11.7-10.2-14.4c-3.7-1.8-8.5-1.8-14.2,0.2c-26.2,9.1-45.6,15.9-57.6,20.3"></path><path d="M234.9,3.4h-10.4c-2.5,0.1-4.9,1.2-6.6,3.1l-24,25.4c-7.3,8-14.5,0-14.5,0L155.3,6.5c-1.7-1.8-4.1-2.9-6.6-3h-10.6
+                        c-2.4,0-3,0.8-3,1.7c0,0.5,0.2,0.9,0.5,1.3c0.4,0.6,33.5,35.9,33.5,35.9c7.4,7.8,0,15.7,0,15.7l-31.4,33.4
+                        c-4,4.2,1.8,4.2,1.8,4.2H150c2.2,0,4.4-1,6-2.5c0.4-0.3,23.3-24.6,23.3-24.6c7.2-8,14.4,0,14.5,0l22.7,24.1
+                        c1.7,1.8,4.1,2.9,6.6,3.1h10.3c0,0,5.8,0,1.8-4.2L204,58.2c-7.3-7.8,0-15.6,0-15.7l32.7-34.9C240.7,3.4,234.9,3.4,234.9,3.4"></path></g></g></g></g></g><g><path d="M278.9,52.5l14,4.2c-0.9,3.9-2.4,7.2-4.4,9.8c-2,2.6-4.5,4.6-7.5,5.9s-6.8,2-11.4,2c-5.6,0-10.2-0.8-13.7-2.4
+                c-3.6-1.6-6.6-4.5-9.2-8.6c-2.6-4.1-3.9-9.3-3.9-15.7c0-8.5,2.3-15.1,6.8-19.7s11-6.9,19.2-6.9c6.5,0,11.6,1.3,15.3,3.9
+                c3.7,2.6,6.5,6.7,8.3,12.1l-14.1,3.3c-0.5-1.6-1-2.7-1.5-3.4c-0.9-1.2-2-2.2-3.3-2.8c-1.3-0.7-2.7-1-4.3-1c-3.6,0-6.4,1.5-8.3,4.4
+                c-1.5,2.2-2.2,5.5-2.2,10.1c0,5.7,0.9,9.6,2.6,11.7c1.7,2.1,4.2,3.2,7.3,3.2c3,0,5.3-0.9,6.9-2.6C277.1,58.4,278.2,55.8,278.9,52.5
+                z"></path><path d="M332.3,65.2h-18.1l-2.5,8.5h-16.3l19.4-51.5h17.4l19.4,51.5h-16.7L332.3,65.2z M329,54l-5.7-18.6L317.7,54L329,54L329,54z"></path><path d="M356.8,73.7V22.1h26.5c4.9,0,8.7,0.4,11.3,1.3c2.6,0.9,4.7,2.4,6.3,4.7s2.4,5.1,2.4,8.3c0,2.9-0.6,5.3-1.8,7.4
+                c-1.2,2.1-2.9,3.8-5,5c-1.4,0.8-3.2,1.5-5.6,2c1.9,0.6,3.3,1.3,4.1,1.9c0.6,0.4,1.4,1.3,2.5,2.7c1.1,1.4,1.9,2.5,2.2,3.2l7.7,14.9
+                h-18l-8.5-15.8c-1.1-2-2-3.4-2.9-4c-1.1-0.8-2.4-1.2-3.9-1.2h-1.4v20.9h-15.9V73.7z M372.8,43h6.7c0.7,0,2.1-0.2,4.2-0.7
+                c1.1-0.2,1.9-0.8,2.6-1.6c0.7-0.9,1-1.9,1-3c0-1.7-0.5-2.9-1.6-3.8c-1.1-0.9-3-1.3-5.9-1.3h-7V43L372.8,43z"></path><path d="M412.7,22.1h29.8c5,0,8.8,1.2,11.4,3.7c2.6,2.5,4,5.5,4,9.1c0,3-0.9,5.7-2.8,7.8c-1.3,1.5-3.1,2.6-5.6,3.4
+                c3.7,0.9,6.4,2.4,8.2,4.6c1.7,2.2,2.6,4.9,2.6,8.2c0,2.7-0.6,5.1-1.9,7.2c-1.3,2.1-2.9,3.8-5.1,5.1c-1.3,0.8-3.4,1.3-6,1.7
+                c-3.6,0.5-6,0.7-7.1,0.7h-27.5V22.1z M428.7,42.3h6.9c2.5,0,4.2-0.4,5.2-1.3c1-0.9,1.5-2.1,1.5-3.7c0-1.5-0.5-2.7-1.5-3.5
+                s-2.7-1.3-5.1-1.3h-7V42.3z M428.7,62.5h8.1c2.7,0,4.7-0.5,5.8-1.5s1.7-2.3,1.7-3.9c0-1.5-0.6-2.7-1.7-3.7c-1.1-1-3.1-1.4-5.9-1.4
+                h-8.1L428.7,62.5L428.7,62.5z"></path><path d="M466.6,48c0-8.4,2.3-15,7-19.7s11.2-7,19.6-7c8.6,0,15.2,2.3,19.8,6.9s7,11.1,7,19.4c0,6-1,11-3,14.8c-2,3.8-5,6.9-8.8,9
+                s-8.6,3.2-14.3,3.2c-5.8,0-10.6-0.9-14.4-2.8s-6.9-4.8-9.3-8.8C467.8,58.9,466.6,54,466.6,48z M482.5,48c0,5.2,1,8.9,2.9,11.2
+                c1.9,2.3,4.6,3.4,7.9,3.4c3.4,0,6.1-1.1,7.9-3.3s2.8-6.2,2.8-12c0-4.9-1-8.4-2.9-10.6c-2-2.2-4.6-3.4-8-3.4c-3.2,0-5.8,1.1-7.7,3.4
+                C483.5,39,482.5,42.8,482.5,48z"></path><path d="M528.7,22.1h14.9L563,50.7V22.1h15v51.5h-15l-19.3-28.3v28.3h-15L528.7,22.1L528.7,22.1z"></path></g></svg>
+                 <div class="w-100 d-flex align-items-center gap-3">
+                       <a class="btn btn-primary" style="width: 10em;" href="/products/<%=  %>">קנה עכשיו</a>
+                      <a class="btn btn-light" style="width: 10em;" href="/products/<%=  %>" class="black">מידע נוסף</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+         <div class="swiper-slide">
+              <div class="card border-0 bg-slide text-white"  style="background-image: url('https://d3kxrpm9y5cv3a.cloudfront.net/optimized/overviewWhite.webp');">
+                <div class="card-overlay">
+                  <span class=" small mb-2">נוחות מקסימלית בכל רכיבה</span>
+                  <h3 class="card-title"> קוויק 4 </h3>
+                 <div class="w-100 d-flex align-items-center gap-3">
+                       <a class="btn btn-primary" style="width: 10em;" href="/products/<%=  %>">קנה עכשיו</a>
+                      <a class="btn btn-light" style="width: 10em;" href="/products/<%=  %>" class="black">מידע נוסף</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+         <div class="swiper-slide">
+              <div class="card border-0 bg-slide text-white"  style="background-image: url('https://d3kxrpm9y5cv3a.cloudfront.net/optimized/overviewWhite.webp');">
+                <div class="card-overlay">
+                  <span class=" small  mb-2">קל שזה הקורקינט הבא שלכם</span>
+                  <h3 class="card-title">לייט 2</h3>
+                 <div class="w-100 d-flex align-items-center gap-3">
+                       <a class="btn btn-primary" style="width: 10em;" href="/products/<%=  %>">קנה עכשיו</a>
+                      <a class="btn btn-light" style="width: 10em;" href="/products/<%=  %>" class="black">מידע נוסף</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="swiper-pagination"></div>
+
+
+        </div>
+
+      </section>
+
+   <% } %>
+
+
+
+  
+
+       <% if(!noVAT) { %>
+
+<section class="py-5" dir="rtl">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <!-- LEFT CARD -->
+      <div class="col-md-6">
+        <div class="card bg-light h-100 border-0 shadow-sm">
+
+          <div class="p-4 rounded-bottom d-flex align-items-center flex-column-reverse flex-md-row">
+              <div>
+                <h3>לא בטוחים באיזה דגם לבחור?</h3>
+                  <p class="text-muted mb-4">דברו איתנו נמצא יחד את הדגם שהכי מתאים לכם.</p>
+                  <a href="tel:*5081" class="btn btn-dark w-50">התקשרו אלינו</a>
+                  </div>
+
+              <div class="col-12 col-md-6">
+                     <img src="/optimized/test.png" class="img-fluid rounded-top" alt="">
+
+                  </div>
+  
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD -->
+      <!-- <div class="col-md-6">
+        <div class="card bg-light h-100 border-0 shadow-sm">
+
+
+        <div class="p-4 rounded-bottom d-flex align-items-center flex-column-reverse flex-md-row">
+              <div>
+                <h3>בואו לחוות את אינוקים</h3>
+                  <p class="text-muted mb-4">תאמו רכיבת מבחן וגלו את הדור הבא של הקורקינט החשמלי.</p>
+                  <a href="/test-ride" class="btn btn-dark w-50">תיאום רכיבת מבחן</a>
+              </div>
+        
+                <div class="col-12 col-md-6">
+                  <img src="/optimized/weAreInokim.jpeg" class="img-fluid rounded-top" alt="">
+
+                </div>
+
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-md-6">
+  <div
+    class="card h-100 border-0 shadow-sm text-white position-relative overflow-hidden"
+    style="background-image: url('/optimized/weAreInokim.jpeg'); background-size: cover; background-position: center;"
+  >
+    <!-- overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+    <!-- content -->
+    <div class="position-relative p-4 h-100 d-flex align-items-start">
+      <div style="max-width: 12em;">
+        <h3 class="fw-bold">בואו לחוות את אינוקים</h3>
+        <p class="mb-4">
+          תאמו רכיבת מבחן וגלו את הדור הבא של הקורקינט החשמלי.
+        </p>
+        <a href="/test-ride" class="btn btn-light fw-semibold">
+          תיאום רכיבת מבחן
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+<section class="inokim-impact py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <div class="impact-sub">ההשפעה שלנו</div>
+      <h2 class="impact-title">המספרים לא משקרים</h2>
+    </div>
+
+    <div class="impact-grid">
+
+      <div class="impact-card large impact-reveal">
+        <img src="/optimized/test.jpg" class="impact-img" />
+        <div class="impact-overlay"></div>
+        <div class="impact-content">
+          <h3 data-count-to="61" data-suffix="%">0%</h3>
+          <p>עברו מרכב פרטי לקורקינט של אינוקים</p>
+        </div>
+      </div>
+
+      <div class="impact-card impact-reveal">
+        <img src="/optimized/ox-blue1.jpg" class="impact-img" />
+        <div class="impact-overlay"></div>
+        <div class="impact-content">
+          <h3 data-count-to="3" data-prefix="+" data-suffix="">0</h3>
+          <p>נקודות שירות מוסמכות</p>
+        </div>
+      </div>
+
+      <div class="impact-card highlight impact-reveal">
+        <div class="impact-content dark">
+          <h3 data-count-to="4500000" data-suffix="+" data-format="number">0</h3>
+          <p>ק״מ נסיעה עם קורקינטים של אינוקים</p>
+        </div>
+      </div>
+
+      <div class="impact-card gradient impact-reveal">
+        <div class="impact-content">
+          <h3 data-count-to="44" data-suffix="%">0%</h3>
+          <p>חיסכון ממוצע בעלויות תחבורה</p>
+        </div>
+      </div>
+
+      <div class="impact-card impact-reveal">
+        <img src="/optimized/Frame_2991.avif" class="impact-img" />
+        <div class="impact-overlay blur"></div>
+        <div class="impact-content">
+          <h3 data-count-to="60000" data-suffix="+" data-format="number">0</h3>
+          <p>רוכבים פעילים בישראל</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ─── Staggered card reveal ───
+  const cards = document.querySelectorAll('.impact-reveal');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((card, i) => {
+    card.style.transitionDelay = `${i * 120}ms`;
+    revealObserver.observe(card);
+  });
+
+  // ─── Number counter ───
+  const counters = document.querySelectorAll('[data-count-to]');
+  let countersFired = false;
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersFired) {
+        countersFired = true;
+        counters.forEach(el => animateCount(el));
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Observe the grid container so all counters fire together
+  const grid = document.querySelector('.impact-grid');
+  if (grid) counterObserver.observe(grid);
+
+  function animateCount(el) {
+    const target = parseInt(el.dataset.countTo, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const useFormat = el.dataset.format === 'number';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutExpo(progress);
+      const current = Math.round(eased * target);
+
+      const display = useFormat ? current.toLocaleString('he-IL') : current;
+      el.textContent = `${prefix}${display}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+});
+</script>
+
+
+  
+    <section class="inokim-home-specs py-5">
+      <div class="container">
+        <div class="row">
+          <% home.specs.forEach(spec => { %>
+            <div class="col-6 col-md-3">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="info-image">
+                  <%- optimizeImage(spec.image, spec.title, 'lazyload') %>
+                </div>
+                <h5 class="text-center"><%= spec.title %></h5>
+                <p class="text-center"><%= spec.description %></p>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+       <% } %>
+
+       <% if(!noVAT) { %>
+
+            <%- include('./partials/testride', {
+            title: home.newsletterTitle,
+            subtitle: home.newsletterSubtitle,
+            type: 'newsletter'
+          }) %>
+
+          <% } %>
+          
+                <% if(noVAT) { %>
+         <section class="px-5">
+  <div class="row g-4">
+    
+    <div class="col-12 col-md-6 d-flex">
+      <div class="p-5 flex-fill" style="background-color: #f4f4f4; border-radius: 8px !important;">
+        <h3>בואו לחוות את Inokim</h3>
+        <p>תאמו נסיעת מבחן היום.</p>
+        <a href="#" class="btn btn-light w-100" style="max-width: 15em; background-color: #fff;">תאמו נסיעת מבחן</a>
+      </div>
+      <!-- <img class="" style="border-radius: 8px 0 0 8px !important; height: 5em;" src="/optimized/01-2 (1).jpg" alt=""> -->
+    </div>
+
+    <!-- Box 2 -->
+    <div class="col-12 col-md-6 d-flex">
+      <div class="p-5 flex-fill" style="background-color: #f4f4f4; border-radius: 8px!important;">
+        <h3>מצאו נקודות איסוף</h3>
+        <p>תאמנו משלוח כבר להיום.</p>
+        <a href="#" class="btn btn-light w-100" style="max-width: 15em; background-color: #fff;">הזמן עכשיו</a>
+      </div>
+      <!-- <img class="" style="border-radius: 8px 0 0 8px !important; height: 5em;" src="/optimized/2.jpg" alt=""> -->
+    </div>
+
+  </div>
+</section>
+
+  
+                    <% } %>
+
+
+
+ 
+
+
+
+    <section class="pt-4 pt-md-5 pb-5 bg-pd">
+      <h2 class="text-center">קבלו הצצה לקהילת הרוכבים שלנו </h2>
+      <p class="text-center">INOKIM#</p>
+  
+      <section class="splide" id="riders">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <% home.sliderImages.forEach(img => { %>
+              <li class="splide__slide">
+                <div class="home-review-item">
+                  <%- optimizeImage(img, 'רוכב אינוקים', 'lazyload') %>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- <a type="button" href="/loan" class="actionBtn" aria-label="בקשת הוראת קבע" style="bottom: 7rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+
+        <svg id="fi_15879554" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m491.83 338.17-.46-.74c-9.62-15.44-29.61-20.63-45.53-11.83l-86.12 47.65c-6.28-9.91-17.34-16.51-29.91-16.51h-68.2c-10.97-18.37-36.2-32.1-65.65-35.41-23.46-2.64-46.57 1.88-62.34 12.12h-29.96c-3.73-10.85-14.03-18.68-26.14-18.68h-34.89c-15.24 0-27.63 12.4-27.63 27.64v103.31c0 15.24 12.4 27.63 27.63 27.63h34.89c12.1 0 22.41-7.83 26.14-18.68h31.09l143.76 39.54c6.75 1.86 13.45 2.78 20.04 2.78 14.5 0 28.45-4.47 41.09-13.28l142.73-99.48c14.92-10.38 19.07-30.62 9.46-46.06zm-398.67 107.56c0 8.62-7.01 15.63-15.63 15.63h-34.9c-8.62 0-15.63-7.01-15.63-15.63v-103.32c0-8.62 7.01-15.64 15.63-15.64h34.89c8.62 0 15.63 7.01 15.63 15.64v103.32zm382.34-71.33-142.73 99.48c-15.36 10.71-33.03 13.74-51.09 8.78l-144.53-39.76c-.52-.14-1.05-.21-1.59-.21h-30.4v-97.23h30.3c1.23 0 2.42-.38 3.43-1.08 13.45-9.37 34.29-13.53 55.74-11.12 26.82 3.02 50.14 15.92 58.03 32.11 1 2.06 3.1 3.37 5.39 3.37h71.77c12.9 0 23.39 10.49 23.39 23.39s-10.49 23.39-23.39 23.39h-94.92c-3.31 0-6 2.69-6 6s2.69 6 6 6h94.91c19.52 0 35.39-15.88 35.39-35.39 0-2.66-.3-5.24-.86-7.73l87.31-48.31c10.32-5.71 23.29-2.34 29.53 7.67l.46.74c6.24 10.03 3.54 23.16-6.14 29.9zm-205.02-260.89c27.16 0 49.25-22.09 49.25-49.25s-22.09-49.26-49.25-49.26-49.25 22.1-49.25 49.25 22.09 49.26 49.25 49.26zm0-86.51c20.54 0 37.25 16.71 37.25 37.25s-16.71 37.25-37.25 37.25-37.25-16.71-37.25-37.25 16.71-37.25 37.25-37.25zm-69.51 230.16h127.74c10.81 22.67 33.94 38.38 60.69 38.38 37.05 0 67.19-30.14 67.19-67.19s-30.14-67.19-67.19-67.19c-15.22 0-29.27 5.09-40.54 13.66-17.55-25.96-46.96-41.83-78.38-41.83-52.14 0-94.56 42.42-94.56 94.56v4.56c0 13.81 11.24 25.05 25.05 25.05zm243.62-28.81c0 30.43-24.76 55.19-55.19 55.19s-55.19-24.76-55.19-55.19 24.76-55.19 55.19-55.19 55.19 24.76 55.19 55.19zm-256.67-.8c0-45.52 37.04-82.56 82.56-82.56 28.01 0 54.2 14.46 69.4 38.01-10.96 11.96-17.67 27.89-17.67 45.35 0 5.8.74 11.43 2.13 16.81h-123.37c-7.2 0-13.05-5.85-13.05-13.05zm210.35 13.84c0-2.18-2.38-3.62-9.08-6.57-.75-.33-1.5-.66-2.25-1-.72-.32-1.44-.64-2.15-.95-7.24-3.19-16.25-7.15-16.25-17.55 0-8.59 6.28-15.87 14.87-18.23v-8.11c0-3.31 2.69-6 6-6s6 2.69 6 6v8.11c8.59 2.36 14.87 9.63 14.87 18.23 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-3.88-3.98-7.04-8.87-7.04s-8.87 3.16-8.87 7.04c0 2.18 2.38 3.62 9.08 6.57.75.33 1.5.66 2.25 1 .72.32 1.43.64 2.15.95 7.24 3.19 16.25 7.15 16.25 17.55 0 8.59-6.28 15.87-14.87 18.23v8.11c0 3.31-2.69 6-6 6s-6-2.69-6-6v-8.11c-8.59-2.36-14.87-9.63-14.87-18.23 0-3.31 2.69-6 6-6s6 2.69 6 6c0 3.88 3.98 7.04 8.87 7.04s8.87-3.16 8.87-7.04z"></path></svg>
+      </a> -->
+  
+    <%- include('./partials/stickyBottom.ejs')  %>
+    <%- include('./partials/footer.ejs')  %>
+    <!-- include('./partials/contactUsBtn.ejs') -->
+  </main>
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "מה ההבדל בין דגמי אינוקים OX, Quick ו-Light?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "סדרת OX מיועדת לרוכבים שמחפשים ביצועים גבוהים, מנועים כפולים וטווח ארוך – מתאימה לשטח ועיר. סדרת Quick 4 מיועדת לנסיעות יומיומיות ארוכות עם טווח של עד 56 ק\"מ ומשקל בינוני. סדרת Light היא הקלה ביותר – אידיאלית לנסיעות קצרות ולאנשים שצריכים קורקינט שנוח לשאת ולקפל."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "כמה עולה קורקינט חשמלי אינוקים בישראל?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "מחירי קורקינטי אינוקים בישראל נעים בהתאם לדגם. דגמי Entry כמו Light 2 מתחילים במחיר נמוך יותר, ואילו דגמי הפרימיום כמו OX Carbon, OX DUBAI ו-KIX מגיעים למחירים גבוהים יותר. ניתן לרכוש בתשלומים דרך הוראת קבע – בדוק זכאות באתר."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה טווח הנסיעה של קורקינטי אינוקים?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "טווח הנסיעה משתנה לפי הדגם: Light 2 מגיע לכ-25–35 ק\"מ לטעינה, Quick 4 מגיע לכ-56 ק\"מ, וסדרת OX מגיעה לטווח של 60–80 ק\"מ תלוי בגרסה ובתנאי הנסיעה."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם קורקינט חשמלי מותר לשימוש בישראל?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן, קורקינטים חשמליים מותרים לשימוש בישראל בכפוף לתקנות התנועה. מותר לרכוב על נתיבי אופניים ועל הכביש במהירות מוגבלת של עד 25 קמ\"ש. אסור לרכוב על מדרכות. חובה לחבוש קסדה, ויש לרכוש ביטוח לפי החוק. מומלץ לוודא שהדגם הנרכש עומד בתקנות המקומיות."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה האחריות על קורקינט אינוקים שנרכש בישראל?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "קורקינטי אינוקים שנרכשים דרך il.inokim.com מגיעים עם אחריות מלאה של היצרן. השירות ניתן על ידי ההפצה הרשמית הישראלית, עם גישה לחלקי חילוף מקוריים ותמיכה טכנית ישראלית."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם ניתן לנסות קורקינט אינוקים לפני הרכישה?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן. אינוקים ישראל מציעה נסיעת מבחן – ניתן לקבוע תור ולנסות את הדגם לפני הרכישה. לתיאום פנה דרך הדף: https://il.inokim.com/test-ride"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם אפשר לבצע טרייד אין של קורקינט ישן?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן, אינוקים ישראל מציעה שירות טרייד אין – ניתן להביא קורקינט ישן (כל מותג) ולקבל עבורו זיכוי לרכישת דגם חדש. לפרטים ותנאים: https://il.inokim.com/trade-in"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "איזה דגם מתאים לנסיעה יומיומית לעבודה?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "לנסיעה יומיומית לעבודה, דגם Quick 4 2025 הוא בחירה מצוינת – הוא מציע טווח ארוך, משקל בינוני שנוח לשאת ועיצוב נקי. לנסיעות קצרות יותר, Light 2 2025 קל יותר ונוח יותר לאחסון. לרוכבים שרוצים ביצועים גבוהים גם בעיר וגם בשטח – OX קרבון או KIX הם האפשרות הטובה ביותר."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם אינוקים היא חברה ישראלית?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן. אינוקים נוסדה בתל אביב בשנת 2009 על ידי נמרוד ספיר ריקרדו, ומרכז הפיתוח, העיצוב והמחקר שלה ממוקם עד היום בתל אביב. המותג פועל ב-50 מדינות ברחבי העולם."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה ההבדל בין OX DUBAI ל-OX Carbon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OX DUBAI הוא דגם Limited Edition יוקרתי עם עיצוב ייחודי ובלעדי. OX Carbon הוא דגם ביצועים עם מסגרת קרבון שמפחיתה משקל משמעותית תוך שמירה על חוזק גבוה. שניהם שייכים לסדרת ה-OX הפרימיום אך מתאימים לקהלים שונים."
+      }
+    }
+  ]
+}
+</script>

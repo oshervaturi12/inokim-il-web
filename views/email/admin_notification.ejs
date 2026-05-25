@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.title %></title>
+    <style>
+        body {
+            direction: rtl;
+            font-family: Arial, sans-serif;
+            text-align: right;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            background: #ED0C13;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+        strong {
+            color: #333;
+        }
+        .divider {
+            border-bottom: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        .footer {
+            background: #f1f1f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #777;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .highlight {
+            background: #FFF4E5;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #ED0C13;
+        }
+        .order-items {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .order-items p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="direction: rtl;">
+        <div class="header"><%= data.title %></div>
+        <div class="content" style="direction: rtl;">
+            <p><strong>סוג הטופס:</strong> <%= data.notificationType %></p>
+            <p><strong>שם:</strong> <%= data.customerName %></p>
+            <% if(data.email) { %>
+                <p><strong> אימייל:</strong> <%= data.email %></p>
+            <% } %>
+            <p><strong> טלפון:</strong> <%= data.phone %></p>
+
+            <% if (data.notificationType.includes("הזמנה חדשה")) { %> 
+                <div class="divider"></div>
+                <p><span class="highlight"> פרטי הזמנה</span></p>
+
+                <% if (data.paymentType) { %>
+                    <p><strong>סוג תשלום:</strong> <%= data.paymentType === "paymentPhone" ? "תשלום טלפוני" : "כרטיס אשראי" %></p>
+                <% } %>
+
+                <% if (data.paymentStatus) { %>
+                    <p><strong> סטטוס תשלום:</strong> <%= data.paymentStatus === "pending" ? "ממתין" : "שולם" %></p>
+                <% } %>
+
+                <% if (data.totalAmount) { %>
+                    <p><strong> סכום לתשלום:</strong> ₪<%= data.totalAmount %></p>
+                <% } %>
+
+                <% if (data.productList) { %>
+                    <p><strong>פרטי מוצרים:</strong></p>
+                    <div class="order-items">
+                        <p><%- data.productList %></p>
+                    </div>
+                <% } %>
+
+                <% if (data.transactionDetails) { %>
+                <p>
+                    <strong>סוג הטופס:</strong>
+                    <%= data.coupon ? 'הזמנת חבר חדשה' : data.notificationType %>
+                </p>
+                <% } %>
+
+                <% if (data.shippingMethod) { %>
+                    <p><strong>שיטת משלוח:</strong> <%= data.shippingMethod === 'home_delivery' ? "משלוח לבית" : "איסוף עצמי" %></p>
+                <% } %>
+
+                <% if (data.shippingAddress) { %>
+                    <p><strong> כתובת משלוח:</strong></p>
+                    <p class="order-items"><%= data.shippingAddress %></p>
+                <% } %>
+
+            <% } else { %> 
+                <div class="divider"></div>
+                <p><span class="highlight"> פרטי ליד</span></p>
+
+                <% if (data.message) { %>
+                    <p><strong> הודעה:</strong></p>
+                    <p class="order-items"><%= data.message %></p>
+                <% } %>
+
+                <% if (data.model) { %>
+                    <p><strong> דגם:</strong> <%= data.model %></p>
+                <% } %>
+
+                <% if (data.serialNum) { %>
+                    <p><strong> מספר סידורי:</strong> <%= data.serialNum %></p>
+                <% } %>
+
+                <% if (data.preferredDate) { %>
+                    <p><strong> תאריך מועדף:</strong> <%= data.preferredDate %></p>
+                <% } %>
+
+                <% if (data.location) { %>
+                    <p><strong> מיקום:</strong> <%= data.location %></p>
+                <% } %>
+            <% } %>
+
+            <div class="divider"></div>
+            <p> <strong>זמן מילוי הטופס:</strong> <%= data.timestamp %></p>
+        </div>
+        <div class="footer">
+            הודעה זו נשלחה ממערכת INOKIM.<br>
+            אם אינך אמור לקבל הודעה זו, אנא התעלם ממנה.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+<%- include("./partials/announcement.ejs", { 
+  text: "חיזוקים חינם לכל החיים!", 
+  buttonLink: "/pages/terms-of-use", 
+  buttonText: "תנאי שימוש" ,
+  isSale: false
+}) %>
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+<main id="inokimShop" class="pt-md-5">
+  <!-- <section class="hero mb-3"
+  style="--bg-image: url('<%= `${s3path}/optimized/bg-overview.png` %>');
+    --bg-image-mobile: url('<%= `${s3path}/optimized/bg-overview.png` %>');"
+  
+   >
+    <div class="hero-text">
+      <h1>חנות אינוקים  </h1>
+      <p>כל מה שצריך לאינוקים החדש שלכם</p>
+
+    </div>
+
+  </section> -->
+
+  <div class="py-5 pt-5">
+     <div class="text-center w-100">
+      <h1>חנות אינוקים  </h1>
+      <p>כל מה שצריך לאינוקים החדש שלכם</p>
+
+    </div>
+    <%- include('./partials/inokim-swiper-init')  %>
+</div>
+
+
+<section class="parts py-5">
+  <div class="container">
+    <div class="row g-4">
+      
+      <div class="col-12 col-md-6">
+        <div class="premium-device-card">
+          <a href="/category/spare-parts" class="premium-card-link">
+            <div class="premium-card-media">
+              <img src="/optimized/test4.JPG" alt="אקססוריז אינוקים">
+            </div>
+
+            <div class="premium-card-content">
+              <span class="premium-card-eyebrow">INOKIM COLLECTION</span>
+              <h3 class="premium-card-title">אקססוריז</h3>
+              <p class="premium-card-text">
+                אביזרים נבחרים שמשלימים את חוויית הרכיבה עם נראות מדויקת, איכות גבוהה ופונקציונליות יומיומית.
+              </p>
+
+              <div class="premium-card-actions">
+                <span class="premium-btn">
+                  קנה עכשיו
+          
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="premium-device-card">
+          <a href="/category/spare-parts" class="premium-card-link">
+            <div class="premium-card-media">
+              <img src="/optimized/shop.webp" alt="חלקי חילוף אינוקים">
+            </div>
+
+            <div class="premium-card-content">
+              <span class="premium-card-eyebrow">SERVICE & PERFORMANCE</span>
+              <h3 class="premium-card-title">חלקי חילוף</h3>
+              <p class="premium-card-text">
+                רכיבים מקוריים ואיכותיים לשמירה על ביצועים, אמינות ובטיחות לאורך זמן — בדיוק כמו שמגיע לאינוקים.
+              </p>
+
+              <div class="premium-card-actions">
+                <span class="premium-btn">
+                  קנה עכשיו
+               
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  </div>
+</main>
+
+  <%- include("./partials/footer.ejs") %>
+
+
+  <style>
+
+    #inokimShop {
+      margin-top: 6em;
+    }
+
+
+    .parts {
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 35%),
+    linear-gradient(180deg, #0b0b0d 0%, #121316 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-device-card {
+  height: 100%;
+}
+
+.premium-card-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 640px;
+  height: 100%;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(180deg, #16171a 0%, #0d0e11 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.28),
+    0 1px 0 rgba(255,255,255,0.04) inset;
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.premium-card-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.10), transparent 18%, transparent 80%, rgba(255,255,255,0.04));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.premium-card-link:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.38),
+    0 1px 0 rgba(255,255,255,0.06) inset;
+}
+
+.premium-card-media {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.10), transparent 45%),
+    linear-gradient(180deg, #1a1c20 0%, #111216 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.premium-card-media img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.55s ease;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+  position: relative;
+  z-index: 2;
+  height: 450px;
+}
+
+.premium-card-link:hover .premium-card-media img {
+  transform: scale(1.04);
+}
+
+.premium-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 2rem 2.2rem;
+}
+
+.premium-card-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+}
+
+.premium-card-title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.premium-card-text {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+  max-width: 90%;
+  margin-bottom: 2rem;
+}
+
+.premium-card-actions {
+  margin-top: auto;
+}
+
+.premium-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.35rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  backdrop-filter: blur(10px);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.premium-card-link:hover .premium-btn {
+  background: #fff;
+  color: #0b0b0d;
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+.premium-btn svg {
+  transition: transform 0.35s ease;
+}
+
+.premium-card-link:hover .premium-btn svg {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 991.98px) {
+  .premium-card-link {
+    min-height: 560px;
+    border-radius: 26px;
+  }
+
+  .premium-card-media {
+    height: 320px;
+    padding: 0;
+  }
+
+  .premium-card-content {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+
+  .premium-card-text {
+    max-width: 100%;
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .parts {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .premium-card-link {
+    min-height: 520px;
+  }
+
+  .premium-card-media {
+    height: 280px;
+    padding: 0;
+  }
+
+  .premium-card-title {
+    font-size: 2rem;
+  }
+}
+
+
+  </style>
+
+
+    <%- include('./partials/stickyBottom.ejs')  %>

@@ -1,0 +1,110 @@
+<!-- Fullscreen Modal with Splide -->
+<div class="modal fade" id="moreModal" tabindex="-1" aria-labelledby="multiSlideModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-fullscreen-md-down">
+      <div class="modal-content rounded-4 overflow-hidden">
+        <div class="modal-body p-0 position-relative">
+  
+          <!-- Splide Slider -->
+          <div class="splide" id="multiSlideModal" aria-label="Product Details Slider">
+            <div class="splide__track">
+              <ul class="splide__list">
+  
+                <!-- Slide 1: Product Intro -->
+                <li class="splide__slide">
+                  <div class="row g-0 h-100">
+                    <div class="col-md-6 p-3 h-100 overflow-auto order-2 order-md-1">
+                        <button type="button" class="btn-close position-absolute top-0 start-0 m-3" data-bs-dismiss="modal" aria-label="סגור"></button>
+                      <h5 class="mb-3 text-center">
+                        <%= product.name %>
+                      </h5
+
+                      <p dir="rtl" style="text-align: right; white-space: pre-line; font-weight: 400;">
+                        <%- product.description || product.overviewSubtitle %>
+                      </p>
+                      
+  
+                      <% if (product.mainInfo.length) { %>
+                        <ul class="list-unstyled mt-3">
+                          <% product.mainInfo.forEach((info) => { %>
+                            <li class="mb-2">
+                              <strong><%= info.key %>:</strong> <%= info.value %>
+                            </li>
+                          <% }) %>
+                        </ul>
+                      <% } %>
+  
+              
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center order-1 order-md-2" style="background-color: black;">
+                        <div class="">
+                          <% const fallbackImage = product.variants?.[0]?.gallery?.[0] || product.gallery?.[0]; %>
+                          <!-- <img src="<%= s3path + fallbackImage %>" class="w-100 object-fit-cover" alt="<%= product.name %>"> -->
+                          <img src="<%= s3path + fallbackImage.replace('/img', '/optimized') %>" class="w-100 object-fit-cover" alt="<%= product.name %>">
+                        </div>
+                
+                    </div>
+                  </div>
+                </li>
+  
+                <!-- Slide 2: Specs -->
+                <li class="splide__slide">
+                  <div class="container p-5 h-100 overflow-auto">
+                      <button type="button" class="btn-close position-absolute top-0 start-0 m-3" data-bs-dismiss="modal" aria-label="סגור"></button>
+                    <h3 class="text-center mb-4">מפרט טכני
+
+                    </h3>
+                    <% product.specs.forEach((category) => { %>
+                      <div class="mb-4">
+                        <h5><%= category.category %></h5>
+                        <ul class="list-unstyled">
+                          <% category.items.forEach((item) => { %>
+                            <li><strong><%= item.label %>:</strong> <%= item.value %></li>
+                          <% }) %>
+                        </ul>
+                      </div>
+                    <% }) %>
+                  </div>
+                </li>
+  
+                <!-- Slide 3: Call to Action -->
+                <li class="splide__slide">
+                  <div class="row g-0 h-100">
+                    <div class="col-md-5 p-3 py-5 overflow-auto text-end text-md-end order-2 order-md-1">
+                        <button type="button" class="btn-close position-absolute top-0 start-0 m-3" data-bs-dismiss="modal" aria-label="סגור"></button>
+                      <h5 class="mb-3">
+
+                        פריסה עד 36 תשלומים!</h5>
+                      <p class="text-muted" style="width: 400;">ה <%= product.name  %> מחכה לך – אל תפספסו את ההזדמנות לרכוש אותו במחיר הטוב ביותר.</p>
+                      <div>
+                        החל מ: 
+                      </div>
+                      <div style="font-size: 1.5em;">
+                       <strong style="font-weight: 600;"><%= formatter.format(product.variants[0].colors[0].price / 36)  %> </strong> 
+                       <span style="    color: #6e6b6bc2;
+    font-weight: 400;">משוער לחודש</span>
+                      </div>
+                  
+                    </div>
+                    <div class="col-md-7 order-1 order-md-2">
+                        <div class="d-flex align-items-center justify-content-center h-100">
+
+                          <img src="<%= `${s3path}/optimized/${product.paymentInfoImage}` %>" class="w-100 object-fit-cover h-100" alt="תמונה עבור קריאה לפעולה">
+
+                          
+                        </div>
+                  
+                    </div>
+                  </div>
+                </li>
+  
+              </ul>
+            </div>
+          </div>
+  
+          <!-- Close button -->
+          <!-- <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="סגור"></button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

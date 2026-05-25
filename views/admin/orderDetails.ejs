@@ -1,0 +1,258 @@
+
+
+
+<%- include("./partials/header-admin.ejs") %>
+
+<header class="order-header">
+    <div class="d-flex gap-2 me-2">
+        <span class="border-start px-2"> לקוח: <%= order.contactInfo.firstName %> <%= order.contactInfo.lastName  %> </span>
+        <span class="border-start px-2"> משלוח: <%= order.shippingMethod === "home_delivery" ? "משלוח לבית" : "איסוף עצמי" %> </span>
+        <span class="border-start px-2"> נוצר בתאריך: <%= new Date(order.createdAt).toLocaleDateString('he-IL') %> </span>
+        <span class="px-2" id="orderStatus"> סטטוס הזמנה: <%=  order.paymentStatus === "paid" ? orderStatus[order.orderStatus] : "לא שולם" %> </span>
+        <span class="px-2" id="orderStatus"> תשלום: <%=  order.paymentType === "paymentPhone" ? "תשלום טלפוני" : "כרטיס אשראי" %> </span>
+
+        <!-- <div class="btn-group me-auto">
+            <button class="btn btn-light" style="border: 1px solid #CB444A; border-radius: .2em;" data-bs-toggle="dropdown" aria-expanded="false">פעולות</button>
+            <ul class="dropdown-menu dropdown-menu-start text-end">
+                <li><button class="dropdown-item" id="closeOrderBtn" data-id="<%= order._id %>" type="button">סגירת הזמנה</button></li>
+
+             </ul>
+         </div> -->
+    </div>
+
+</header>
+
+
+
+
+
+<main>
+    <form id="orderForm" data-order-id="<%= order._id %>">
+
+    
+
+            <%- include("./partials/saveBar.ejs", {customText: "עדכן הזמנה", btnText1: "שמור", btnText2: "חזור", customId: order._id, path: "orders"}) %>
+
+
+
+
+    <div class="row">
+        <section class="col-12 col-md-8">
+            <div class="admin-box border">
+                <div class="body">
+                    <h5>סיכום הזמנה</h5>
+                    <div class="cart-view">
+                        <div class="cart-view-items" id="cart-items">
+                            <% order.items.forEach(item => { %>
+                                <div class="item">
+
+                                    <% if (item.img && item.img.startsWith('/img/')) { %>
+                                        <%- optimizeImage(`${item.img}`, item.name, '') %>
+                                      <% } else { %>
+                                        <img src="<%= `${s3path}${item.img}` %>" alt="">
+                                      <% } %>
+
+                                    
+                    
+                                
+                                    <div class="text">
+                                        <a class="title" href="#"> <%= item.prdName %> </a>
+                                        <small><%= item.sku || "" %></small>
+                                        <ul>
+                                            <li> <strong>מחיר:</strong>  <%=  formatter.format(item.price) %> * <%= item.quantity %></li>
+                                            <li> <strong>צבע:</strong>  <%= item.color ? item.color.name : "ללא" %> </li>
+                                            <li>  <strong>הנחה לפריט:</strong> <%= item.compareAtPrice ? `${formatter.format(item.compareAtPrice - item.price)}` : "ללא הנחה" %> </li>
+
+                                            <% if(item.sku) { %>
+                                                <li>
+                                                    <input type="text" class="form-control" name="serialNumber[<%= item.variantId %>]" value="<%= item.serialNumber || '' %>" placeholder="מספר סיריאלי">
+                                                 </li>
+                                           <% } %>
+                                          
+                                      
+                                        </ul>
+                                    </div>
+                                    <div class="price me-auto">
+                                        <div><%= formatter.format(item.price * item.quantity) %></div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2">
+
+
+                            <div class="row g-3">
+                                <div class="line mb-3 col-6">
+                                    <label for="">סניף אספקה:</label>
+                                    <select name="fulfilledFrom" class="form-select" id="fulfilledFrom">
+                                        <option value="">בחר</option>
+                                        <option value="סניף חיפה" <%= order.fulfilledFrom === "סניף חיפה" ? "selected" : "" %>>סניף חיפה</option>
+                                        <option value="סניף בורסה" <%= order.fulfilledFrom === "סניף בורסה" ? "selected" : "" %>>סניף בורסה</option>
+                                        <option value="סניף דיזינגוף" <%= order.fulfilledFrom === "סניף דיזינגוף" ? "selected" : "" %>>סניף דיזינגוף</option>
+                                      </select>
+                                </div>
+                                <div class="line mb-3 col-6">
+                                    <label for="">סטטוס:</label>
+                                    <select name="orderStatus" class="form-select" id="orderStatus">
+                                        <option value="processing" <%= order.orderStatus === "processing" ? "selected" : "" %>>בטיפול</option>
+                                        <option value="shipped" <%= order.orderStatus === "shipped" ? "selected" : "" %>>נשלח</option>    
+                                        <option value="delivered" <%= order.orderStatus === "delivered" ? "selected" : "" %>>נמסר</option>   
+                                        <option value="cancelled" <%= order.orderStatus === "cancelled" ? "selected" : "" %>>בוטל</option>                                     </select>
+                                </div>
+                            </div>
+                
+
+     
+
+                    <div class="line">
+                        <span class="me-4"> מע״מ </span>
+                        <strong class="end"> <%=  formatter.format(order.totalPrice * 0.18) %> </strong>
+                    </div>
+                    <div class="line">
+                        <span class="me-4">קופון: </span>
+                        <%= order.coupon ? "הנחה בשימוש קופון" : "אין קופון בהזמנה" %>
+                    </div>
+                    
+                    <div class="line">
+                        <span class="me-4">משלוח: </span>
+                        <%= order.shippingMethod === "home_delivery" ?  formatter.format(order.shippingCost) : "איסוף עצמי" %>
+                    </div>
+                    <div class="line">
+                        <span class="me-4"> סה״כ לתשלום:</span>
+                        <strong class="end"><%=  formatter.format(order.totalPrice  + order.shippingCost) %> </strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- תשלומים בהזמנה -->
+            <div class="admin-box">
+                <div class="body border w-100">
+                    <h5>תשלומים בהזמנה</h5>
+                    <% if(order.transactions && order.transactions.length > 0 ) { %>
+                    <div class="border-bottom py-3">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>סוג תשלום</th>
+                                        <th>אסמכתא</th>
+                                        <th>סכום לתשלום</th>
+                                        <th>4 ספרות</th>
+                                        <th>סטטוס</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentsBody">
+                                    <% order.transactions.forEach((payment, index) => { %>
+                                        <tr>
+                                            <td>#<%= index + 1 %></td>
+                                            <td><%= payment.type === "paymentLink"?  "פייפלוס": "אחר" %></td>
+                                            <td><%= payment.cardDetails?.issuer_name || "לא זמין" %></td>
+                                            <td><%= formatter.format(payment.amount) %></td>
+                                            <td><%= payment.cardDetails?.four_digits %></td>
+                                            <td>
+                                                <span class="<%= order.paymentStatus%>">
+                                                <%=  paymnetStatus[order.paymentStatus] %>
+                                            </span></td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                    
+                      
+                    </div>
+                    <% } %>
+                    <p class="me-2 mt-2" id="totalToPay">
+                        יתרה לתשלום: <strong>
+                        <%= order.paymentStatus === "paid" ? "הזמנה שולמה במלואה" : "תשלום נדרש" %>
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="col-12 col-md-4">
+
+            <% if(order.paymentType === "paymentPhone") { %>
+                <div class="admin-box border">
+                    <div class="box">
+                        <h5>טיפול</h5>
+                        <div class="mb-3">
+                            <textarea name="notes" class="form-control" placeholder="הערות"><%= order.notes || "" %></textarea>
+
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="">סטטוס</label>
+                            <select name="orderStatus" class="form-select">
+                                <option value="">בחר</option>
+                              
+                                <% const statusOptions = [
+                                    { value: 'shipped', label: 'לקוח שילם' },
+                                    { value: 'cancelled', label: 'לא רלוונטי' }
+                                  ];
+                              
+                                  // Filter out the current order status from the options to avoid duplication
+                                  const filteredOptions = statusOptions.filter(opt => opt.value !== order.orderStatus);
+                                %>
+                              
+                                <!-- Show the current order status at the top if it exists -->
+                                <% if (order.orderStatus) { %>
+                                  <option selected value="<%= order.orderStatus %>">
+                                    <%= statusOptions.find(opt => opt.value === order.orderStatus)?.label || order.orderStatus %>
+                                  </option>
+                                <% } %>
+                              
+                                <!-- Render the remaining options -->
+                                <% filteredOptions.forEach(opt => { %>
+                                  <option value="<%= opt.value %>"><%= opt.label %></option>
+                                <% }) %>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+             <%  } %>
+
+            <div class="admin-box border">
+                <div class="body">
+                    <h5>פרטי לקוח</h5>
+                    <ul class="list">
+                        <li><strong>שם מלא:</strong> <span><%= order.contactInfo?.firstName %> <%= order.contactInfo?.lastName %></span></li>
+                        <li><strong>מספר:</strong> <span><a href="tel:<%= order.contactInfo?.phone %>"><%= order.contactInfo?.phone %></a></span></li>
+                        <li><strong>אימייל:</strong> <span><a href="mailto:<%= order.contactInfo?.email %>"><%= order.contactInfo?.email %></a></span></li>
+                    </ul>
+                </div>
+                <div class="body small">
+                    <h3>פרטי משלוח</h3>
+                    <ul class="list">
+                        <li><strong>עיר:</strong> <span><%= order.shippingAddress?.city || "לא צוינה" %></span></li>
+                        <li><strong>רחוב:</strong> <span><%= order.shippingAddress?.address || "לא זמין" %> <%= order.shippingAddress?.addressNum || "" %></span></li>
+                        <li><strong>קומה:</strong> <span><%= order.shippingAddress?.homeFloor || "לא צוינה" %></span></li>
+                        <li><strong>דירה:</strong> <span><%= order.shippingAddress?.homeNum || "לא צוינה" %></span></li>
+                        <li><strong>קוד כניסה:</strong> <span><%= order.shippingAddress?.homeEntranceCode || "לא זמין" %></span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <% if(order.paymentStatus === "paid") { %>
+                <div class="admin-box border">
+                    <div class="box">
+                        <h5>מועד אספקה משוער</h5>
+                        <p><%= estimatedDelivery %></p>
+                        <p> <strong>סטטוס:</strong>  <%= orderStatus[order.orderStatus]  %></p>
+                    </div>
+                </div>
+           <% } %>
+         
+
+       
+
+        </aside>
+    </div>
+</form>
+</main>
+
+
+
+<%- include("./partials/admin-footer.ejs") %>

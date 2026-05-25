@@ -1,0 +1,41 @@
+<section class="thank-you text-center py-5">
+    <div class="container">
+      <div class="check-icon my-4">
+        <svg width="50" height="50" fill="green"><!-- SVG Checkmark --></svg>
+      </div>
+      <h1 class="fw-bold mb-3">ההזמנה התקבלה!</h1>
+      <%- optimizeImage('/img/ty.png', 'תמונת תודה על הרכישה', 'img-fluid') %>
+
+ 
+      <p class="text-muted mt-4">
+        אישור הזמנה נשלח למייל שלך. נציגנו יחזרו אליך במידת הצורך.
+      </p>
+      <a href="/shop" class="btn btn-primary mt-3">חזרה לחנות</a>
+    </div>
+  </section>
+  
+
+
+  <% 
+  let orderValue = order.totalPrice || order.price || order.amount || 0; 
+  let numItems = 0;
+  let contentIds = [];
+  
+  if (order && order.items && order.items.length > 0) {
+    numItems = order.items.reduce((sum, item) => sum + (Number(item.qty) || Number(item.quantity) || 1), 0);
+    contentIds = order.items.map(item => item.prdId || item.sku || item.variantId);
+  }
+%>
+
+<script>
+  if (typeof fbq === 'function') {
+    fbq('track', 'Purchase', {
+      value: <%= orderValue %>,                     
+      currency: 'ILS',                                
+      content_ids: <%- JSON.stringify(contentIds) %>, 
+      content_type: 'product',                     
+      num_items: <%= numItems %>                 
+    });
+    console.log("📈 Meta Pixel Purchase Fired! Order Value:", <%= orderValue %>);
+  }
+</script>

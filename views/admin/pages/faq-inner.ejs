@@ -1,0 +1,118 @@
+<%- include("../partials/header-admin.ejs") %>
+
+
+
+<main class="container py-4">
+    <h2 class="mb-4">ניהול בלוקים לדף: <%= page.title %></h2>
+  
+    <% page.contentBlocks.forEach((block, blockIndex) => { %>
+      <form action="/admin/pages/<%= page._id %>/blocks/<%= block._id %>?_method=PUT" method="POST" class="mb-5">
+        <h4 class="mb-3">בלוק <%= blockIndex + 1 %> (<%= block.blockType %>)</h4>
+  
+        <% if (block.blockType === 'text') { %>
+          <div class="mb-3">
+            <label>כותרת</label>
+            <input type="text" name="content[heading]" class="form-control" value="<%= block.content?.heading || '' %>" />
+          </div>
+          <div class="mb-3">
+            <label>פסקה</label>
+            <textarea name="content[paragraph]" class="form-control" rows="5"><%= block.content?.paragraph || '' %></textarea>
+          </div>
+  
+        <% } else if (block.blockType === 'image') { %>
+          <div class="mb-3">
+            <label>כתובת תמונה</label>
+            <input type="text" name="content" class="form-control" value="<%= block.content %>" />
+            <% if (block.content) { %>
+              <img src="<%= block.content %>" class="img-thumbnail mt-2" style="max-width: 200px;" />
+            <% } %>
+          </div>
+  
+        <% } else if (block.blockType === 'gallery') { %>
+          <div class="mb-3">
+            <label>תמונות בגלריה (שורה לכל תמונה)</label>
+            <textarea name="content" class="form-control" rows="4"><%= block.content.join('\n') %></textarea>
+          </div>
+          <div class="d-flex gap-2 flex-wrap">
+            <% block.content.forEach(img => { %>
+              <img src="<%= img %>" style="max-width: 120px;" class="img-thumbnail" />
+            <% }) %>
+          </div>
+  
+        <% } else if (block.blockType === 'video') { %>
+          <div class="mb-3">
+            <label>Embed או קישור לוידאו</label>
+            <textarea name="content" class="form-control" rows="3"><%= block.content %></textarea>
+          </div>
+  
+        <% } else if (block.blockType === 'quote') { %>
+          <div class="mb-3">
+            <label>ציטוט</label>
+            <input type="text" name="content" class="form-control" value="<%= block.content %>" />
+          </div>
+  
+          <% } else if (block.blockType === 'list') { %>
+            <div id="list-container-<%= block._id %>">
+              <% block.content.forEach((item, i) => { %>
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">פריט <%= i + 1 %></h5>
+                    <div class="mb-2">
+                      <label>שנה</label>
+                      <input type="text" name="content[<%= i %>][year]" class="form-control" value="<%= item.year %>" />
+                    </div>
+                    <div class="mb-2">
+                      <label>אירוע</label>
+                      <textarea name="content[<%= i %>][event]" class="form-control" rows="3"><%= item.event %></textarea>
+                    </div>
+                    <div class="mb-2">
+                      <label>כתובת תמונה</label>
+                      <input type="text" name="content[<%= i %>][image]" class="form-control" value="<%= item.image %>" />
+                      <% if (item.image) { %>
+                        <img src="<%= item.image %>" class="img-thumbnail mt-2" style="max-width: 150px;" />
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          
+            <button type="button" class="btn btn-outline-secondary mb-3" onclick="addListItem('<%= block._id %>')">+ הוסף פריט</button>          
+  
+        <% } else if (block.blockType === 'customHTML') { %>
+          <div class="mb-3">
+            <label>HTML מותאם אישית</label>
+            <textarea name="content" class="form-control" rows="6"><%= block.content %></textarea>
+          </div>
+  
+        <% } else if (block.blockType === 'faq') { %>
+          <div id="faq-container-<%= block._id %>">
+            <% block.faqItems.forEach((item, i) => { %>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">שאלה <%= i + 1 %></h5>
+                  <div class="mb-2">
+                    <label>שאלה</label>
+                    <input type="text" name="faqItems[<%= i %>][question]" class="form-control" value="<%= item.question %>" required />
+                  </div>
+                  <div class="mb-2">
+                    <label>תשובה</label>
+                    <textarea name="faqItems[<%= i %>][answer]" class="form-control" rows="3" required><%= item.answer %></textarea>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <button type="button" class="btn btn-outline-secondary mb-3" onclick="addFaq('<%= block._id %>')">+ הוסף שאלה</button>
+        <% } %>
+  
+        <div class="d-flex gap-2 mt-3">
+          <button type="submit" class="btn btn-primary"> שמור בלוק</button>
+        </div>
+      </form>
+    <% }) %>
+  </main>
+  
+
+
+<%- include("../partials/admin-footer.ejs") %>

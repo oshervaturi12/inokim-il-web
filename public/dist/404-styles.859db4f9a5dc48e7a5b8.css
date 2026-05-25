@@ -1,0 +1,1 @@
+#dash-404{display:flex;flex-direction:column;justify-content:center;align-items:center;flex-grow:1;text-align:center;height:calc(100vh - 70px);padding:3em}#dash-404 svg{width:6em;margin-bottom:1em}#dash-404 h1,#dash-404 .h1{font-size:2em;color:var(--bad-hover);font-weight:500}#dash-404 p{color:var(--dark-text);font-weight:300;margin-bottom:0}

@@ -1,0 +1,55 @@
+.save-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(48 48 48);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    padding: 0.45em 1em;
+    border-radius: 0.8em;
+    font-size: 0.9em;
+    border: 1px solid rgb(255 255 255 / 4%);
+    color: #fff;
+    position: absolute;
+    top: 0.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+  
+    &__status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  
+      .status-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+      }
+  
+      .status-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #fff;
+      }
+    }
+  
+    &__actions {
+      display: flex;
+      gap: 10px;
+    }
+  
+    .btn {
+      font-size: 1em !important;
+      padding: 0.2em 1em !important;
+    }
+  
+    .btn-secondary {
+      background: #434343 !important;
+    }
+  }
+  

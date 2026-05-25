@@ -1,0 +1,16 @@
+<div class="save-bar">
+    <div class="save-bar__status">
+      <span class="status-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-8h2v6h-2z" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="status-text"><%- customText  %></span>
+    </div>
+    <div class="save-bar__actions">
+        <button type="submit" id="<%- customId ? customId : '' %>" class="btn btn-secondary">
+            <%- btnText1 %>
+          </button>
+      <a href="/admin/<%= path %>" class="btn btn-light"><%- btnText2  %></button>
+    </div>
+  </div>

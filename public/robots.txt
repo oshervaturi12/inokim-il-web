@@ -1,0 +1,113 @@
+# robots.txt – il.inokim.com
+# עדכון אחרון: אפריל 2026
+
+# ===========================
+# סורקי AI ו-LLM
+# ===========================
+
+# GPTBot (OpenAI / ChatGPT)
+User-agent: GPTBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /orders
+Disallow: /login
+Disallow: /admin
+
+# Google-Extended (Google Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /orders
+Disallow: /login
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# ClaudeBot (Anthropic)
+User-agent: ClaudeBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# Amazonbot
+User-agent: Amazonbot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# Applebot-Extended (Apple AI / Siri)
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# Meta-ExternalAgent (Meta AI)
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# ===========================
+# סורקי SEO סטנדרטיים
+# ===========================
+
+User-agent: Googlebot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /orders
+Disallow: /login
+Disallow: /admin
+Disallow: /*?variant=*
+Disallow: /*?sort_by=*
+
+User-agent: Bingbot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /orders
+Disallow: /login
+
+User-agent: Slurp
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+
+# ===========================
+# ברירת מחדל – כל הסורקים האחרים
+# ===========================
+
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /orders
+Disallow: /login
+Disallow: /admin
+
+# ===========================
+# קבצי AEO
+# ===========================
+# קובץ llms.txt – הנחיות לבינה מלאכותית
+# https://il.inokim.com/llms.txt
+
+# ===========================
+# Sitemap
+# ===========================
+Sitemap: https://il.inokim.com/sitemap.xml

@@ -1,0 +1,19 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(self["webpackChunkinokim_web"] = self["webpackChunkinokim_web"] || []).push([[88],{
+
+/***/ 4644:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ initTinyMCE)\n/* harmony export */ });\nfunction initTinyMCE() {\n  var textarea = document.querySelector('textarea#content');\n  if (!textarea || !window.tinymce) {\n    console.warn('TinyMCE not loaded or #content not found');\n    return;\n  }\n  tinymce.init({\n    selector: 'textarea#content',\n    directionality: 'rtl',\n    language: 'he_IL',\n    height: 400,\n    plugins: 'code link image lists table fullscreen media wordcount',\n    toolbar: 'undo redo | styles | bold italic underline | alignright aligncenter alignleft | bullist numlist | link image media | code fullscreen',\n    menubar: false,\n    branding: false,\n    content_style: \"\\n        body { font-family: 'Helvetica', 'Arial', sans-serif; font-size:16px; }\\n      \"\n  });\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNDY0NC5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBQWUsU0FBU0EsV0FBV0EsQ0FBQSxFQUFHO0VBQ2xDLElBQU1DLFFBQVEsR0FBR0MsUUFBUSxDQUFDQyxhQUFhLENBQUMsa0JBQWtCLENBQUM7RUFDM0QsSUFBSSxDQUFDRixRQUFRLElBQUksQ0FBQ0csTUFBTSxDQUFDQyxPQUFPLEVBQUU7SUFDaENDLE9BQU8sQ0FBQ0MsSUFBSSxDQUFDLDBDQUEwQyxDQUFDO0lBQ3hEO0VBQ0Y7RUFFQUYsT0FBTyxDQUFDRyxJQUFJLENBQUM7SUFDWEMsUUFBUSxFQUFFLGtCQUFrQjtJQUM1QkMsY0FBYyxFQUFFLEtBQUs7SUFDckJDLFFBQVEsRUFBRSxPQUFPO0lBQ2pCQyxNQUFNLEVBQUUsR0FBRztJQUNYQyxPQUFPLEVBQUUsd0RBQXdEO0lBQ2pFQyxPQUFPLEVBQUUsc0lBQXNJO0lBQy9JQyxPQUFPLEVBQUUsS0FBSztJQUNkQyxRQUFRLEVBQUUsS0FBSztJQUNmQyxhQUFhO0VBR2YsQ0FBQyxDQUFDO0FBQ0oiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9pbm9raW0td2ViLy4vcHVibGljL2pzL2FkbWluL1RpbnlNQ0UuanM/YWQ4OCJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBpbml0VGlueU1DRSgpIHtcbiAgICBjb25zdCB0ZXh0YXJlYSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ3RleHRhcmVhI2NvbnRlbnQnKTtcbiAgICBpZiAoIXRleHRhcmVhIHx8ICF3aW5kb3cudGlueW1jZSkge1xuICAgICAgY29uc29sZS53YXJuKCdUaW55TUNFIG5vdCBsb2FkZWQgb3IgI2NvbnRlbnQgbm90IGZvdW5kJyk7XG4gICAgICByZXR1cm47XG4gICAgfVxuICBcbiAgICB0aW55bWNlLmluaXQoe1xuICAgICAgc2VsZWN0b3I6ICd0ZXh0YXJlYSNjb250ZW50JyxcbiAgICAgIGRpcmVjdGlvbmFsaXR5OiAncnRsJyxcbiAgICAgIGxhbmd1YWdlOiAnaGVfSUwnLFxuICAgICAgaGVpZ2h0OiA0MDAsXG4gICAgICBwbHVnaW5zOiAnY29kZSBsaW5rIGltYWdlIGxpc3RzIHRhYmxlIGZ1bGxzY3JlZW4gbWVkaWEgd29yZGNvdW50JyxcbiAgICAgIHRvb2xiYXI6ICd1bmRvIHJlZG8gfCBzdHlsZXMgfCBib2xkIGl0YWxpYyB1bmRlcmxpbmUgfCBhbGlnbnJpZ2h0IGFsaWduY2VudGVyIGFsaWdubGVmdCB8IGJ1bGxpc3QgbnVtbGlzdCB8IGxpbmsgaW1hZ2UgbWVkaWEgfCBjb2RlIGZ1bGxzY3JlZW4nLFxuICAgICAgbWVudWJhcjogZmFsc2UsXG4gICAgICBicmFuZGluZzogZmFsc2UsXG4gICAgICBjb250ZW50X3N0eWxlOiBgXG4gICAgICAgIGJvZHkgeyBmb250LWZhbWlseTogJ0hlbHZldGljYScsICdBcmlhbCcsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZToxNnB4OyB9XG4gICAgICBgXG4gICAgfSk7XG4gIH1cbiAgIl0sIm5hbWVzIjpbImluaXRUaW55TUNFIiwidGV4dGFyZWEiLCJkb2N1bWVudCIsInF1ZXJ5U2VsZWN0b3IiLCJ3aW5kb3ciLCJ0aW55bWNlIiwiY29uc29sZSIsIndhcm4iLCJpbml0Iiwic2VsZWN0b3IiLCJkaXJlY3Rpb25hbGl0eSIsImxhbmd1YWdlIiwiaGVpZ2h0IiwicGx1Z2lucyIsInRvb2xiYXIiLCJtZW51YmFyIiwiYnJhbmRpbmciLCJjb250ZW50X3N0eWxlIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///4644\n");
+
+/***/ })
+
+}]);

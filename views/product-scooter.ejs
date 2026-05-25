@@ -1,0 +1,817 @@
+<% if (announcement && announcement.text && announcement.text.trim() !== "") { %>
+  <%- include("./partials/announcement.ejs", { 
+    text: announcement.text,
+    buttonLink: announcement.buttonLink || null,
+    buttonText: announcement.buttonText || null,
+    isSale: true
+  }) %>
+<% } %>
+
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+
+<main class="product-page">
+    <div class="product-container">
+      <!-- Right Column (Gallery) -->
+      <div class="product-gallery" id="p-gallery">
+        <section class="splide" aria-label="Product Images">
+          <div class="splide__track">
+            <ul class="splide__list" style="max-height: 100%;">
+              <% if (product && product.variants.length > 0 ) { %>
+                <% product.variants[0].gallery.forEach((img, index) => { %>
+                  <li class="splide__slide">
+                      <div class="slide-image-wrapper">
+                        <img src="<%= `${s3path}${img.replaceAll('/img', "/optimized")}` %>" alt="<%= product.title %> - <%= index + 1 %>">
+                      </div>
+                    </li>
+                  <% }) %>
+                  <% } else { %>
+                     <% product.gallery.forEach((img, index) => { %>
+                     <li class="splide__slide">
+                    <div class="slide-image-wrapper">
+                      <img src="<%= `${s3path}${img.replaceAll('/img', "/optimized")}` %>" alt="<%= product.title %> - <%= index + 1 %>">
+                    </div>
+                  </li>
+                  <% }) %>
+                 <% } %>
+
+            </ul>
+          </div>
+        </section>
+      </div>
+
+  
+      <!-- Left Column (Product Content) -->
+      <div class="product-details <%= announcement && announcement.text && announcement.text.trim() !== "" ? "custom-heigth": ""  %>" id="product-options-container">
+        <div class="border-bottom text-center product-header mb-3 p-2">
+          <%- product.logoSvg %>
+          <h1> <%= product.title  %> </h1>
+      
+        </div>
+
+        <div class="product-specs-group">
+          <% if(product && product.mainInfo.length > 0) { %>
+
+            <% product.mainInfo.forEach(info =>{ %>
+              <div>
+                <span class="spec-item"><%= info.value  %></span>
+                <span><%= info.key  %> </span>
+              </div>
+           <% }) %>
+
+         <% } %>
+      
+        </div>
+  
+
+
+
+
+        <div class="product-features-grid">
+
+
+
+
+  <% if (product.slug === "inokim-kix") { %>
+  <div class="feature-card feature-card--app" role="group" aria-labelledby="kix-app-title">
+    <div class="feature-card__glow" aria-hidden="true"></div>
+
+    <div class="feature-card__head">
+      <div class="feature-card__icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="2" width="12" height="20" rx="2.5"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+      </div>
+      <div class="feature-card__title-wrap">
+        <strong id="kix-app-title">אפליקציית KIX הרשמית</strong>
+        <span>שליטה מלאה מהטלפון שלך</span>
+      </div>
+ 
+    </div>
+
+    <ul class="feature-card__list">
+      <li>
+<div class="feature-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>        חיבור לקורקינט באמצעות Bluetooth
+      </li>
+      <li>
+<div class="feature-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>        צפייה בנתוני נסיעה בזמן אמת
+      </li>
+      <li>
+<div class="feature-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>        בדיקת מצב סוללה מדויקת
+      </li>
+      <li>
+<div class="feature-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>        שינוי הגדרות הקורקינט
+      </li>
+      <li>
+<div class="feature-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>        מעקב נתוני שימוש לאורך זמן
+      </li>
+    </ul>
+
+    <a
+      href="https://apps.apple.com/app/id1514329684"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="feature-card__cta"
+      aria-label="הורדת אפליקציית KIX מ-App Store">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+      </svg>
+      <span>הורדה מ־App Store</span>
+  
+    </a>
+  </div>
+<% } %>
+
+
+
+  <div class="feature-card">
+    <div class="feature-icon" style="background: #E1F5EE;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div>
+      <strong>אחריות VIP לשנה</strong>
+      <span>שירות אינוקים רשמי</span>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon" style="background: #E6F1FB;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div>
+      <strong>עומד בכל התקנים</strong>
+      <span>תקינה ישראלית מלאה</span>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon" style="background: #FAEEDA;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <div>
+      <strong>מטען מהיר</strong>
+      <span>טעינה מלאה בזמן קצר</span>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon" style="background: #EEEDFE;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
+    <div>
+      <strong>טיפולים חינם לכל החיים</strong>
+      <span>חיזוקים ותחזוקה ללא עלות</span>
+    </div>
+  </div>
+
+  <% if (["ox-carbon", "inokim-ox-white", "inokim-ox-land-surfer", "ox-dubai"].includes(product.slug)) { %>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FAECE7;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      </div>
+      <div>
+        <strong>בלמים הידראוליים</strong>
+        <span>בלימה חזקה ומדויקת</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FAECE7;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div>
+        <strong>צמיגים רחבים</strong>
+        <span>3 אינץ׳ רוחב ליציבות מקסימלית</span>
+      </div>
+    </div>
+  <% } %>
+
+
+
+
+  <% if (product.slug === "ox-dubai") { %>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FBEAF0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <strong>איתותים קדמיים + אחוריים</strong>
+        <span>בטיחות מקסימלית בכביש</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FBEAF0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+      </div>
+      <div>
+        <strong>GPS מובנה</strong>
+        <span>מעקב מיקום בזמן אמת</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FBEAF0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/></svg>
+      </div>
+      <div>
+        <strong>פתיחה חכמה NFC</strong>
+        <span>ללא מפתח, רק הטלפון</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background: #FBEAF0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <div>
+        <strong>אזעקה ושלט חכם</strong>
+        <span>הגנה מלאה מפני גניבה</span>
+      </div>
+    </div>
+  <% } %>
+        </div>
+
+        <% if (product && product.variants.length > 0) { %>
+        <div class="choose-model mb-3" data-id="<%= product._id  %>">
+   
+            <% product.variants.forEach((prd, index) => { 
+                const outOfStock = prd.availability === "אזל במלאי";
+                const isPreOrder = prd.isPreOrder === true;
+              %>
+
+              <div
+                class="d-flex justify-content-between align-items-center border rounded mb-3 item-model"
+                style="<%= outOfStock ? 'pointer-events: none; opacity: 0.6;' : '' %>"
+                data-index="<%= index %>"
+                data-colors="<%= encodeURIComponent(JSON.stringify(prd.colors)) %>"
+                data-gallery="<%= encodeURIComponent(JSON.stringify(prd.gallery || [])) %>"
+                data-price="<%= prd.colors[0].price %>"
+                data-compare-at-price="<%= prd.colors[0].compareAtPrice || prd.colors[0].price %>"
+                data-submodel="<%= prd.subModel %>"
+                data-id="<%= prd._id %>"
+                data-sku="<%= prd.colors[0].sku || prd._id  %>"
+                data-availability="<%= prd.availability %>"
+              >
+                <span class="d-flex flex-wrap"><%= prd.subModel %>
+                    <% if(outOfStock) { %>
+                  <span class="ms-2 badge bg-danger">אזל במלאי</span>
+                <% } %>
+
+              <% if(isPreOrder) { %>
+                  <div class="me-2 d-flex justify-content-center align-items-center badge bg-warning text-dark" id="test">מכירה מוקדמת</div>
+                <% } %>
+
+                   <% if(noVAT) { %>
+                  <span class="me-3 badge bg-danger">ללא מע״מ</span>
+                  <% } %>   
+                       <% if(product.label) { %>
+                         <span class="me-3 badge bg-danger"> <%= product.label %> </span>
+                      <% } %>
+                  </span>
+                <span>
+                  <%=  formatter.format(  prd.colors[0].price) %>
+                  <% if(prd.colors[0].compareAtPrice && prd.colors[0].compareAtPrice > prd.colors[0].price ) { %>
+                    <strike class="me-2"> <%=  formatter.format( prd.colors[0].compareAtPrice) %> </strike>
+                 <% } %>
+                </span>
+              </div>
+
+            <% }); %>
+
+            <div class="text-center d-flex align-items-center justify-content-center gap-2 mb-5">
+            <% if(product.variants.length > 1) { %>
+                <button type="button" class="btn btn-light w-50" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  השוואת הדגמים
+                </button>
+                <% } %>
+                
+                <button type="button" class="btn btn-dark w-50" data-bs-toggle="modal" data-bs-target="#moreModal">
+                  מידע נוסף
+                </button>
+              </div>  
+
+        </div>
+
+   
+        <div class="choose-color text-center mb-5">
+          <h4 class="mb-3" id="color-title">בחר צבע</h4>
+          <div class="colors d-flex gap-3 justify-content-center" id="color-options">
+          </div>
+        </div>
+
+    
+        <% if(false) { %>
+
+        <div class="choose-suspension mb-5">
+        <h4 class="mb-3 text-center" id="suspension-title">בחירת שיכוך</h4>
+        <div class="suspensions d-flex gap-3 justify-content-center mb-2" id="suspension-options">
+          <% product.variants[0].suspensions.forEach((susp, sIndex) => { %>
+            <button
+              type="button"
+              class="btn btn-outline-secondary suspension-btn<%= sIndex === 0 ? ' active' : '' %> d-flex flex-column w-100 align-items-center justify-content-center"
+              data-suspension="<%= susp.type %>"
+            >
+              <svg style="width: 3em;" id="fi_3902999" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m429.662 20.6-52.035 36.9-9.455-9.334a20.888 20.888 0 0 0 -29.236 0 20.435 20.435 0 0 0 0 29.08l19.885 19.629-16.216 16.007-22.669-11.972a26.883 26.883 0 0 0 -36.1 10.826 26.024 26.024 0 0 0 -2.026 20.087 26.3 26.3 0 0 0 12.99 15.743l8.258 4.362-10.138 10.008-22.669-11.974a26.885 26.885 0 0 0 -36.1 10.827 26.025 26.025 0 0 0 -2.025 20.088 26.3 26.3 0 0 0 12.987 15.741l8.258 4.362-10.071 9.932-22.668-11.973a26.884 26.884 0 0 0 -36.1 10.826 26.028 26.028 0 0 0 -2.025 20.089 26.3 26.3 0 0 0 12.987 15.74l8.257 4.362-10.151 10.024-22.668-11.973a26.885 26.885 0 0 0 -36.1 10.826 26.03 26.03 0 0 0 -2.025 20.088 26.7 26.7 0 0 0 1.9 4.648l-12.853-12.688a6 6 0 0 0 -9.2.929l-12.812 19.1a28.5 28.5 0 0 0 3.6 36.071l-27.853 27.319a5.967 5.967 0 0 0 -1.235 1.762h-.006l-18.643 40.183a52.634 52.634 0 0 0 -31.349 14.855 51.644 51.644 0 0 0 0 73.678 53.167 53.167 0 0 0 74.417 0 51.432 51.432 0 0 0 15.112-30.989l40.574-18.5-.008-.017a5.954 5.954 0 0 0 1.72-1.158l27.982-27.446.421.415a28.623 28.623 0 0 0 35.579 3.571l19.821-12.954a6 6 0 0 0 .932-9.293l-30.3-29.906 19.494-19.301 22.661 11.97a26.887 26.887 0 0 0 36.1-10.826 26.03 26.03 0 0 0 2.026-20.088 26.308 26.308 0 0 0 -12.988-15.742l-8.258-4.362 10.159-10.025 22.671 11.973a26.887 26.887 0 0 0 36.1-10.826 26.03 26.03 0 0 0 2.026-20.088 26.305 26.305 0 0 0 -12.988-15.742l-8.257-4.362 10.06-9.932 22.669 11.973a26.89 26.89 0 0 0 36.1-10.827 26.028 26.028 0 0 0 2.024-20.089 26.3 26.3 0 0 0 -12.986-15.74l-8.259-4.362 10.146-10.005 22.668 11.974a26.888 26.888 0 0 0 36.1-10.825 25.968 25.968 0 0 0 2.893-16.2 20.879 20.879 0 0 0 25.654-2.811 20.434 20.434 0 0 0 0-29.079l-9.363-9.242 37.3-51.245a45.313 45.313 0 0 0 -4.878-59.261 46.626 46.626 0 0 0 -59.818-4.811zm-62.3 84.708 41.291 40.762-1.122 1.108-53.8-28.416zm-277.02 370.931a41.118 41.118 0 0 1 -57.555 0 39.643 39.643 0 0 1 0-56.6 41.118 41.118 0 0 1 57.555 0 39.64 39.64 0 0 1 0 56.6zm23.368-35.557a51.444 51.444 0 0 0 -14.937-29.582 52.6 52.6 0 0 0 -29.918-14.688l12.79-27.571 59.913 59.145zm38.274-19.265-63.639-62.823 23.629-23.175 63.638 62.822zm75.2-29.69-13.6 8.886a16.561 16.561 0 0 1 -20.584-2.066l-81.088-80.047a16.488 16.488 0 0 1 -2.108-20.9l8.774-13.083zm-81.068-96.89 7.957 4.2-1.842 1.833zm55.955 55.238-41.3-40.771 4.417-4.394 53.794 28.414zm70.229-34.952a14.385 14.385 0 0 1 7.106 8.609 14.1 14.1 0 0 1 -1.091 10.891 14.848 14.848 0 0 1 -19.947 5.935l-106.979-56.5a14.391 14.391 0 0 1 -7.106-8.61 14.109 14.109 0 0 1 1.09-10.891 14.861 14.861 0 0 1 19.948-5.933zm-67.579-49.265 10.154-10.025 53.8 28.416-10.154 10.024zm117.285.2a14.386 14.386 0 0 1 7.106 8.611 14.1 14.1 0 0 1 -1.09 10.891 14.847 14.847 0 0 1 -19.948 5.933l-106.974-56.51a14.387 14.387 0 0 1 -7.106-8.608 14.111 14.111 0 0 1 1.09-10.892 14.861 14.861 0 0 1 19.948-5.933zm-67.577-49.268 10.061-9.933 53.8 28.416-10.061 9.932zm117.192.289a14.383 14.383 0 0 1 7.106 8.609 14.1 14.1 0 0 1 -1.09 10.891 14.848 14.848 0 0 1 -19.948 5.934l-106.981-56.5a14.392 14.392 0 0 1 -7.107-8.61 14.109 14.109 0 0 1 1.091-10.891 14.845 14.845 0 0 1 19.949-5.934zm-67.579-49.266 10.138-10.008 53.8 28.415-10.14 10.009zm123.284 19.714a14.845 14.845 0 0 1 -19.948 5.933l-106.978-56.504a14.39 14.39 0 0 1 -7.106-8.61 14.107 14.107 0 0 1 1.091-10.892 14.847 14.847 0 0 1 19.947-5.934l106.978 56.505a14.387 14.387 0 0 1 7.107 8.611 14.105 14.105 0 0 1 -1.091 10.891zm30.668-33.827a8.435 8.435 0 0 1 0 12 8.844 8.844 0 0 1 -12.377 0l-98.251-96.99a8.435 8.435 0 0 1 0-12 8.842 8.842 0 0 1 12.376 0zm26.659-76.09-36.228 49.78-62.125-61.328 50.3-35.676a34.644 34.644 0 0 1 44.444 3.564 33.383 33.383 0 0 1 3.609 43.66z"></path><path d="m442.229 42.119a21.094 21.094 0 0 0 0 30.134 21.711 21.711 0 0 0 30.339 0 21.1 21.1 0 0 0 0-30.135 21.711 21.711 0 0 0 -30.339.001zm21.919 21.581a9.662 9.662 0 0 1 -13.5 0 9.1 9.1 0 0 1 0-13.036 9.663 9.663 0 0 1 13.5 0 9.1 9.1 0 0 1 0 13.034z"></path><path d="m42.41 428.922a26.668 26.668 0 0 0 0 38.036 27.372 27.372 0 0 0 38.31 0 26.671 26.671 0 0 0 0-38.036 27.374 27.374 0 0 0 -38.31 0zm29.879 29.495a15.323 15.323 0 0 1 -21.449 0 14.668 14.668 0 0 1 0-20.955 15.325 15.325 0 0 1 21.449 0 14.668 14.668 0 0 1 0 20.955z"></path></svg>
+              שיכוך <%= susp.type %>
+            </button>
+          <% }); %>
+        </div>
+        <span id="messageSus"> *שיכוך רך - כלול במחיר</span>
+      </div>
+
+      <%  } %>
+
+
+
+        <% } %>
+
+
+        <% if (product.upsell && product.upsell.length > 0) { %>
+
+          <% let accessories = []; %>
+          <div class="upsale text-center p-0 p-md-0 mb-5">
+          <% product.upsell.forEach(up => { %>
+            <% if (up.categoryUpsell === 1) { %>
+        
+              <div class="cyborg-logo d-flex justify-content-center align-items-center">
+                <% if (up.customSvg) { %>
+                  <%- up.customSvg %>
+                <% } %>
+              </div>
+        
+                <h2><%= up.customTitle %></h2>
+        
+                <% if (up.customDescription) { %>
+                  <div class="mb-3 text-end" style="font-weight: 400;color: #393c41; padding: .6em;">
+                    <%= up.customDescription %>
+                  </div>
+                <% } %>
+        
+                <div class="d-flex upsale justify-content-between align-items-center border rounded mb-3 item-upsale"
+                  data-upsellid="<%= up._id %>"
+                  data-price="<%= up.customPrice %>"
+                  data-name="<%= up.customTitle %>"
+                  >
+                  <span><%= up.customTitle %></span>
+                  <span><%= formatter.format(up.customPrice) %></span>
+                </div>
+        
+                <% if (up.customVideo || up.customImage) { %>
+                  
+                  <div class="d-flex align-items-center justify-content-between border rounded mb-3" data-bs-toggle="modal" data-bs-target="#videoUpsellProduct">
+                    <% if (up.customImage) { %>
+                      <div class="image-cyborg">
+                        <img src="<%= `${s3path}${up.customImage}` %>" alt="">
+                      </div>
+                    <% } %>
+                    <% if (up.customVideo) { %>
+                      <div class="px-3 cursor-pointer">
+                        <div class="d-flex flex-column align-items-start">
+                          <strong>צפה בוידאו</strong>
+                          <span>גלה איך זה נראה על הכביש</span>
+                        </div>
+                      </div>
+                    <% } %>
+                  </div>
+        
+                  <% if (up.customVideo) { %>
+                    <%- include("./partials/modals/upsellVideo.ejs", { name: up.product?.name || '', video: up.customVideo, svg:  up.customSvg, s3path}) %>
+                  <% } %>
+                <% } %>
+        
+              <% } else if (up.categoryUpsell === 2) { %>
+                <% accessories.push(up); %>
+              <% } else if(false) { %>
+
+                    <div class="mb-3" id="palletSelection">
+                    <h2>בחירת פלטה מעוצבת</h2>
+
+                    <div class="d-flex align-items-center border rounded mb-3 text-end" data-bs-toggle="modal" data-bs-target="#palletGridModal">
+                      <div class="image-cyborg d-flex align-items-center justify-content-center">
+                        <img src="https://d3kxrpm9y5cv3a.cloudfront.net<%= up.product.variants[0].colors[0].image  %>" alt="" style="height: auto; width: 40%; transform: rotate(90deg);">
+                      </div>
+                      <div class="cursor-pointer">
+                        <div class="d-flex flex-column align-items-start w-100">
+                          <strong>צפה בפלטות</strong> 
+                          <span>גלה עיצובים חדשים לאוקס שלך</span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <%-  include('./partials/modals/pallets.ejs', {product:  up.product}) %>
+              <% }  %>
+          <% }) %>
+        
+          <% if (accessories.length > 0) { %>
+              <div class="accessories-upsell text-center mt-5">
+                <h2 class="mb-3">אביזרים נלווים</h2>
+        
+                <% accessories.forEach(accessory => { %>
+                  <div class="d-flex upsale justify-content-between align-items-center border rounded mb-3 item-upsale"
+                    data-upsellid="<%= accessory._id %>"
+                    data-price="<%= accessory.customPrice %>"
+                    data-name="<%= accessory.customTitle %>"
+                    >
+                    <span><%= accessory.customTitle %></span>
+                    <span><%= formatter.format(accessory.customPrice) %></span>
+                  </div>
+                <% }) %>
+              </div>
+          <% } %>
+        
+              </div> 
+        <% } %>
+        
+
+
+
+<section class="faq-section mb-5">
+  <div class="faq-shell">
+    <div class="text-center mb-4">
+      <h2 class="faq-title">שאלות נפוצות</h2>
+      <p class="faq-subtitle">כל מה שחשוב לדעת לפני שמזמינים את האינוקים החדש שלך</p>
+    </div>
+<% if (product.faq && product.faq.length > 0) { %>
+  <div class="accordion" id="productFaqAccordion">
+    <% product.faq.sort((a,b)=>a.order-b.order).forEach((item, index) => { %>
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button <%= index !== 0 ? 'collapsed' : '' %>"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq-<%= index %>">
+            <%= item.question %>
+          </button>
+        </h3>
+
+        <div id="faq-<%= index %>" class="accordion-collapse collapse <%= index === 0 ? 'show' : '' %>">
+          <div class="accordion-body">
+            <%= item.answer %>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+  </div>
+</section>
+
+
+       <div class="cart-summary text-center mb-5 p-3" id="cartSummary">
+        <%# FIX: Don't render broken <img> with empty src — JS will populate it %>
+        <div class="product-mobile-img d-block d-md-none"></div>
+        <h3>האינוקים החדש שלך </h3>
+       
+      <!--  <p id="eta" class="m-0 text-muted">מועד אספקה: כ
+          
+        product.variants[0].availability 
+          
+          </p>-->
+        <p class="m-0 text-muted">משלוח מהיום למחר! הזמן היום קבל כבר מחר</p>
+
+        <p class="text-muted">*טיפולים וחיזוקים חינם לכל החיים!</p>
+        <p class="text-muted">*אחריות אינוקים רישמית VIP לשנה</p>
+        <ul id="upsellList">
+
+        </ul>
+          <ul class="summary mb-3">
+              <li class="d-flex justify-content-between">
+                <span class="totalPrice">מחיר סופי</span>
+                <span></span>
+              </li>
+                  <li class="d-flex justify-content-between">
+                <span class="totalPrice">משלוח</span>
+                <span>חינם!</span>
+              </li>
+              <li class="d-flex justify-content-between">
+                <span class="totalPrice">36 תשלומים</span>
+                <span></span>
+              </li>
+          </ul>
+          <button class="btn add-to-cart w-100" id="addToCart">מעבר לתשלום</button>
+       </div>
+
+<div class="sticky-bottom">
+  <div class="sticky-benefits">
+    <span>
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_411_5900)">
+<path d="M10.7511 2.51932C11.7542 1.6479 13.2458 1.6479 14.2489 2.51932L14.5603 2.78984C15.1059 3.26388 15.8206 3.4961 16.5407 3.43333L16.9516 3.39751C18.2754 3.28211 19.4821 4.15883 19.7814 5.45342L19.8743 5.85531C20.0371 6.55954 20.4788 7.16751 21.0983 7.53998L21.4518 7.75254C22.5905 8.43724 23.0514 9.85581 22.5326 11.0791L22.3716 11.4588C22.0894 12.1243 22.0894 12.8757 22.3716 13.5412L22.5326 13.9209C23.0514 15.1442 22.5905 16.5628 21.4518 17.2475L21.0983 17.46C20.4788 17.8325 20.0371 18.4405 19.8743 19.1447L19.7814 19.5466C19.4821 20.8412 18.2754 21.7179 16.9516 21.6025L16.5407 21.5667C15.8206 21.5039 15.1059 21.7361 14.5603 22.2102L14.2489 22.4807C13.2458 23.3521 11.7542 23.3521 10.7511 22.4807L10.4397 22.2102C9.8941 21.7361 9.17939 21.5039 8.45931 21.5667L8.04838 21.6025C6.72466 21.7179 5.51796 20.8412 5.21866 19.5466L5.12574 19.1447C4.96293 18.4405 4.52121 17.8325 3.90175 17.46L3.54825 17.2475C2.40951 16.5628 1.94859 15.1442 2.46739 13.9209L2.62844 13.5412C2.91066 12.8757 2.91066 12.1243 2.62844 11.4588L2.46739 11.0791C1.94859 9.85581 2.40951 8.43724 3.54825 7.75254L3.90175 7.53998C4.52121 7.16751 4.96293 6.55954 5.12574 5.85531L5.21866 5.45342C5.51796 4.15883 6.72466 3.28211 8.04838 3.39751L8.45931 3.43333C9.17939 3.4961 9.8941 3.26388 10.4397 2.78984L10.7511 2.51932Z" stroke="#A28658" stroke-width="1.5"/>
+<path d="M12.5001 7L14.1165 10.2752L17.7309 10.8004L15.1155 13.3498L15.7329 16.9496L12.5001 15.25L9.26728 16.9496L9.88469 13.3498L7.26929 10.8004L10.8837 10.2752L12.5001 7Z" stroke="#A28658" stroke-width="1.5" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_411_5900">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+      משלוח חינם
+    </span>
+
+    <span>
+ 
+      <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_411_5887)">
+      <mask id="mask0_411_5887" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="20">
+      <path d="M24 0H0V20H24V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_411_5887)">
+      <path d="M18.5 19C17.1193 19 16 17.8807 16 16.5C16 15.1193 17.1193 14 18.5 14C19.8807 14 21 15.1193 21 16.5C21 17.8807 19.8807 19 18.5 19Z" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.5 19C4.11929 19 3 17.8807 3 16.5C3 15.1193 4.11929 14 5.5 14C6.88071 14 8 15.1193 8 16.5C8 17.8807 6.88071 19 5.5 19Z" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21.087 16.125H23V12.0891C23 11.3725 22.7116 10.6862 22.1999 10.1846L21.087 9.09378L19.4618 6.22671C18.9883 5.39132 18.1022 4.87503 17.1419 4.87503H15V3.6667C15 2.19394 13.8061 1.00003 12.3333 1.00003H7C3.68629 1.00003 1 3.68632 1 7.00003V16.125H3" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16 16.125H8" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15 4.87503V16" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <defs>
+      <clipPath id="clip0_411_5887">
+      <rect width="24" height="20" fill="white"/>
+      </clipPath>
+      </defs>
+      </svg>
+
+      אספקה מהיום למחר
+    </span>
+
+    <span>
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_411_5906)">
+        <path d="M16 9L10.8052 15L8 12.4285" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.0526 1.8453C12.434 1.43226 11.5658 1.43226 10.9472 1.8453C8.89985 3.21217 5.60513 4.32285 3.97626 4.82269C3.40048 4.99938 2.99878 5.52771 3.00371 6.12997C3.05887 12.8712 3.82028 18.7216 11.5311 21.8183C11.8293 21.9381 12.1705 21.9381 12.4687 21.8183C20.1796 18.7216 20.941 12.8712 20.9961 6.12998C21.0011 5.52772 20.5994 4.99938 20.0236 4.82269C18.3947 4.32285 15.1 3.21217 13.0526 1.8453Z" stroke="#A28658" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_411_5906">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+
+      אחריות לשנה
+    </span>
+  </div>
+
+  <div class="sticky-actions">
+    <div class="price-section">
+      <span class="price-amount"></span>
+    </div>
+
+    <button class="btn btn-danger btn-add-to-cart">הזמינו עכשיו</button>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </main>
+  
+
+  <style>
+
+.sticky-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sticky-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  direction: rtl;
+  flex-wrap: wrap;
+}
+
+.sticky-benefits span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sticky-benefit-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.sticky-benefits span {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sticky-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.sticky-actions .price-section {
+  flex: 1;
+}
+
+.sticky-actions .btn-add-to-cart {
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  .sticky-benefits {
+    gap: 6px;
+  }
+
+  .sticky-benefits span {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+} 
+
+.feature-card--app {
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+
+/* Ambient glow */
+.feature-card__glow {
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(closest-side, rgba(80, 160, 255, 0.28), transparent 70%);
+  filter: blur(8px);
+  z-index: -1;
+  pointer-events: none;
+  animation: kixGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes kixGlow {
+  0%   { transform: translate(0, 0) scale(1); opacity: .85; }
+  100% { transform: translate(-20px, 20px) scale(1.08); opacity: 1; }
+}
+
+/* Header row */
+.feature-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-card__icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2C2C2E, #1A1A1C);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #5AC8FA;
+  box-shadow: 0 4px 12px rgba(90, 200, 250, 0.18);
+}
+
+.feature-card__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.feature-card__title-wrap strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.feature-card__title-wrap span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+
+/* Feature list */
+.feature-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 14px;
+}
+
+.feature-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.35;
+}
+
+.feature-card__list li svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  padding: 2px;
+  border-radius: 50%;
+  background: rgba(90, 200, 250, 0.15);
+}
+
+/* CTA */
+.feature-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+  width: 100% !important;
+}
+
+.feature-card__cta:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+}
+
+.feature-card__cta:active {
+  transform: translateY(0);
+}
+
+/* In RTL the visual back-arrow should point right */
+.feature-card__cta-arrow {
+  transform: scaleX(-1);
+  transition: transform .2s ease;
+}
+
+.feature-card__cta:hover .feature-card__cta-arrow {
+  transform: scaleX(-1) translateX(-3px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .feature-card--app {
+    padding: 16px;
+  }
+
+     .product-details svg {
+     width: 100% !important;
+    }
+
+    .feature-card__cta svg{
+              width: 3em !important;
+    }
+
+  .feature-card__list {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card__title-wrap strong { font-size: 14px; }
+  .feature-card__title-wrap span   { font-size: 11.5px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card--app,
+  .feature-card__cta,
+  .feature-card__cta-arrow,
+  .feature-card__glow {
+    transition: none;
+    animation: none;
+  }
+
+
+}</style>
+
+
+  <%- include("./partials/modals/noVATModal.ejs", {product, formatter, s3path}) %>
+  <%- include("./partials/modals/productSlide.ejs", {product, formatter, s3path}) %>
+  <%- include("./partials/modals/compareModal.ejs", {product, formatter, s3path}) %>
+
+

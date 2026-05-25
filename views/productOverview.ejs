@@ -1,0 +1,551 @@
+<%- include("./partials/announcement.ejs", { 
+    text: `${hasInventory ? ` ${product.name} קונים רק באינוקים! `: "המוצר לא זמין כרגע במלאי"}`, 
+    buttonLink:  `${!hasInventory ? "#secondHand": `/products/${product.slug}`}`  , 
+    buttonText: `${hasInventory ? "קנה עכשיו" : "מצא מלאי"}`,
+    isSale: false
+}) %>
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<% 
+  const basePrice = product.price || (product.variants?.[0]?.colors?.[0]?.price || 0);
+  const secondPrice = product.variants?.[1]?.colors?.[0]?.price || null;
+%>
+
+
+<main id="top-app">
+    <div id="wd-product-overview">
+        <div class="section-overview" style="--background: url('<%= `${s3path}${product.overviewImage}` %>')">
+
+        
+
+        <div class="text">
+    
+            <div class="logo">
+                <%- product.logoSvg %>
+    
+            </div>
+    
+            <div class="info">
+    
+                <div>
+                    <h2> <%= product.overviewSubtitle  %> </h2>
+                    <p>
+                        <%= product.title  %>
+                    </p>
+                </div>
+    
+                <div><div class="wd-extra-shipping-details-wrapper">
+
+                    <% if(product && product.mainInfo && product.mainInfo.length > 0 ) { %>
+                        <% product.mainInfo.forEach(el =>{ %>
+                            <div class="wd-extra-shipping-details-block">
+                                    
+                                <div class="wd-extra-shipping-details__icon">
+                       
+                                    <img src="<%= el.img  %>" alt="">
+                                </div>
+                            
+                            
+                                <div class="wd-extra-shipping-details__text">
+                                    
+                                        <div class="wd-extra-shipping-details__title">
+                                             <%=el.key  %>
+                                        </div>
+                                    
+                                    
+                                        <div class="wd-extra-shipping-details__desc">
+                                            <%=el.value  %>
+                                        </div>
+                                    
+                                </div>
+                            
+                        </div>
+                      <%  }) %>
+
+                   <% }  %>
+                            
+
+                            
+                        </div>
+                    </div>
+    
+                <div class="price-item">
+                    <div class="price">
+
+                      <%= formatter.format(basePrice) %> 
+                      <%= secondPrice ? " / " + formatter.format(secondPrice) : "" %>
+                       
+    
+                    </div>
+          
+                </div>
+    
+            </div>
+    
+    
+        </div>
+    
+    </div>
+
+
+    <div class="container p-5">
+          <div class="row">
+
+
+                        <% if(product && product.mainInfo && product.mainInfo.length > 0 ) { %>
+                        <% product.mainInfo.forEach(el =>{ %>
+
+
+
+                              <div class="col-12 col-md-4 border-bottom border-md-start text-center">
+                                
+                                <strong class="overviewSpec">   <%=el.value  %></strong>
+                        <span class="d-block">   <%=el.key  %></span>
+                              </div>
+
+                      <%  }) %>
+
+              
+
+                   <% }  %>
+
+
+
+    </div>
+
+    </div>
+
+
+    <% if(product.overviewVideo) { %>
+        <section class="info">
+            <div class="video-container">
+         
+
+                <video
+                  class="info-video"
+                  preload="metadata"
+                  width="100%"
+                  height="auto"
+                  muted
+                  autoplay
+                  loop
+                  playsinline
+                  preload="none"
+                  poster="<%= s3path  %>/optimized/bgVideo.webp"
+                  >
+                  <source data-src="<%= `${s3path}${product.overviewVideo}`%>" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+          
+                <div class="video-overlay-dark"></div>
+          
+                <div class="video-overlay">
+                  <h2><%= product.title  %> </h2>
+                  <a href="/products/<%= product.slug  %>" class="btn btn-outline">הזמינו עכשיו</a>
+                </div>
+              </div>
+        
+            </section>
+   <% } %>
+ 
+      
+
+
+        <section class="overview-content-blocks">
+      <% if(product.contentBlocks && product.contentBlocks.length > 0) { %>
+    
+      <% product.contentBlocks.forEach((block, index) => { %>
+        <% if (block.type === 'imageWithText') { %>
+          <div class="container py-5">
+            <div class="row align-items-center <%= block.imagePosition === 'left' ? 'flex-row-reverse' : '' %>">
+              
+              <!-- Image -->
+              <div class="col-12 col-md-6 text-center mb-4 mb-md-0">
+                <div class="img-box">
+                  <img src="<%= `${s3path}${block.image}` %>" alt="<%= block.title %>" class="img-fluid rounded shadow-sm">
+                </div>
+              </div>
+    
+              <!-- Text -->
+              <div class="col-12 col-md-6 text-md-end text-center text-light pe-md-5 ps-md-5">
+                <h2 class="mb-3"><%= block.title %></h2>
+                <p style="line-height: 1.8;"><%= block.content %></p>
+              </div>
+    
+            </div>
+          </div>
+        <% } %>
+      <% }) %>
+    
+      <% } %>
+    </section>
+
+    <div class="section-icons p-3">
+    
+        <div class="container">
+    
+            <div class="row">
+    
+                
+                    <div class="col-12 col-md-4 mb-5 mb-md-0 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                           
+                          <svg style="width: 3.5em; height:3.5em;" viewBox="0 0 91.29 102.423" height="102.423" width="91.29" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" data-sanitized-data-name="2" data-name="2" id="_2">
+                            <defs>
+                              <clipPath id="clip-path">
+                                <rect fill="none" height="102.423" width="91.29" data-sanitized-data-name="Rectangle 4653" data-name="Rectangle 4653" id="Rectangle_4653"></rect>
+                              </clipPath>
+                            </defs>
+                            <path transform="translate(-11.371 -5.751)" d="M52.7,57.5,41.014,46.119,31.68,55.707,52.954,76.419l49.707-51.061-9.589-9.334Z" data-sanitized-data-name="Path 4404" data-name="Path 4404" id="Path_4404"></path>
+                            <g data-sanitized-data-name="Group 4884" data-name="Group 4884" id="Group_4884">
+                              <g clip-path="url(#clip-path)" data-sanitized-data-name="Group 4883" data-name="Group 4883" id="Group_4883">
+                                <path fill="red" d="M41.654,102.423l-2.151-.658c-4.334-1.326-13.174-6.576-21.018-13.691C10.052,80.424,0,68.266,0,53.784V11.677l7.441.093c.26,0,.531.005.81.005,6.913,0,19.854-1.062,28.846-8.171L41.654,0l4.558,3.6c6.86,5.423,16.076,7.281,22.6,7.884l-.607,6.569c-7.413-.685-17.956-2.851-26.084-9.278l-.467-.369-.467.369C30.631,17.125,16.02,18.371,8.25,18.371q-.459,0-.89-.005l-.763-.01V53.784c0,12.067,8.875,22.651,16.32,29.4,7.494,6.8,15.479,11.34,18.517,12.269l.221.067.22-.067c3.038-.93,11.024-5.471,18.517-12.269,7.445-6.753,16.321-17.337,16.321-29.4V39.654h6.6V53.784c0,14.483-10.052,26.641-18.485,34.291C56.979,95.189,48.14,100.439,43.8,101.765Z" data-sanitized-data-name="Path 4405" data-name="Path 4405" id="Path_4405"></path>
+                              </g>
+                            </g>
+                          </svg>
+
+                            <h3>מערכת בטיחות ייחודית</h3>
+                            <p>
+                                ביצועים מעולים בכל נסיעה ,עם מערכת מתלים פורצת דרך .המבטיחה רכיבה נוחה גם בדרכים משובשות
+                            </p>
+                        </div>
+                    
+                    </div>
+                
+                    <div class="col-12 col-md-4  mb-5 mb-md-0 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                         
+                          <svg style="width: 3.5em; height:3.5em;" viewBox="0 0 90.506 98.583" height="98.583" width="90.506" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" data-sanitized-data-name="3" data-name="3" id="_3">
+                          <defs>
+                            <clipPath id="clip-path">
+                              <rect fill="none" height="98.583" width="90.506" data-sanitized-data-name="Rectangle 4599" data-name="Rectangle 4599" id="Rectangle_4599"></rect>
+                            </clipPath>
+                          </defs>
+                          <rect fill="red" transform="translate(45.14 49.839)" height="48.744" width="5.579" data-sanitized-data-name="Rectangle 4598" data-name="Rectangle 4598" id="Rectangle_4598"></rect>
+                          <g data-sanitized-data-name="Group 4764" data-name="Group 4764" id="Group_4764">
+                            <g clip-path="url(#clip-path)" data-sanitized-data-name="Group 4763" data-name="Group 4763" id="Group_4763">
+                              <path fill="red" transform="translate(-16.308 -48.605)" d="M49.376,132.663a25.043,25.043,0,0,1-5.17-.4,9.128,9.128,0,0,1-6.583-6.054l-.051-.146a29.057,29.057,0,0,1-1.215-8.332c-.041-.889-.08-1.729-.147-2.547l-.057-.692c-.213-2.6-.434-5.286-.423-8l5.579.022c-.01,2.47.191,4.922.4,7.517l.057.7c.074.915.117,1.844.159,2.741a24.6,24.6,0,0,0,.914,6.768l.035.1a3.524,3.524,0,0,0,2.559,2.484c2.568.581,9.589.091,13.784-.2,1.226-.085,2.285-.159,3.1-.2l.279,5.572c-.756.038-1.789.11-2.986.194-3.708.258-7.282.482-10.233.482" data-sanitized-data-name="Path 4355" data-name="Path 4355" id="Path_4355"></path>
+                              <path transform="translate(0 0)" d="M90.506,45.6C90.58,30.448,83.532,17.76,70.927,8.952A45.52,45.52,0,0,0,46.275.042,43.25,43.25,0,0,0,18.653,8.358C9.42,15.3,3.2,23.223,1.256,33.436-.661,43.522.179,62.1.209,62.792c14.738.073,23.656-.081,34.186-.081,8.263,0,10.916-5.459,11.584-6.534,2.979-4.8,3.721-10.829,9.55-10.829,7.986,0,34.977.247,34.977.247" data-sanitized-data-name="Path 4356" data-name="Path 4356" id="Path_4356"></path>
+                            </g>
+                          </g>
+                        </svg>
+
+                            <h3>ראש שקט</h3>
+                            <p>
+                                אחריות ל-12 חודשים
+                            </p>
+                        </div>
+                   
+                    </div>
+                
+                    <div class="col-12 col-md-4 mb-3 mb-md-0 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                      
+                  
+                        <svg style="width: 3.5em; height:3.5em;" viewBox="0 0 125.626 90.7" height="90.7" width="125.626" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" data-sanitized-data-name="1" data-name="1" id="_1">
+                          <defs>
+                            <clipPath id="clip-path">
+                              <rect fill="none" height="90.7" width="125.626" data-sanitized-data-name="Rectangle 4600" data-name="Rectangle 4600" id="Rectangle_4600"></rect>
+                            </clipPath>
+                          </defs>
+                          <g clip-path="url(#clip-path)" data-sanitized-data-name="Group 4766" data-name="Group 4766" id="Group_4766">
+                            <path transform="translate(-12.837 -7.799)" d="M61.2,38.091l2.718-5.244a1.727,1.727,0,0,1,3.265.939V46.609a1.831,1.831,0,0,0,1.746,1.906H80.153a1.91,1.91,0,0,1,1.519,2.845l-8.5,16.405-2.718,5.244a1.728,1.728,0,0,1-3.265-.938V59.246a1.831,1.831,0,0,0-1.746-1.906H54.216A1.91,1.91,0,0,1,52.7,54.5Z" data-sanitized-data-name="Path 4357" data-name="Path 4357" id="Path_4357"></path>
+                            <path fill="red" d="M95.066,90.7H45.927L28.464,73.238H0V13.1H19.733L32.83,0H70.967L92.795,21.828h7.616V13.1h12.607c2.925,0,7.01,1.789,9.853,10.318a64.867,64.867,0,0,1,2.755,19.752,64.869,64.869,0,0,1-2.755,19.753c-2.842,8.528-6.927,10.318-9.853,10.318H100.411V64.506H95.066ZM49.138,82.948H87.314V56.754h20.849v8.732h4.654c.5-.353,1.879-2.037,3.11-6.349a60.46,60.46,0,0,0,1.946-15.97,60.46,60.46,0,0,0-1.946-15.97c-1.23-4.311-2.607-5.994-3.11-6.348h-4.654v8.732H89.584L67.756,7.752H36.041l-13.1,13.1H7.752V65.486H31.676Z" data-sanitized-data-name="Path 4358" data-name="Path 4358" id="Path_4358"></path>
+                          </g>
+                        </svg>
+
+
+                        <h3>סוללת על</h3>
+                        <p>
+                            עד 60 ק"מ בכל טעינה
+                        </p>
+                    </div>
+                    </div>
+                
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+
+       <%- include('./partials/testride', {
+        title: 'מעדיפים לנסות קודם? אין בעיה!',
+        subtitle: 'לתיאום רכיבת מבחן השאירו פרטים',
+        product: `${product.name}`,
+        type: "test-ride"
+      }) %>
+
+    <!--     loading="lazy" class="info-video" autoplay muted loop -->
+
+
+
+
+    
+    <div class="section-tlv">
+
+
+   
+                <div class="text">
+    
+    
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129.16 160.99">
+                        <defs>
+                            <clipPath id="prd-tlv-a">
+                                <path fill="none" d="M0 0h129.16v160.99H0z" data-name="Rectangle 4604"></path>
+                            </clipPath>
+                        </defs>
+                        <path fill="red" d="M33.04 133.79v7.68h4.61v19.51h7.93v-19.5h4.61v-7.7Z" data-name="Path 4360"></path>
+                        <path fill="red" d="M53.57 133.79v27.19h21.01l-3.24-7.68H61.5v-19.51Z" data-name="Path 4361"></path>
+                        <path fill="red" d="m88.15 133.79-5.66 13.95-5.69-13.95h-8.51l11.33 27.19h1.99l.9.01.88-.01h1.95l11.33-27.2Z" data-name="Path 4362"></path>
+                        <path d="m64.58 0-6.8 15.32v15.32l6.8 15.32 6.8-15.32V15.32Z" data-name="Path 4363"></path>
+                        <path d="m67.98 72.25 51.43 88.38 9.75-17.13-47.58-81.45Z" data-name="Path 4364"></path>
+                        <path d="m0 143.5 9.76 17.13 51.42-88.38-13.6-10.2Z" data-name="Path 4365"></path>
+                        <g data-name="Group 4794">
+                            <g clip-path="url(#prd-tlv-a)" data-name="Group 4793">
+                                <path d="M64.58 88.92a29.9 29.9 0 1 1 29.88-29.9 29.67 29.67 0 0 1-29.88 29.9m0-41.52a11.6 11.6 0 1 0 8.2 3.4 11.62 11.62 0 0 0-8.2-3.4" data-name="Path 4366"></path>
+                                <path fill="red" d="M64.58 120.4a67.49 67.49 0 0 1-37.27-11.2A69.98 69.98 0 0 1 2.4 80.22l8.8-4.09c9.75 21 30.7 34.58 53.38 34.58s43.64-13.58 53.39-34.59l8.8 4.08a69.99 69.99 0 0 1-24.9 29 67.5 67.5 0 0 1-37.29 11.2" data-name="Path 4367"></path>
+                            </g>
+                        </g>
+                    </svg>
+            
+                    <p>
+                       תוכנן ועוצב על ידי נמרוד ספיר
+                    </p>
+            
+                </div>
+            
+
+
+
+                <div class="image">
+
+                     <img src="<%= s3path  %>/optimized/shutterstock_1582902964.webp" alt="" > 
+                </div>
+        
+    
+
+      
+    
+    </div>
+
+
+
+
+    
+    
+    
+        <div class="section-info">
+    
+            <div class="img">
+
+              <img src="<%= s3path  %>/optimized/<%= product.paymentInfoImage  %>" alt="">  
+    
+            </div>
+    
+            <div class="text">
+    
+                
+    <div>
+
+                <h2>פריסה עד
+                    36 תשלומים</h2>
+<!-- Bootstrap Tabs -->
+<ul class="nav nav-tabs" id="variantTabs" role="tablist">
+  <% product.variants.forEach((variant, index) => { %>
+      <li class="nav-item" role="presentation">
+          <button 
+              class="nav-link <%= index === 0 ? 'active' : '' %>" 
+              id="variant-tab-<%= index %>" 
+              data-bs-toggle="tab" 
+              data-bs-target="#variant-content-<%= index %>" 
+              type="button" 
+              role="tab" 
+              aria-controls="variant-content-<%= index %>" 
+              aria-selected="<%= index === 0 ? 'true' : 'false' %>"
+          >
+              <%= variant.subModel %>
+          </button>
+      </li>
+  <% }) %>
+</ul>
+</div>
+<!-- Tab Content -->
+<div class="tab-content" id="variantTabsContent">
+  <% product.variants.forEach((variant, index) => { %>
+      <div 
+          class="tab-pane fade mb-5 <%= index === 0 ? 'show active' : '' %>" 
+          id="variant-content-<%= index %>" 
+          role="tabpanel" 
+          aria-labelledby="variant-tab-<%= index %>"
+      >
+          <div class="line">
+              <div>
+                  <div class="title">
+                      מחיר רגיל
+                  </div>
+                  <div class="price">
+                      <span> <%= formatter.format(variant.colors[0].price) %> </span>
+                  </div>
+              </div>
+
+              <div>
+                  <div class="title">
+                      תשלום חודשי
+                  </div>
+                  <div class="price">
+                      <span> <%= formatter.format(variant.colors[0].price / 36) %> ש״ח/לחודש</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  <% }) %>
+
+  <a href="#" class="btn btn-light w-50">קנה עכשיו</a>
+
+</div>
+
+    
+    
+            </div>
+    
+    
+        </div>
+    
+    
+    </div>
+
+
+
+
+
+
+<section class="specs p-3">
+    <div class="container text-white mt-3 py-0 py-md-5">
+        <h2 class="mb-4">מפרט <%= product.name %></h2>
+      
+        <% if (product.specs && product.specs.length > 0) { %>
+          <% product.specs.forEach(spec => { %>
+            <div class="spec-section pb-4 mb-5">
+              <!-- Section Title -->
+              <div class="mb-0 mb-md-4">
+                <h5 class="m-0"><%= spec.category %></h5>
+              </div>
+      
+              <% if (spec.category === 'מידות' && spec.image) { %>
+                <!-- Special Layout for מידות -->
+                <div class="row align-items-center">
+                  <!-- Spec Items -->
+                  <div class="col-12 col-md-8 order-2 order-md-1">
+                    <div class="row">
+                      <% spec.items.forEach(item => { %>
+                        <div class="col-6 col-md-6 d-flex flex-column justify-content-center align-items-start pb-3">
+                          <span class="fw-bold mb-2"><%= item.label %></span>
+                          <strong><%= item.value %></strong>
+                        </div>
+                      <% }) %>
+                    </div>
+                  </div>
+      
+                  <!-- Image on the side -->
+                  <div class="col-12 col-md-4 text-center order-1 order-md-2">
+                    <%- optimizeImage(`${spec.image}`, `${spec.category}`, 'img-fluid') %>
+
+                    <!-- <img src="<%= spec.image %>" alt="<%= spec.category %>" class="img-fluid" style="max-width: 100%;"> -->
+                  </div>
+                </div>
+              <% } else { %>
+                <!-- General Layout for Other Specs -->
+                <% if (spec.image) { %>
+                  <div class="spec-image text-center mb-4">
+                    <%- optimizeImage(`${spec.image}`, `${spec.category}`, 'img-fluid') %>
+
+                    <!-- <img src="<%= spec.image %>" alt="<%= spec.category %>" class="img-fluid" style="max-width: 50%;"> -->
+                  </div>
+                <% } %>
+      
+                <% if (spec.items && Array.isArray(spec.items)) { %>
+                  <div class="row">
+                    <% spec.items.forEach(item => { %>
+                      <div class="col-6 col-md-3 d-flex flex-column justify-content-center align-items-start pb-3">
+                        <span class="fw-bold mb-2"><%= item.label %></span>
+                        <strong><%= item.value %></strong>
+                      </div>
+                    <% }) %>
+                  </div>
+                <% } else { %>
+                  <p class="text-center text-muted">לא נמצאו פריטים במפרט זה.</p>
+                <% } %>
+              <% } %>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="text-center text-muted">לא קיימים מפרטים זמינים עבור מוצר זה.</p>
+        <% } %>
+
+      </div>
+      
+    
+    
+    
+</section>
+
+
+
+ 
+<% if(!hasInventory) { %>
+  <section class="specs p-3">
+    <div class="container mb-5">
+      <div class="text-center">
+        <h2>קבלו עדכונים</h2>
+        <p>נציג אינוקים רשמי ייצור אתכם קשר לגבי חזרת המוצר למלאי או מציאת  <%= product.name   %> יד שניה</p>
+      </div>
+  
+      <form action="" id="secondHand" class="dynamic-form">
+        <div class="row g-3 g-md-5 mb-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="fullName">שם מלא</label>
+            <input type="text" name="fullName" class="form-control">
+          </div>
+          <div class="col-12 col-md-6">
+            <label form="email" class="form-label">אימייל</label>
+            <input type="text" name="email" class="form-control">
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="phone">מספר טלפון</label>
+            <input type="tel" name="phone" class="form-control" id="">
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="location">עיר</label>
+            <input type="text" name="location" class="form-control">
+          </div>
+          <input type="hidden" name="type" value="secondHand" id="">
+          <small>*אני מסכים שייצרו איתי קשר לגבי מוצרי אינוקים, כולל באמצעות שיחות אוטומטיות או הודעות טקסט. אני מבין ומסכים להודעת הפרטיות ולתנאי השימוש של אינוקים.      </small>
+        </div>
+      <div class="w-100 text-center">
+        <button type="submit" class="btn btn-primary">שלח</button>
+      </div>
+      </form>
+    </div>
+
+
+  </section>
+<% } %>
+
+<section class="overview-header">
+    <span><%= product.name  %></span>
+    <div>
+      <% if(hasInventory) { %>
+        <a href="/products/<%= product.slug  %>" class="btn btn-dark">הזמן עכשיו</a>
+
+     <% } else { %>
+      <a href="#secondHand" class="btn btn-dark">מצא מלאי</a>
+   <% } %>
+    </div>
+</section>
+
+</main>
+
+
+<%- include("./partials/footer.ejs") %>

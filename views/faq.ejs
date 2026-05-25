@@ -1,0 +1,57 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<main id="faqPage" class="container py-5">
+
+    <h1 class="text-center mb-5">שאלות ותשובות</h1>
+
+    <div class="faq-content mb-5">
+        <% if (contentBlocks && contentBlocks.length) { %>
+            <% contentBlocks.forEach((block) => { %>
+              <% if (block.blockType === 'faq' && block.faqItems && block.faqItems.length) { %>
+                <div class="accordion" id="faqAccordion">
+                  <% block.faqItems.forEach((faq, index) => { %>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="heading-<%= index %>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<%= index %>" aria-expanded="<%= index === 0 ? 'true' : 'false' %>" aria-controls="collapse-<%= index %>">
+                          <%= faq.question %>
+                        </button>
+                      </h2>
+                      <div id="collapse-<%= index %>" class="accordion-collapse collapse" aria-labelledby="heading-<%= index %>" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          <%= faq.answer %>
+                        </div>
+                      </div>
+                    </div>
+                  <% }) %>
+                </div>
+              <% } %>
+            <% }) %>
+          <% } else { %>
+            <p class="text-muted">אין שאלות נפוצות זמינות כרגע.</p>
+          <% } %>
+    </div>
+
+
+    
+
+      <div class="faq-footer">
+        <svg viewBox="0 0 512 512" class="faq-help-icon" xmlns="http://www.w3.org/2000/svg">
+            <path d="M512 346.5c0-74.629-50.285-139.832-121.195-159.48C386.348 83.14 300.457 0 195.5 0 87.7 0 0 87.7 0 195.5c0 35.133 9.352 69.34 27.11 99.371L.718 390.277l95.41-26.386c27.605 16.324 58.746 25.52 90.887 26.906C206.66 461.71 271.867 512 346.5 512c29.79 0 58.758-7.934 84.21-23.008l80.567 22.285-22.285-80.566C504.066 405.258 512 376.289 512 346.5zm-411.137-15.047-57.117 15.8 15.8-57.116-3.6-5.633C38.972 257.949 30 227.172 30 195.5 30 104.242 104.242 30 195.5 30S361 104.242 361 195.5 286.758 361 195.5 361c-31.672 0-62.445-8.973-89.004-25.945zm367.39 136.8-42.382-11.726-5.66 3.684C398.27 474.465 372.777 482 346.5 482c-58.656 0-110.2-37.926-128.46-92.309 89.82-10.355 161.296-81.832 171.655-171.656C444.075 236.301 482 287.844 482 346.5c0 26.277-7.535 51.77-21.79 73.71l-3.683 5.661zm0 0"></path>
+            <path d="M180.5 271h30v30h-30zM225.5 150c0 8.52-3.469 16.383-9.766 22.145l-35.234 32.25V241h30v-23.395l25.488-23.328C248.387 182.93 255.5 166.793 255.5 150c0-33.086-26.914-60-60-60s-60 26.914-60 60h30c0-16.543 13.457-30 30-30s30 13.457 30 30zm0 0"></path>
+          </svg>
+          <h2 class="mb-3">עדיין יש לכם שאלות?</h2>
+          <p>
+            לא מצליחים למצוא את מה שאתם מחפשים?
+            <a href="/contact-us">צרו קשר</a>.
+          </p>
+      </div>
+ 
+
+
+</main>
+
+
+
+
+
+  <%- include("./partials/footer.ejs") %>

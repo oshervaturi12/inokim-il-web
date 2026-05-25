@@ -1,0 +1,37 @@
+<%- include("./partials/header-admin.ejs") %>
+
+<main class="py-3 px-3">
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <% if (data && data.length > 0) { %>
+                <% data.forEach(item => { %>
+                    <div class="col-12 col-md-4">
+                        <div class="devices-wrapper">
+                            <div class="devices-grid">
+                                <div class="device-card">
+                                    <% if (item.variants && item.variants.length > 0 && item.variants[0].colors && item.variants[0].colors.length > 0) { %>
+                                        <%- optimizeImage(`${item.variants[0].gallery[0] }`, 'תמונת מוצר', 'device-image') %>
+                                    <% } else { %>
+                                        <img src="/img/default-image.png" alt="תמונה לא זמינה" class="device-image">
+                                    <% } %>
+
+                                    <h3 class="device-name"><%= item.name %></h3>
+                                    <p class="device-description"><%= item.title %></p>
+
+                                    <a href="/admin/scooters/<%= item._id  %>" class="btn-support">עריכה</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="col-12">
+                    <p class="text-center lead">לא נמצאו מוצרים</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+
+<%- include("./partials/admin-footer.ejs") %>

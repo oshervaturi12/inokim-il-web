@@ -1,0 +1,47 @@
+<%- include("./partials/navbar.ejs", { customClass: customClass }) %>
+
+<main class="pt-3 pt-md-4 pb-4">
+    <div class="container">
+      <h1 class="nice-title mb-4">עולם ה- אינוקים</h1>
+  
+      <p class="mb-4">
+        יש כל כך הרבה ב-INOKIM. זהו פתרון לתחבורה עירונית, לב ליבה של תרבות תוססת וספורט שמתפתח במהירות. 
+        אבל הסיבה שמאות אלפים ברחבי העולם בוחרים לרכוב עליהם היא פשוטה: ההרגשה מדהימה. 
+        כאן תמצאו את כל מה שקורה בעולם של INOKIM – הדמויות, ההרפתקאות, החדשות וטיפים לרוכבים.
+      </p>
+  
+      <div id="blogItems">
+        <div class="row">
+          <% blogs.forEach(blog => { %>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+              <div class="item-post">
+                <header class="header">
+                  <a href="/blog/<%= blog.slug %>" tabindex="-1" aria-label="תמונה עבור <%= blog.title %>">
+                    <!-- <picture>
+                      <source srcset="<%= blog.coverImage %>" type="image/webp">
+                      <img alt="<%= blog.title %>" src="<%= blog.coverImage %>" class="card-img-top loaded">
+                    </picture> -->
+                    <%- optimizeImage(blog.coverImage, blog.title, 'card-img-top loaded') %>
+                  </a>
+                </header>
+                <section class="body">
+                  <h3 class="mb-1 mt-2">
+                    <a href="/blog/<%= blog.slug %>"><%= blog.title %></a>
+                  </h3>
+                  <ul class="list-of-items mb-3">
+                    <li><time><%= blog.publishedAt.toLocaleDateString('he-IL') %></time></li>
+                  </ul>
+                  <p class="text-muted"><%= blog.excerpt %></p>
+                </section>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+  
+      <div id="scroll_line"></div>
+    </div>
+  </main>
+  
+
+<%- include("./partials/footer.ejs") %>
